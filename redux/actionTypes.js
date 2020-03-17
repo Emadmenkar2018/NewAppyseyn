@@ -1,0 +1,23 @@
+
+export const LOGIN_ACTION= 'LOGIN_ACTION'
+
+export const SET_USERNAME_VALUE= 'SET_USERNAME_VALUE'
+
+export const SET_PASSWORD_VALUE= 'SET_PASSWORD_VALUE'
+
+export const SET_USER_MEALS= 'SET_USER_MEALS'
+
+export const SET_BREAKFAST= 'SET_BREAKFAST'
+
+export const SET_DINNER= 'SET_DINNER'
+
+export const SET_LUNCH= 'SET_LUNCH'
+
+export const SET_APERATIF= 'SET_APERATIF'
+
+export const SET_SLEEP= 'SET_SLEEP'
+
+export const SET_EXERCISES= 'SET_EXERCISES'
+ 
+ 
+

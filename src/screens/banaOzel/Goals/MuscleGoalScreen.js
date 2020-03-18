@@ -17,8 +17,10 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
 
                     <MyPieChart
                      title={'Kas'}
-                     data={data.length >0  ?  data[0].content :''}
-                     currentData= {current ? current.content : ''}
+                    //  data={data.length >0  ?  data[0].content :''}
+                    //  currentData= {current ? current.content : ''}
+                     data={'45%'}
+                     currentData= {'38%'}
                     />
 
                     <Text style={{marginVertical:5}}>Not: You have to work hard </Text>

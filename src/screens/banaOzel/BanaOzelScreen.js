@@ -21,7 +21,7 @@ export default class BanaOzelScreen extends React.Component {
               secondColor={'#00BBCA'}
             />  
 
-            <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>     
+            <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100 }}>     
 
                 <StackScreen
                  {...this.props}

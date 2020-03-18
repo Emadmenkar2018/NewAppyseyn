@@ -13,11 +13,7 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
 
               <View style={{flexDirection:'row',backgroundColor:'transparent',justifyContent:'space-around',alignItems:'center',alignContent:'center'  }}>
                     
-                    <View style={{alignSelf:'center' ,flexDirection:'column',alignContent:'center',alignItems:'center',height:'100%',marginTop:screenWidth}}>
-                      <Text style={styles.title}>Sonra</Text>
-                     <Text style={styles.data}>{data[0]? data[0].content:''}</Text>
-                      <Text style={styles.date}>{data[0]? data[0].date:''}</Text>
-                   </View>
+                   
 
 
                   <View style={{alignSelf:'center',flexDirection:'column',alignContent:'center',alignItems:'center',height:'100%',marginTop:screenWidth}}> 
@@ -25,7 +21,13 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
                       <Text style={styles.data}>{data[1]? data[1].content:''}</Text>
                       <Text style={styles.date}>{data[1]? data[1].date:''}</Text>
                   </View>
+
                   
+                  <View style={{alignSelf:'center' ,flexDirection:'column',alignContent:'center',alignItems:'center',height:'100%',marginTop:screenWidth}}>
+                      <Text style={styles.title}>Sonra</Text>
+                     <Text style={styles.data}>{data[0]? data[0].content:''}</Text>
+                      <Text style={styles.date}>{data[0]? data[0].date:''}</Text>
+                   </View>
 
               </View>
     

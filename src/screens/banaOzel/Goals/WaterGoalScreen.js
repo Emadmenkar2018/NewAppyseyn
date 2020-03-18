@@ -19,8 +19,8 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
                       title={'Su'}
                       // data={data.length >0  ?   data[0].content :''} 
                       // currentData= {current ? current.content : ''}
-                      data={'30%'}
-                      currentData= {'25%'}
+                      data={'30'}
+                      currentData= {'25'}
                       
                     />
 

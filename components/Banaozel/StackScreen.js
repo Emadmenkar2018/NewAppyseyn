@@ -15,7 +15,7 @@ export default class StackScreen extends React.Component {
 
             <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%'}}>
 
-            <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%',marginTop:-20  ,width:'100%',marginBottom :50,zIndex:1}}>     
+            <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%',marginTop:-60  ,width:'100%',marginBottom :50,zIndex:1}}>     
 
                 {/* <Container
                   headtext='Beslenme Programı'

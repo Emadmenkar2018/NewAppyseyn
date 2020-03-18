@@ -15,7 +15,7 @@ export default class OlculerStack extends React.Component {
 
             // <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%'}}>
 
-                <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',marginBottom:10,marginTop:-30,zIndex:1}}>     
+                <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',marginBottom:10,marginTop:-60,zIndex:1}}>     
 
                     <Container
                     headtext='Beden Kitle Indeksi'

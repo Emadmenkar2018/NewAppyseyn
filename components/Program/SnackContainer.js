@@ -19,7 +19,7 @@ const SnackContainer = ({ apperativeData, ...props }) => {
 
           <Text style={{color:apperativeData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
            
-            {apperativeData?  'Eklenen Aperatif' : ' Aperatif Bulunmamaktadır'}
+            {apperativeData?  'Aperatif' : ' Aperatif Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}>

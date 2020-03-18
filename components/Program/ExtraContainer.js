@@ -17,7 +17,7 @@ const ExtraContainer = ({ extraData, ...props }) => {
         <View style={styles.Textcontainer}>
 
           <Text style={{color:extraData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
-            {extraData?  'Eklenen Extra Yemek' : 'Extra Bulunmamaktadır'}
+            {extraData?  'Extra Yemek' : 'Extra Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}> 

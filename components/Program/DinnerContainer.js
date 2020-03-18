@@ -18,7 +18,7 @@ const DinnerContainer = ({ dinnerData, ...props }) => {
         <View style={styles.Textcontainer}>
 
           <Text  style={{color:dinnerData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}>
-            {dinnerData?  'Eklenen Akşam Yemegi' : 'Akşam Yemegi Bulunmamaktadır'}
+            {dinnerData?  'Akşam Yemegi' : 'Akşam Yemegi Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}> 

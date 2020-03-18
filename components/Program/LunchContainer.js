@@ -19,7 +19,7 @@ const LunchContainer = ({ lunchData, ...props }) => {
         <View style={styles.Textcontainer}>
 
           <Text style={{color:lunchData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
-            {lunchData?  'Eklenen Öğle Yemeği' : 'Öğle Yemeği Bulunmamaktadır'}
+            {lunchData?  'Öğle Yemeği' : 'Öğle Yemeği Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}> 

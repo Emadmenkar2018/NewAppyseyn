@@ -17,7 +17,7 @@ const BreakfastContainer = ({ breakfastData, ...props }) => {
 
         <View style={styles.Textcontainer}>
           <Text style={{color:breakfastData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold'}}> 
-            {breakfastData?  'Eklenen Kahvaltı' : 'Kahvaltı Bulunmamaktadır'}
+            {breakfastData?  'Kahvaltı' : 'Kahvaltı Bulunmamaktadır'}
           </Text>
           <Text style={styles.text}>
            {breakfastData? breakfastData : 'Protein, Yağ, Karbonhidrat, Asit bazı'} 

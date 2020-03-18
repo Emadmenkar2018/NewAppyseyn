@@ -8,12 +8,14 @@ import {getTodayNumbers,sortKeys} from '../../../utils/methods'
 import {mealsData} from '../../../constants/arrays'
 import {_fetchMealsData} from '../../../utils/requests'
 import {setUserMeals} from '../../../redux/actions/meal.actions' 
- 
+import MySideBar from '../../../components/SideMenu/MySideBar'
   
 const HomeMealsScreen = ({ history, ...props }) => {  
     const myStackPager = useRef(null); 
+    const myMenu = useRef(null); 
     const [index,setIndex] = useState('');
     const [meals, setMeals] =useState({})
+    
 
     useEffect(() =>{
         myStackPager.current.setPage(6)
@@ -42,6 +44,11 @@ const HomeMealsScreen = ({ history, ...props }) => {
         setIndex(e.nativeEvent.position)
     }; 
      
+    const _openControlPanel = () => {
+        // _drawer.open()
+       myMenu.current.open()
+        // myMenu.current.open()
+    };
 
     const arrange = () =>{
         return sortKeys(props.user_meals) 
@@ -60,24 +67,30 @@ const HomeMealsScreen = ({ history, ...props }) => {
     }); 
 
     return(  
-        <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>
 
-            <DefaultBackground
-                index={index}
-            />  
+        <MySideBar
+        ref={myMenu}
+        > 
+            <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>
 
-            <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>    
+                <DefaultBackground
+                    index={index}
+                    openControlPanel={_openControlPanel}
+                />  
 
-                <ViewPager ref={myStackPager} onPageSelected={onPageSelected} scrollEnabled={true} transitionStyle='curl' style={styles.viewPager} initialPage={0} >
-  
-                    {DaysPages}  
-        
-                </ViewPager> 
- 
+                <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>    
 
-            </View>
+                    <ViewPager ref={myStackPager} onPageSelected={onPageSelected} scrollEnabled={true} transitionStyle='curl' style={styles.viewPager} initialPage={0} >
+    
+                        {DaysPages}  
             
-        </View>
+                    </ViewPager> 
+    
+
+                </View>
+                
+            </View>
+        </MySideBar>
  
     )
 } 

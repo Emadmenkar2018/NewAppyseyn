@@ -16,7 +16,7 @@ const DefaultBackground =  ({ children,firstColor,secondColor, ...props  }) =>  
 
     <LinearGradient  start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#2C2C5E', secondColor? secondColor:'#3F3164']}  style={{width: '100%', height: '35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
       <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
-          <TouchableOpacity onPress={()=>console.log('/Main/Store')}>
+          <TouchableOpacity onPress={()=>props.openControlPanel()}>
             <Icon name="menu" type ='material' size={35}  color={firstColor ? '#1D253C':'#999'}   />
           </TouchableOpacity>
           <Image

@@ -1,4 +1,4 @@
-import React, { memo ,useState} from 'react';
+import React, { memo ,useState ,useEffect} from 'react';
 import {
   View,
   StyleSheet,  
@@ -27,7 +27,7 @@ const HealthForm = ({ children , ...props}) => {
   
   useEffect(() =>{ 
     getHistoryData()
-    getHistoryFiles() 
+    // getHistoryFiles() 
 } , []);
 
   const getHistoryData = () =>{
@@ -42,8 +42,8 @@ const HealthForm = ({ children , ...props}) => {
   const getHistoryFiles = () =>{
     _getHistoryFilesapi().then(response =>{
       setInput1(response.data.firstFile)
-      setInput1(response.data.secondFile)
-      setInput1(response.data.thirdFile)
+      setInput2(response.data.secondFile)
+      setInput3(response.data.thirdFile)
     }).catch(err=>{
       console.log('err',err)
     })

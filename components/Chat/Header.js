@@ -37,7 +37,8 @@ const Header =  ({ children,firstColor,secondColor ,...props  }) => {
                     <TouchableOpacity onPress={()=>console.log('Hi')}>
                         <Image
                             style={styles.stretch}
-                            source={require('../../assets/phone.png')} 
+                            // source={require('../../assets/phone.png')} 
+                            source={null} 
                             resizeMode={'contain'}/>
                     </TouchableOpacity>
 
@@ -45,7 +46,9 @@ const Header =  ({ children,firstColor,secondColor ,...props  }) => {
                         <Image
                             resizeMode={'contain'}
                             style={styles.stretch}
-                            source={require('../../assets/video-call.png')} /> 
+                            // source={require('../../assets/video-call.png')} 
+                            source={null} 
+                            /> 
                     </TouchableOpacity>
                 </View>
             </View>

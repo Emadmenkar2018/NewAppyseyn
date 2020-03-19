@@ -158,9 +158,9 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file('your_key_name.keystore')
+            storeFile file('diyet.keystore')
             storePassword '123321'
-            keyAlias 'your_key_alias'
+            keyAlias 'diyet'
             keyPassword '123321'
         }
     }

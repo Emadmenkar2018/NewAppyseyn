@@ -20,6 +20,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
 
       const fetchmyRandevus=() =>{    
         _fetchmyRandevuData().then(response =>{  
+            console.log('omar here' ,response.bookingTimes)
             setmyRandevus(response.bookingTimes)   
             console.log('-1',myradevus)
         }
@@ -32,7 +33,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         <View style={{ flex:1}}> 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%'  ,alignContent:'center'}}>    
                 
-                { myradevus.length>0 &&
+                { myradevus.length>=0 &&
                     <MyCalender
                         MyRandevus = {myradevus}
                     />

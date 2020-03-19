@@ -38,7 +38,7 @@ const Header =  ({ children,firstColor,secondColor ,...props  }) => {
                         <Image
                             style={styles.stretch}
                             // source={require('../../assets/phone.png')} 
-                            source={null} 
+                            // source={null} 
                             resizeMode={'contain'}/>
                     </TouchableOpacity>
 
@@ -46,8 +46,7 @@ const Header =  ({ children,firstColor,secondColor ,...props  }) => {
                         <Image
                             resizeMode={'contain'}
                             style={styles.stretch}
-                            // source={require('../../assets/video-call.png')} 
-                            source={null} 
+                            source={require('../../assets/video-call.png')}  
                             /> 
                     </TouchableOpacity>
                 </View>

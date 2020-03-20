@@ -213,7 +213,7 @@ export default class RecieveVideoCall extends Component {
     state = {
       isAudioEnabled: true,
       isVideoEnabled: true,
-      status: 'disconnected',
+      status: '',
       participants: new Map(),
       videoTracks: new Map(),
       roomName: '',
@@ -223,7 +223,7 @@ export default class RecieveVideoCall extends Component {
     }
 
     componentDidMount() {
-        this.setState({status: 'calling'}) 
+        this.setState({status: 'connecting'}) 
         requestAudioPermission().then( response =>{ 
           requestCameraPermission().then( response =>{ 
               this._makeNewVideoCall() 
@@ -245,7 +245,7 @@ export default class RecieveVideoCall extends Component {
               token2:response.data.access_token_2,
               roomName:response.data.room_name
             })     
-            twilioVideo.current.connect({ roomName: response.data.room_name, accessToken: response.data.access_token })
+            this.refs.twilioVideo.connect({ roomName: response.data.room_name, accessToken: response.data.access_token })
             
         }).catch(err =>{
             console.log('err',err)
@@ -266,8 +266,8 @@ export default class RecieveVideoCall extends Component {
     // }
 
     _onConnectButtonPress = () => {
-    this.refs.twilioVideo.connect({ roomName: this.state.roomName, accessToken: this.state.token })
-    this.setState({status: 'connecting'})
+      this.refs.twilioVideo.connect({ roomName: this.state.roomName, accessToken: this.state.token })
+      this.setState({status: 'connecting'})
     }
 
      
@@ -285,10 +285,24 @@ export default class RecieveVideoCall extends Component {
     this.refs.twilioVideo.flipCamera()
     }
 
-    _onRoomDidConnect  = ({roomName, error}) => {
-    console.log("connected: ", roomName) 
-    this.setState({status: 'connected'})
-    }
+    // _onRoomDidConnect  = () => {
+    // // console.log("connected: ", this.state.roomName) 
+    // console.log("connected") 
+    // this.setState({status: 'connected'})
+    // }
+
+     _onRoomDidConnect = () =>{
+       
+            //  playAudio()
+      _checkforAnswerCall(call_id).then( response => {
+        if(response.status ==='calling'){
+            this.setState({status: 'connected'}) 
+              } 
+              console.log('response',response)
+          }).catch(err=>{
+            console.log('err',err)
+          }) 
+      }
 
     _onRoomDidDisconnect = ({roomName, error}) => {
     console.log("ERROR: ", error)
@@ -326,10 +340,10 @@ export default class RecieveVideoCall extends Component {
     return ( 
           <View style={styles.container}>
                 
-                  {  status === 'connecting'  &&
+                  {  this.state.status === 'connecting'  &&
                     <View style={{backgroundColor:'#fff',zIndex:-1}}>
                       <TwilioVideoLocalView
-                        ref={main}
+                        // ref={main}
                         enabled={true}
                         style={styles.localVideo  } 
                       />    
@@ -343,7 +357,7 @@ export default class RecieveVideoCall extends Component {
                       <View style={styles.optionsContainer}>
                         <TouchableOpacity
                             style={styles.optionButton}
-                            onPress={()=>this._onEndButtonPress()}>
+                            onPress={()=>this._onFlipButtonPress()}>
                             <Image style={styles.logo} tintColor={'#999'} resizeMode={'contain'} source={require('../../../assets/horizontal-flip.png')}  />
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -353,14 +367,14 @@ export default class RecieveVideoCall extends Component {
                         </TouchableOpacity>
                         <TouchableOpacity
                             style={styles.optionButton}
-                            onPress={()=>this._onEndButtonPress()}> 
+                            onPress={()=>this._onMuteButtonPress()}> 
                             <Image style={styles.logo} tintColor={'#999'}  resizeMode={'contain'} source={require('../../../assets/mute.png')}  /> 
                         </TouchableOpacity> 
                       </View> 
                     </View>
                   }
 
-                  {  status === 'connected'  &&
+                  {  this.state.status === 'connected'  &&
                     <View style={styles.callContainer}>
                         <TwilioVideoLocalView
                           enabled={true}
@@ -368,7 +382,7 @@ export default class RecieveVideoCall extends Component {
                         />    
                         <View style={styles.remoteGrid}>
                             {
-                            Array.from(videoTracks, ([trackSid, trackIdentifier]) => {
+                            Array.from(this.state.videoTracks, ([trackSid, trackIdentifier]) => {
                                 return (
                                 <TwilioVideoParticipantView
                                     style={styles.remoteVideo}
@@ -391,12 +405,12 @@ export default class RecieveVideoCall extends Component {
                   
 
                   <TwilioVideo
-                  ref={twilioVideo}
-                  onRoomDidConnect={ ()=>_onRoomDidConnect() }
-                  onRoomDidDisconnect={ ()=>_onRoomDidDisconnect() }
-                  onRoomDidFailToConnect= { ()=>_onRoomDidFailToConnect() }
-                  onParticipantAddedVideoTrack={ ()=>_onParticipantAddedVideoTrack() }
-                  onParticipantRemovedVideoTrack= { ()=>_onParticipantRemovedVideoTrack() }
+                  ref="twilioVideo"
+                  onRoomDidConnect={ ()=>this._onRoomDidConnect() }
+                  onRoomDidDisconnect={ ()=>this._onRoomDidDisconnect() }
+                  onRoomDidFailToConnect= { ()=>this._onRoomDidFailToConnect() }
+                  onParticipantAddedVideoTrack={ ()=>this._onParticipantAddedVideoTrack() }
+                  onParticipantRemovedVideoTrack= { ()=>this._onParticipantRemovedVideoTrack() }
                   />
               </View>  
                     

@@ -29,7 +29,8 @@ const NutritionProgramScreen = ({ history, ...props }) => {
 
      const fetchProgram=() =>{    
             _fetchProgramData().then(response =>{  
-                setProgram(response.data)   
+                setProgram(response.data)  
+                console.log('masd',response.data) 
             }
             ).catch( err =>
                 console.log('err',err)

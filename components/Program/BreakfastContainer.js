@@ -5,7 +5,7 @@ import { Input, Item, Label  , Icon } from 'native-base';
 const BreakfastContainer = ({ breakfastData, ...props }) => { 
 
   const [visibilty, setVisibility] = useState(false)
-   
+   console.log('1',breakfastData)
     return (
     <Item   style={styles.container}> 
         <View style={styles.iconcontainer}>
@@ -16,11 +16,11 @@ const BreakfastContainer = ({ breakfastData, ...props }) => {
 
 
         <View style={styles.Textcontainer}>
-          <Text style={{color:breakfastData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold'}}> 
-            {breakfastData?  'Kahvaltı' : 'Kahvaltı Bulunmamaktadır'}
+          <Text style={{color:breakfastData.length > 0? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold'}}> 
+            {breakfastData.length > 0 ?  'Kahvaltı' : 'Kahvaltı Bulunmamaktadır'}
           </Text>
           <Text style={styles.text}>
-           {breakfastData? breakfastData : 'Protein, Yağ, Karbonhidrat, Asit bazı'} 
+           {breakfastData.length > 0 ? breakfastData : 'Protein, Yağ, Karbonhidrat, Asit bazı'} 
           </Text>
         </View>
  

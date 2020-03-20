@@ -18,12 +18,12 @@ const LunchContainer = ({ lunchData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:lunchData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
-            {lunchData?  'Öğle Yemeği' : 'Öğle Yemeği Bulunmamaktadır'}
+          <Text style={{color:lunchData.length >0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
+            {lunchData.length >0 ?  'Öğle Yemeği' : 'Öğle Yemeği Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}> 
-            {lunchData?  lunchData  : 'Önerilen 760-960 Kal.'} 
+            {lunchData.length >0 ?  lunchData  : 'Önerilen 760-960 Kal.'} 
           </Text>
 
         </View>

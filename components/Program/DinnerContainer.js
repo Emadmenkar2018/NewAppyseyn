@@ -17,12 +17,12 @@ const DinnerContainer = ({ dinnerData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text  style={{color:dinnerData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}>
-            {dinnerData?  'Akşam Yemegi' : 'Akşam Yemegi Bulunmamaktadır'}
+          <Text  style={{color:dinnerData.length > 0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}>
+            {dinnerData.length > 0 ?  'Akşam Yemegi' : 'Akşam Yemegi Bulunmamaktadır'}
           </Text>
 
           <Text style={styles.text}> 
-            {dinnerData?  dinnerData : 'Önerilen 944-1290 Kal.'} 
+            { dinnerData.length > 0?  dinnerData : 'Önerilen 944-1290 Kal.'} 
           </Text>
 
         </View>

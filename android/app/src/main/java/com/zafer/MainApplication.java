@@ -1,19 +1,14 @@
-package com.sp;
+package com.zafer;
 
 import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
-import com.johnsonsu.rnsoundplayer.RNSoundPlayerPackage;
-import com.entria.views.RNViewOverflowPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
-import com.twiliorn.library.TwilioPackage;
-// import com.wix.RNCameraKit.RNCameraKitPackage;
-// import io.github.elyx0.reactnativedocumentpicker.DocumentPickerPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -29,9 +24,7 @@ public class MainApplication extends Application implements ReactApplication {
           @SuppressWarnings("UnnecessaryLocalVariable")
           List<ReactPackage> packages = new PackageList(this).getPackages();
           // Packages that cannot be autolinked yet can be added manually here, for example:
-          packages.add(new TwilioPackage());
-          // packages.add(new RNCameraKitPackage());
-          // packages.add(new DocumentPickerPackage());
+          // packages.add(new MyReactNativePackage());
           return packages;
         }
 

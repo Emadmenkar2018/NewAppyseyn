@@ -18,12 +18,12 @@ const ExercisesContainer = ({exercisesData,DaysData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:exercisesData[0]? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}> 
-            {exercisesData[0]?  'Eklenen Egzersiz' : 'Egzersiz Bulunmamaktadır'} 
+          <Text style={{color:exercisesData[0].lemgth > 0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}> 
+            {exercisesData[0].lemgth > 0 ?  'Eklenen Egzersiz' : 'Egzersiz Bulunmamaktadır'} 
           </Text>
 
           <Text style={styles.text}> 
-            {exercisesData[0]?  exercisesData[0]['content'] : 'Günlük Hedef - 30 dak.'} 
+            {exercisesData[0].lemgth > 0 ?  exercisesData[0]['content'] : 'Günlük Hedef - 30 dak.'} 
           </Text>
 
         </View>

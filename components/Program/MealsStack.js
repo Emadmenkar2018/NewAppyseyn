@@ -5,7 +5,7 @@ import BreakfastContainer from './BreakfastContainer'
 import LunchContainer from './LunchContainer'
 import ExtraContainer from './ExtraContainer'
 import DinnerContainer from './DinnerContainer'
-import SnackContainer from './SnackContainer' 
+import SnackContainer from './SnackContainer'  
 import SleepContainer from './SleepContainer'
 import ExercisesContainer from './ExercisesContainer'    
 import { ScrollView } from 'react-native-gesture-handler' 
@@ -55,7 +55,7 @@ export default class MealsStack extends React.Component {
                 />
 
                 <SnackContainer
-                  exercisesData = {this.props.MealsData ? this.props.MealsData.middle_aperatif2: []}
+                  apperativeData = {this.props.MealsData ? this.props.MealsData.middle_aperatif2: []}
                   // settingVisibility = {this.settingVisibility}
                   // DaysData = {this.props.DaysData}
                /> 

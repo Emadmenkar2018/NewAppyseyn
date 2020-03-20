@@ -10,16 +10,14 @@ import {
  
 export default class VideoCallScreen extends Component {
 
-     
-
     state = {
         isAudioEnabled: true,
         isVideoEnabled: true,
         status: 'disconnected',
         participants: new Map(),
         videoTracks: new Map(),
-        roomName: 'omar_room',
-        token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImN0eSI6InR3aWxpby1mcGE7dj0xIn0.eyJqdGkiOiJTSzE2YjhiZTA2ODhmMjExNzM1ZmEzNTMxOTA3M2I0MjgzLTE1ODM5MTI1ODMiLCJpc3MiOiJTSzE2YjhiZTA2ODhmMjExNzM1ZmEzNTMxOTA3M2I0MjgzIiwic3ViIjoiQUM5OGI0NzQ0NDkyOTliMmEyYTE5YjhjYjY4ZWE3OWQ4NiIsImV4cCI6MTU4MzkxNjE4MywiZ3JhbnRzIjp7ImlkZW50aXR5Ijoib21hcl9yb29tIiwidmlkZW8iOnt9fX0.-dKSVw0mRMIBh89xBlw252emtZ_Vv_3J4aLgQaKhiqc'
+        roomName: '',
+        token: ''
       }
 
       closeModal = () =>{
@@ -92,7 +90,7 @@ export default class VideoCallScreen extends Component {
 
                 <LinearGradient  colors={['rgba(44, 44, 94,.8)', 'rgba(63, 49, 100,.8)']} style={{alignSelf:'center',alignContent:'center',width:'100%',height:'100%',alignItems:'center' }}>
                     <View style={styles.container}>
-                            {
+                            {/* {
                             this.state.status === 'disconnected' &&
                             <View>
                                 <Text style={styles.welcome}>
@@ -116,7 +114,7 @@ export default class VideoCallScreen extends Component {
                                     onPress={this._onConnectButtonPress}>
                                 </Button>
                             </View>
-                            }
+                            } */}
 
                             {
                             (this.state.status === 'connected' || this.state.status === 'connecting') &&

@@ -18,6 +18,8 @@ export const SET_APERATIF= 'SET_APERATIF'
 export const SET_SLEEP= 'SET_SLEEP'
 
 export const SET_EXERCISES= 'SET_EXERCISES'
+
+export const SET_MAIN_PAGE_INDEX= 'SET_MAIN_PAGE_INDEX'
  
  
 

@@ -19,13 +19,13 @@ export default class MyRuler extends Component {
 
    _handleChange =(value)=>{  
       this.setState({height: value < 140 ? 140 : value > 210 ? 210 : value})
-      this.props.getHeight(this.state.height+6)
+      this.props.getHeight(this.state.height )
    }
    render() { 
        return (
         <View  > 
-            <View style={{position:'absolute',top:-20,left:130,alignContent:'center',alignItems:'center'}}>
-              <Text style={{fontSize:25,fontWeight:'bold',marginBottom:2,fontFamily:'Muli-Light'}}>{this.state.height+6}</Text>
+            <View style={{position:'absolute',top:-halfheight+20,left:130,alignContent:'center',alignItems:'center',height:'100%'}}>
+              <Text style={{fontSize:25,fontWeight:'bold',marginBottom:2,fontFamily:'Muli-Light'}}>{this.state.height }</Text>
               <Text style={{fontSize:20,fontWeight:'600',marginTop:0,fontFamily:'Muli-Light'}}>cm</Text> 
             </View>
             <LineGauge ref={this.refRuler}  min={130} max={210} value={this.state.height} onChange={(value) =>this._handleChange(value)}/> 

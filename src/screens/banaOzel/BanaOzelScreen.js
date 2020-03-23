@@ -17,6 +17,7 @@ export default class BanaOzelScreen extends React.Component {
   };
   render()  
   {    
+    console.log('props',this.props)
     return( 
         <MySideBar 
             ref={this.myMenu}
@@ -33,8 +34,8 @@ export default class BanaOzelScreen extends React.Component {
 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100 }}>     
 
-                <StackScreen
-                 {...this.props}
+                <StackScreen 
+                  {...this.props}
                 /> 
 
             </View>

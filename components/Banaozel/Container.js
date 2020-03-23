@@ -9,10 +9,11 @@ const Container = ({imagePlaceholder,headtext,type,prefix, ...props }) => {
     getImage=(name)=> {  
       return IMAGES[name];
     }  
-
+    console.log('=props',props)
     _handleNavigating = (prefix) =>{ 
+      props.setMainPAgeIndex(2)
       history.push({
-        pathname: "/Main/" + prefix ,
+        pathname: "/Main/BanaOzel/" + prefix ,
         state: {
           prefix
         }

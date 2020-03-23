@@ -4,20 +4,22 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   ImageBackground,
+  Dimensions,
 } from 'react-native'; 
 import {Button} from 'react-native-elements' 
 import LinearGradient from 'react-native-linear-gradient';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'; 
-
+ 
+const height = Dimensions.get('window').height
 
 const RegisterBackground = ({ children }) => ( 
-    <LinearGradient colors={['#2C2C5E', '#3F3164']} style={{width: '100%', height: '100%',backgroundColor:'#223077', zIndex:-1}} >   
+    <LinearGradient colors={['#2C2C5E', '#3F3164']} style={{width: '100%', height: '100%',backgroundColor:'#223077', zIndex:-1,alignItems:"center",alignContent: 'center'}} >   
 
-        <KeyboardAwareScrollView style={{alignContent: 'center',width: '100%', height: '100%',zIndex:1}}>
+        <KeyboardAwareScrollView style={{alignContent: 'center',width: '100%', height: '100%',zIndex:1,alignSelf:'center'}}>
             {children} 
             
 
-            <View style={{transform: [{ rotate: '-90deg'}],marginTop:-100 ,marginRight:70,  backgroundColor:'transparent',zIndex:0}}>
+            {/* <View style={{transform: [{ rotate: '-90deg'}]  ,marginRight:70,  backgroundColor:'transparent',zIndex:0 ,marginTop:1/9*height }}>
               <Button title={''}  buttonStyle={styles.button2}>
                 {null}
               </Button> 
@@ -29,7 +31,7 @@ const RegisterBackground = ({ children }) => (
               <Button title={''}  buttonStyle={styles.button4}>
                 {null}
               </Button>  
-            </View>  
+            </View>   */}
 
 
         </KeyboardAwareScrollView> 

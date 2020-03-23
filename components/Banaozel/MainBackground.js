@@ -62,7 +62,7 @@ const MainBackground =  ({ children,firstColor,secondColor ,...props  }) => {
               resizeMode={'contain'}
               style={styles.stretch}
               source={require('../../assets/addBtn.png')} 
-              // tintColor={'#1D253C'}
+              tintColor={'#1D253C'}
             />
           </TouchableOpacity>
       </View>

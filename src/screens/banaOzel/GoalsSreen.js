@@ -61,7 +61,9 @@ const  GoalsSreen = ({ history, ...props }) => {
 
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>
 
-            <DefaultBackgroundWithChart/>  
+            <DefaultBackgroundWithChart
+            title={'Hedeflerim'}
+            />  
 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>   
 

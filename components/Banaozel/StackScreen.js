@@ -9,8 +9,10 @@ export default class StackScreen extends React.Component {
     constructor(props){ 
         super(props);  
     }
+    
   render()  
-  {    
+  {   
+    
     return( 
 
             <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%'}}>
@@ -24,7 +26,7 @@ export default class StackScreen extends React.Component {
                 /> */}
 
                 <Container
-                   
+                   setMainPAgeIndex={this.props.setMainPAgeIndex}
                   headtext='Ölçülerim'
                   imagePlaceholder='ruler'
                   type='go'
@@ -32,7 +34,7 @@ export default class StackScreen extends React.Component {
                 />
 
                 <Container
-                   
+                    setMainPAgeIndex={this.props.setMainPAgeIndex}
                   headtext='Hedeflerim'
                   imagePlaceholder='hedef'
                   type='go'
@@ -40,7 +42,7 @@ export default class StackScreen extends React.Component {
                 />
 
                 <Container
-                   
+                    setMainPAgeIndex={this.props.setMainPAgeIndex}
                   headtext='Öncesi Sonrasi'
                   imagePlaceholder='exercise'
                   type='go'
@@ -48,7 +50,7 @@ export default class StackScreen extends React.Component {
                 />
 
                 <Container
-                   
+                    setMainPAgeIndex={this.props.setMainPAgeIndex}
                   headtext='Sağlık Geçmişim'
                   imagePlaceholder='heart'
                   type='go'

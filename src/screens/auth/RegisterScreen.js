@@ -25,40 +25,41 @@ const RegisterScreen = ({ history, ...props  }) => {
     }
 
     const _handleRegistration = () =>{ 
-      if (!firstname.value || !lastname.value || !email.value || !password.value)
-      {
-        setAlertMessege('kullanıcının bilgilerini doldurun')
-        showAlert.current.open()
-      }
-      else 
-      {
-        if (ValidateEmail(email.value))
-        {
-          // setShowProgress=(true)
-          let bodyFormData = new FormData();  
-          bodyFormData.append('first_name', firstname.value);
-          bodyFormData.append('last_name', lastname.value);
-          bodyFormData.append('email', email.value );
-          bodyFormData.append('password', password.value); 
-              CreateAccount(bodyFormData).then(function (response) {     
-                props.loginUser(response);
-                global.AccesToken = response.token;  
-                history.push("/steps")  
-                // setShowProgress=(false)
-                 return response.data;
-              })
-              .catch(function (err) {    
-                 setAlertMessege(err.message[`${[Object.keys(err.message)[0]]}`][0])
-                 showAlert.current.open() 
-                  return err;
-              });   
-        }
-        else 
-        {
-          setAlertMessege('Geçerli E-posta Girin')
-          showAlert.current.open()
-        }
-      }
+      history.push('/Register/Steps')
+      // if (!firstname.value || !lastname.value || !email.value || !password.value)
+      // {
+      //   setAlertMessege('kullanıcının bilgilerini doldurun')
+      //   showAlert.current.open()
+      // }
+      // else 
+      // {
+      //   if (ValidateEmail(email.value))
+      //   {
+      //     // setShowProgress=(true)
+      //     let bodyFormData = new FormData();  
+      //     bodyFormData.append('first_name', firstname.value);
+      //     bodyFormData.append('last_name', lastname.value);
+      //     bodyFormData.append('email', email.value );
+      //     bodyFormData.append('password', password.value); 
+      //         CreateAccount(bodyFormData).then(function (response) {     
+      //           props.loginUser(response);
+      //           global.AccesToken = response.token;  
+      //           history.push("/steps")  
+      //           // setShowProgress=(false)
+      //            return response.data;
+      //         })
+      //         .catch(function (err) {    
+      //            setAlertMessege(err.message[`${[Object.keys(err.message)[0]]}`][0])
+      //            showAlert.current.open() 
+      //             return err;
+      //         });   
+      //   }
+      //   else 
+      //   {
+      //     setAlertMessege('Geçerli E-posta Girin')
+      //     showAlert.current.open()
+      //   }
+      // }
     }
   
     return (

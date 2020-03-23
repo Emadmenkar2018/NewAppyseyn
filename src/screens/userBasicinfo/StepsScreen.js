@@ -25,9 +25,10 @@ const StepsScreen = ({ history, ...props }) => {
     }
 
     const getGaols = (goalsArray) =>{
-        let handedGoals = goalsArray;
-        setGoals(goalsArray) 
-        _updateProfile(handedGoals)
+        history.push('/Main')
+        // let handedGoals = goalsArray;
+        // setGoals(goalsArray) 
+        // _updateProfile(handedGoals)
     }
 
     const _updateProfile =(handedGoals)=>{ 
@@ -47,7 +48,7 @@ const StepsScreen = ({ history, ...props }) => {
     
     return (
         <View style={{flex:1,height:'100%',width:'100%',backgroundColor:'#fff'}}> 
-                <ViewPager ref={myViewPager} scrollEnabled={true} transitionStyle='curl' style={styles.viewPager} initialPage={0} onPageSelected = {(e) => setCurrentPosition(e.nativeEvent.position)}>
+                <ViewPager ref={myViewPager} scrollEnabled={false} transitionStyle='curl' style={styles.viewPager} initialPage={0} onPageSelected = {(e) => setCurrentPosition(e.nativeEvent.position)}>
                     
                     <View key="1">
                         <WhatsGenderScreen

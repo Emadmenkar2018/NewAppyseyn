@@ -29,7 +29,7 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
     <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#2C2C5E', secondColor? secondColor:'#2C2C5E']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
       <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
           <TouchableOpacity onPress={()=>history.goBack()}>
-            <Icon name="arrow-back" type ='material' size={35}  color='#1D253C'   />
+            <Icon name="arrow-back" type ='material' size={35}  color='#999'   />
           </TouchableOpacity>
 
 
@@ -40,7 +40,7 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
               resizeMode={'contain'}
               style={styles.stretch}
               source={require('../../assets/addBtn.png')} 
-              // tintColor={'#1D253C'}
+              tintColor={'#999'}
             />
           </TouchableOpacity>
       </View>

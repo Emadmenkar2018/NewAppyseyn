@@ -4,6 +4,7 @@ import {
   StyleSheet,  
   Dimensions ,
   Image,
+  Text,
   TouchableOpacity
 } from 'react-native'; 
 import { Icon } from 'react-native-elements'  
@@ -47,17 +48,17 @@ const DefaultBackgroundWithChart =  ({ children, ...props  }) => {
           <TouchableOpacity onPress={()=>history.goBack()}>
             <Icon name="arrow-back" type ='material' size={35}  color='#999'   />
           </TouchableOpacity>
-          <Image
-            style={styles.stretch}
-            source={null}
-            tintColor={'#999'}
-            resizeMode={'contain'}
-          />
-          <Image
-            resizeMode={'contain'}
-            style={styles.stretch}
-            source={null} 
-          />
+           
+  <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>{props.title}</Text> 
+
+          <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
+            <Image
+              resizeMode={'contain'}
+              style={styles.stretch}
+              source={require('../../assets/addBtn.png')} 
+              tintColor={'#999'}
+            />
+          </TouchableOpacity>
       </View>
 
 

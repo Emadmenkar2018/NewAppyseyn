@@ -1,17 +1,15 @@
 
 
 import React, { Component,useState,useEffect,useRef } from 'react';
-import { View, Text, StyleSheet, StatusBar ,Dimensions} from 'react-native'; 
+import { View, Text, StyleSheet, StatusBar ,Dimensions,Image,TouchableOpacity} from 'react-native'; 
 const halfheight = Dimensions.get('window').height /2 
 const halfwidth = Dimensions.get('window').width /2 
 import Carousel from 'react-native-snap-carousel';
 import {_getDates,_extractDays,_extractDays2,_getDates2} from '../../utils/methods'
 import DateComponent from './DateComponent'
 import EmptyStateComponent from './EmptyStateComponent'
-
-
-
-
+import { Icon } from 'react-native-elements' 
+ 
 
 const MyCalender = ({ history, ...props }) => { 
  
@@ -61,8 +59,24 @@ const MyCalender = ({ history, ...props }) => {
       } 
     //Current Date 
        return ( 
-           <View style={{width:'100%',height:'100%',alignItems:'center'}}>
-               <Text style={{fontSize:27,color:'#1D253C',marginTop:30,fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
+           <View style={{width:'100%',height:'100%',alignItems:'center',paddingHorizontal:10}}>
+               <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
+                    <TouchableOpacity onPress={()=>props.openControlPanel()}>
+                        <Icon name="menu" type ='material' size={35}  color={'#1D253C'}   />
+                    </TouchableOpacity>                  
+                  
+                  
+                   <Text style={{fontSize:27,color:'#1D253C',fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
+
+                   <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
+                        <Image
+                        resizeMode={'contain'}
+                        style={styles.stretch}
+                        source={require('../../assets/addBtn.png')} 
+                        tintColor={ '#1D253C'}
+                        />
+                    </TouchableOpacity>
+               </View>
                {showRandevu && passingData &&
                     <DateComponent
                         time={passingData}
@@ -114,5 +128,9 @@ const styles = StyleSheet.create({
     title:{
         fontSize:25,
         color:'rgba(29, 37, 60,.5)',textAlign:'center'
-    }
+    },
+    stretch:{ 
+        height:35,
+        width:45, 
+    },
  });

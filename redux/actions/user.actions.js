@@ -1,4 +1,4 @@
-import {LOGIN_ACTION ,SET_USERNAME_VALUE , SET_PASSWORD_VALUE} from '../actionTypes'
+import {LOGIN_ACTION ,SET_USERNAME_VALUE , SET_PASSWORD_VALUE, SET_MAIN_PAGE_INDEX} from '../actionTypes'
 import axios from 'axios'; 
 import {loginApiUrl} from '../../constants/apiUrls';
 // import {addError, removeError} from './errors'
@@ -38,4 +38,9 @@ export const setUsernameValue = (usernameValue) => ({
 export const setPasswordValue = (passwordValue) => ({
     type: SET_PASSWORD_VALUE,
     passwordValue
+})
+
+export const setMainPAgeIndex = (pageIndex) => ({
+    type: SET_MAIN_PAGE_INDEX,
+    pageIndex
 })

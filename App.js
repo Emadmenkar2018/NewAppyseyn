@@ -36,17 +36,15 @@ export default class App extends Component {
       <Provider store={store}>
         <NativeRouter>
           <Switch>
-          <Route 
-              // path="/Main/Olculerim" 
-              exact path="/" 
-              render={props => {
-                return <LoginScreen
-                  {...props}
-                />
-              }}
-            />  
-          <Route 
-              // path="/Main/Olculerim" 
+            <Route  
+                exact path="/" 
+                render={props => {
+                  return <LoginScreen
+                    {...props}
+                  />
+                }}
+              />  
+          <Route  
               exact path="/Register" 
               render={props => {
                 return <RegisterScreen
@@ -54,8 +52,7 @@ export default class App extends Component {
                 />
               }}
             />  
-          <Route 
-              // path="/Main/Olculerim" 
+          <Route  
               exact path="/Register/Steps" 
               render={props => {
                 return <StepsScreen
@@ -63,8 +60,7 @@ export default class App extends Component {
                 />
               }}
             />  
-          <Route 
-              // path="/Main/Olculerim" 
+          <Route  
               exact path="/Main" 
               render={props => {
                 return <MainScreen
@@ -73,7 +69,7 @@ export default class App extends Component {
               }}
             />  
         <Route  
-            exact path="/Main/OncesiSonrasi" 
+            exact path="/Main/BanaOzel/OncesiSonrasi" 
             render={props => {
               return <BeforeAfterScreen
                 {...props}
@@ -81,16 +77,15 @@ export default class App extends Component {
             }}
           />  
         <Route  
-              exact path="/Main/Olculerim" 
+              exact path="/Main/BanaOzel/Olculerim" 
               render={props => {
                 return <OlculerimScreen
                   {...props}
                 />
               }}
           />  
-             <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Hedeflerim" 
+             <Route  
+              exact path="/Main/BanaOzel/Hedeflerim" 
               render={props => {
                 return <GoalsSreen
                   {...props}
@@ -106,7 +101,7 @@ export default class App extends Component {
               }}
             /> 
         <Route  
-              exact path="/Main/Olculerim/BodyMesaurment" 
+              exact path="/Main/BanaOzel/Olculerim/BodyMesaurment" 
               render={props => {
                 return <BodyMeasurments
                   {...props}
@@ -114,7 +109,7 @@ export default class App extends Component {
               }}
             /> 
             <Route  
-              exact path="/Main/Olculerim/BilekÇevresi" 
+              exact path="/Main/BanaOzel/Olculerim/BilekÇevresi" 
               render={props => {
                 return <WristMeasurment
                   {...props}
@@ -122,17 +117,16 @@ export default class App extends Component {
               }}
             /> 
          <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/BelÇevresi" 
+               
+              exact path="/Main/BanaOzel/Olculerim/BelÇevresi" 
               render={props => {
                 return <BellyMeasurment
                   {...props}
                 />
               }}
             /> 
-          <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/BazalMetabolizma" 
+          <Route  
+              exact path="/Main/BanaOzel/Olculerim/BazalMetabolizma" 
               render={props => {
                 return <MetabolizimScreen
                   {...props}
@@ -140,59 +134,53 @@ export default class App extends Component {
               }}
             /> 
            <Route  
-              exact path="/Main/Olculerim/GünlükEnerji" 
+              exact path="/Main/BanaOzel/Olculerim/GünlükEnerji" 
               render={props => {
                 return <EnergyScreen
                   {...props}
                 />
               }}
             /> 
-           <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/FizikselAktivite" 
+           <Route  
+              exact path="/Main/BanaOzel/Olculerim/FizikselAktivite" 
               render={props => {
                 return <PhysicActivityScreen
                   {...props}
                 />
               }}
             /> 
-        <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/EgzersizSüresi" 
+        <Route  
+              exact path="/Main/BanaOzel/Olculerim/EgzersizSüresi" 
               render={props => {
                 return <ExerciseTimeScreen
                   {...props}
                 />
               }}
             /> 
-           <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/YağYakma" 
+           <Route  
+              exact path="/Main/BanaOzel/Olculerim/YağYakma" 
               render={props => {
                 return <FatBurningScreen
                   {...props}
                 />
               }}
             /> 
-        <Route 
-              // path="/Main/Olculerim" 
-              exact path="/Main/Olculerim/UykuZaman" 
+        <Route  
+              exact path="/Main/BanaOzel/Olculerim/UykuZaman" 
               render={props => {
                 return <SleepDurationScreen
                   {...props}
                 />
               }}
             /> 
-             <Route 
-              // path="/Main/Olculerim" 
+             <Route  
               exact path="/Main/Store" 
               render={props => {
                 return <MainStoreScreen
                   {...props}
                 />
               }}
-            /> 
-          
+            />  
             <Route 
               exact path="/SideBar" 
               render={props => {

@@ -1,5 +1,6 @@
 import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation'
-import React, { memo, useEffect ,useRef} from 'react';
+import React, { memo, useEffect ,useRef,useState} from 'react';
+import {connect} from 'react-redux'
 import { View ,StyleSheet ,Text,TouchableOpacity } from 'react-native'; 
 import { Button } from 'native-base'; 
 import LinearGradient from 'react-native-linear-gradient';
@@ -11,12 +12,16 @@ import NutritionProgramScreen from '../program/NutritionProgramScreen'
 import MainChatScreen from '../chat/MainChatScreen'
 import RandevuMainScreen from '../Randevu/RandevuMainScreen'
 import { useHistory } from 'react-router-native'; 
+import {setMainPAgeIndex} from '../../../redux/actions/user.actions' 
 
 export const MainScreen = ({  ...props }) => {  
     const myViewPager = useRef(null);
-    let history = useHistory();
+    let history = useHistory();  
+    console.log('userstate', props.user.page_index)
 
-    useEffect(() =>myViewPager.current.setPage(3) , []);
+    const [pageIndex, setPageIndex] = useState(props.user.page_index ? props.user.page_index : 3)
+
+    useEffect(() =>myViewPager.current.setPage(pageIndex) , []);
  
     const getCurrentpage=(index) =>{
         myViewPager.current.setPage(index) 
@@ -35,27 +40,27 @@ export const MainScreen = ({  ...props }) => {
                     
             <View style={styles.full} key="4">
                 <NutritionProgramScreen
-                    {...props}
+                    {...props} 
                 />
             </View>
 
             <View style={styles.full} key="2">
                 
                 <RandevuMainScreen
-                    {...props}
+                    {...props} 
                 />
             </View>
 
             <View style={styles.full} key="3">
                
                 <BanaOzelScreen
-                    {...props}
+                    {...props} 
                 />
             </View>
 
             <View style={styles.full} key="1">
                 <HomeMealsScreen
-                     {...props}
+                     {...props} 
                 />
             </View>
 
@@ -63,11 +68,19 @@ export const MainScreen = ({  ...props }) => {
 
         <BotttomTab
             getCurrentpage={getCurrentpage}
+            pageIndex={pageIndex}
         />
       </View>
     ) 
-}
-export default (MainScreen);
+} 
+
+const mapStateToProps = (state) => {
+    return { 
+        user: state.user
+    }
+} 
+
+export default connect(mapStateToProps, {setMainPAgeIndex})(MainScreen);
 
 const styles = StyleSheet.create({ 
     viewPager:{

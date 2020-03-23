@@ -58,7 +58,7 @@ const Background = ({ children , ...props}) => {
                 }
             />
         </View>  
-        <Icon name="chevron-left" type ='font-awesome' size={30}  color='#fff' containerStyle={{position:'absolute',left:20,top:30}}  /> 
+        {/* <Icon name="chevron-left" type ='font-awesome' size={30}  color='#fff' containerStyle={{position:'absolute',left:20,top:30}}  />  */}
         <View style={{marginTop:'10%',marginStart:20,alignContent:'center',}}>  
           { children }
         </View>

@@ -15,7 +15,7 @@ const Calender = ({ currentIndex, ...props })=> {
                     <View   style={{height:`${day.height}%` ,width:'40%',backgroundColor:day.index === currentIndex? '#3CCFA4':'#fff',borderRadius:10}}>
                     </View> 
 
-                    <Text style={{color:'#fff',marginTop:2,fontSize:12,fontFamily:'Muli-SemiBold',color:day.index === currentIndex? '#3CCFA4':'#fff'}}>{day.day}</Text>
+                    <Text style={{color:'#fff',marginTop:2,fontSize:12,fontFamily:'Muli-Light',color:day.index === currentIndex? '#3CCFA4':'#fff'}}>{day.day}</Text>
                 </View>
             
             </TouchableOpacity>

@@ -48,11 +48,14 @@ export const fetchUserBeforeAfterApi="http://atikla.com/appisyan/api/user/fetchU
 export const _uploadfileurl="http://atikla.com/appisyan/api/user/uploadAnalizFile";
 
 export const _addMedicalurl="http://atikla.com/appisyan/api/user/addmedicalHistory";
-
-export const createVideoCallUrl="http://atikla.com/appisyan/api/user/createVideoCall";
-
-export const checkforAnswerCallUrl="http://atikla.com/appisyan/api/user/check_for_video_answer";
+ 
+  
  
 
+export const fetchincomingCallsFromAdminUrl="http://atikla.com/appisyan/api/user/check_video_incoming_call_fromUser";
+  
 
+export const sendanswercomingCallsFromUserUrl="http://atikla.com/appisyan/api/user/answer_incoming_call_from_user";
 
+export const sendDeclinecomingCallsFromUSerUrl="http://atikla.com/appisyan/api/user/decline_incoming_call_from_user";
+ 

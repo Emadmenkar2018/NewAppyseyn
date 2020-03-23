@@ -30,7 +30,6 @@ const NutritionProgramScreen = ({ history, ...props }) => {
      const fetchProgram=() =>{    
             _fetchProgramData().then(response =>{  
                 setProgram(response.data)  
-                console.log('masd',response.data) 
             }
             ).catch( err =>
                 console.log('err',err)
@@ -82,6 +81,7 @@ const NutritionProgramScreen = ({ history, ...props }) => {
                     firstColor={'#E92C81'}
                     secondColor={'#e82c6e'}
                     openControlPanel={_openControlPanel}
+                    title={'Beslenme Programı'}
                 />  
 
                 <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:0}}>    

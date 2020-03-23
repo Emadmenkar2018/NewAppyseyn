@@ -19,13 +19,13 @@ const BotttomTab = ({ label, errorText,inputText,type, ...props }) => {
               isRtl={ true }
               values={[ 
  
-                { title: "Program", icon: "receipt", tintColor: curTab == 1 ? "red" : "blue", isIcon: true, iconType: iconTypes.MaterialIcons,},
+                { title: "", icon: "receipt", tintColor: curTab == 1 ? "red" : "blue", isIcon: true, iconType: iconTypes.MaterialIcons,},
 
-                { title: "Randevu", icon: "calendar-check", tintColor: curTab == 2? "red" : "blue", isIcon: true, iconType: iconTypes.FontAwesome5,},
+                { title: "", icon: "calendar-check", tintColor: curTab == 2? "red" : "blue", isIcon: true, iconType: iconTypes.FontAwesome5,},
 
-                { title: "Özel", icon: "accessibility", tintColor: curTab == 3 ? "red" : "blue", isIcon: true, iconType: iconTypes.MaterialIcons,},
+                { title: "", icon: "accessibility", tintColor: curTab == 3 ? "red" : "blue", isIcon: true, iconType: iconTypes.MaterialIcons,},
 
-                { title: "Öğünler", icon: "apple-alt", tintColor: curTab == 4 ? "red" : "blue", isIcon: true, iconType: iconTypes.FontAwesome5,default: true },
+                { title: "", icon: "apple-alt", tintColor: curTab == 4 ? "red" : "blue", isIcon: true, iconType: iconTypes.FontAwesome5,default: true },
               ]}
           />
       </View>

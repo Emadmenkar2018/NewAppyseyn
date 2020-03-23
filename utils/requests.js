@@ -13,15 +13,16 @@ import {updateApiUrl,
       fetchprogramApi,
       fetchUserBeforeAfterApi,
       _uploadfileurl, 
-      _addMedicalurl,
-      createVideoCallUrl,
-      checkforAnswerCallUrl
+      _addMedicalurl, 
+      sendDeclinecomingCallsFromUSerUrl,
+      fetchincomingCallsFromAdminUrl,
+      sendanswercomingCallsFromUserUrl
     } from '../constants/apiUrls';
 import axios from 'axios'; 
 
  
 var axiosCrossDomain = axios;
-let auth ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImM1OGM1YTFhYjQwNDljYmE5MmZiNjVlMjAzNzE0NmZkZDEwOTAwMjYwYTQzMjA3Y2JhZWI0MTU3MmI0MmM0Mzk2OWRkMTY4YmVhMWRkOTZhIn0.eyJhdWQiOiIxIiwianRpIjoiYzU4YzVhMWFiNDA0OWNiYTkyZmI2NWUyMDM3MTQ2ZmRkMTA5MDAyNjBhNDMyMDdjYmFlYjQxNTcyYjQyYzQzOTY5ZGQxNjhiZWExZGQ5NmEiLCJpYXQiOjE1ODM0OTYxODMsIm5iZiI6MTU4MzQ5NjE4MywiZXhwIjoxNjE1MDMyMTgyLCJzdWIiOiIyMyIsInNjb3BlcyI6W119.ZHyQN0b4nDO9_TdpcGx829IMk1Jq452OCUeDNd9KciGzkrO4smfkwB4KUIAPisdeaJu45MTi-4W8lOHl6bHbM783gusFyTI8gykhj8ftKu8Qwg42WZxY5lNq34g4OgFryuTQVRZlCiew0NzXK0CGJJeOuLJvteYz5A1VNBmqQeAF6cAsir-sSSjaXzxbuglVHsqMhxX9Z__nph9PuJ4wLJMtQe5lSA9VQAx6r5bIOX30LdGHtpo65yZIpocYBxyAj02RMAQPm405cvyiOZgZIcxpoE139e-g0q4ojoeX4eUipav5Nq2RgZvkMyNwnS_sSZ4rtHgt7jRaAoCdFgbqFfurF4M-18qk87Spdh4FeVQzNJa9BQRYNuNcw6FkESnz765Dcmjzcu-ZKVwZ02Qb8hNL-nWOZbA0GeskGNwwfT6cDBs9Nxfg59xTb1Vfjp2wbV6tADHb_vCCrRuiIafkIBBolpoAu8ghS23daRivCeRKsCV6b4YGcDWCRrUEajQtIu1sdiN5QwifEKb5_L_u6550z2ZlPw21FbWoZ3YH_7s8VTeqhL3WMVBXvPEOavY219djUz7nuu6q2UmyKMkY7B8SmuhLd4SlCFNNEJ-1QLSEa__fF-ekNo0feCdjdTM1JzYHZ-U2S8cgr1zg7-9Ee5eYMppQwXPUYa3EWGq7yQI"
+let auth ="eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjgyOWRiZjNmMDQ4NzAzOWExYzMwMWZjMDg5YzBkMzgzYWQ3ZjgwNjI0YTAxMTg4Njk0NDIzYjdkMDhkZDJjZDI5MzUzZTBhNmQ2NjRkODVjIn0.eyJhdWQiOiIxIiwianRpIjoiODI5ZGJmM2YwNDg3MDM5YTFjMzAxZmMwODljMGQzODNhZDdmODA2MjRhMDExODg2OTQ0MjNiN2QwOGRkMmNkMjkzNTNlMGE2ZDY2NGQ4NWMiLCJpYXQiOjE1ODQ3OTg4MDAsIm5iZiI6MTU4NDc5ODgwMCwiZXhwIjoxNjE2MzM0ODAwLCJzdWIiOiIyMyIsInNjb3BlcyI6W119.ZpyHo1ptSijkw1ICjj8nciBqev9_pPGvwpvIbZjEV-QOij7oHY8PKMzF0JY4NjPSZdwuRlD0j3hWNC77SuwA4V0cxjHvbkCd4B6n9vHC72bRwjHyUf3mR7FBNMjJ0Z7hwcImzjocrp4I_MPIi6Lh4VfwjD2xGDi9GH7yx5z1_fBvlQCZ-XWZGolpkOn5KW9O7mDZoVepL7VOP33qBr7e0S8QmARRARiPEHw6BLtnRurXKxbThgH3XfI_i2wIKr5f7QTs3FRxi0himtbx0JHilrac1YiTQWDmfYbvK4f4pNCpizvs5oJUCnwjl27iHDdlDkqXwadwKBUOqxYp7C_InaN0aRLug3PWtRVKKofbCwjODdjNDlag1hfzDv245xhnmMhAPewjKPLfJ_VN6HkWoqEdUxYbej4vAH5YeGaWMC7mcMm3_zi7QVlM3onUQYozuyXXdklEwsbp0XCGbrreyLfCIwlAT_B2kG6YMmH3wqYOQC9LZiFseHLHdNgYAPyqN07ediPWHfzR_aXod9dcZVmj98O5HObH10-PgJdx-G4NS865azwfPAxEfHSeL7ZYH1JEprPgGCIxCmiOh9SPZu8Y-9w5qr6imrll0NKnsq4z77OiOF6ZFEheIKMVNWpIB4_6mg9Cf4YcQxaj9jtcZICmOLDzW3Xre9w22MPdg4Y"
 
 axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${global.AccesToken}`
 
@@ -298,43 +299,59 @@ export const _fetchMealsData =()=>{
     })
   }
   // _getHistoryFilesapi
-  
+   
 
-  export const _startNewVideoCallApi = (bodyFormData) =>{ 
+  export const fetchincomingCallsFromAdminApi = () =>{ 
     return new Promise((resolve, reject) => { 
-      console.log('fdsfsfwtf')
-      var bodyFormData = new FormData();  
-      bodyFormData.append('admin_id',2);
+      let bodyFormData = new FormData();   
+      bodyFormData.append('from_admin',2);
       var axiosCrossDomain = axios;
       axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${auth}`
-      axiosCrossDomain.post(createVideoCallUrl,bodyFormData)
-        .then(function (response) {    
-          console.log('fdsfsf',response)
-          return resolve(response.data);
-        })
-        .catch(function (error) {  
-           console.log('Myerr',error.response.data); 
-           return reject(error.response.data);
-        });  
-    })
-  }
-
-  export const _checkforAnswerCall = (id) =>{ 
-    return new Promise((resolve, reject) => { 
-      let bodyFormData = new FormData();  
-      bodyFormData.append('id',id);
-      var axiosCrossDomain = axios;
-      axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${auth}`
-      axiosCrossDomain.post(checkforAnswerCallUrl,bodyFormData)
+      axiosCrossDomain.post(fetchincomingCallsFromAdminUrl,bodyFormData )
         .then(function (response) {    
           return resolve(response.data);
         })
         .catch(function (error) {  
-           console.log('Myerr',error.response.data); 
-           return reject(error.response.data);
+           console.log('Myerr',error.response); 
+           return reject(error.response);
         });  
     })
-  }
+  } 
+
+  export const _sendAnswerVideoCallApiFromUser = (id) =>{ 
+    return new Promise((resolve, reject) => { 
+      let bodyFormData = new FormData();   
+      bodyFormData.append('call_id',id);
+      var axiosCrossDomain = axios;
+      axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${auth}`
+      axiosCrossDomain.post(sendanswercomingCallsFromUserUrl,bodyFormData )
+        .then(function (response) {    
+          return resolve(response.data);
+        })
+        .catch(function (error) {  
+           console.log('Myerr',error.response); 
+           return reject(error.response);
+        });  
+    })
+  } 
+
+  export const _sendDeclineVideoCallApiFromUser = (id) =>{ 
+    return new Promise((resolve, reject) => { 
+      let bodyFormData = new FormData();   
+      bodyFormData.append('call_id',id);
+      var axiosCrossDomain = axios;
+      axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${auth}`
+      axiosCrossDomain.post(sendDeclinecomingCallsFromUSerUrl,bodyFormData )
+        .then(function (response) {    
+          return resolve(response.data);
+        })
+        .catch(function (error) {  
+           console.log('Myerr',error.response); 
+           return reject(error.response);
+        });  
+    })
+  } 
+ 
   
   
 

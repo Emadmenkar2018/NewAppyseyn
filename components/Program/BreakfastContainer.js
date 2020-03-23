@@ -4,8 +4,7 @@ import { Input, Item, Label  , Icon } from 'native-base';
 
 const BreakfastContainer = ({ breakfastData, ...props }) => { 
 
-  const [visibilty, setVisibility] = useState(false)
-   console.log('1',breakfastData)
+  const [visibilty, setVisibility] = useState(false) 
     return (
     <Item   style={styles.container}> 
         <View style={styles.iconcontainer}>

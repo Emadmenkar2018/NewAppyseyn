@@ -53,18 +53,18 @@ export default class MealsStack extends React.Component {
                   // settingVisibility = {this.settingVisibility}
                   // DaysData = {this.props.DaysData}
                 />
-
-                <SnackContainer
-                  apperativeData = {this.props.MealsData ? this.props.MealsData.middle_aperatif2: []}
-                  // settingVisibility = {this.settingVisibility}
-                  // DaysData = {this.props.DaysData}
-               /> 
-
+ 
                 <ExtraContainer
                   extraData  = {this.props.MealsData ? this.props.MealsData.extra: []}
                   // settingVisibility = {this.settingVisibility}
                   // DaysData = {this.props.DaysData}
                 />
+
+                <SnackContainer
+                  apperativeData = {this.props.MealsData ? this.props.MealsData.middle_aperatif2: []}
+                  // settingVisibility = {this.settingVisibility}
+                  // DaysData = {this.props.DaysData}
+                /> 
 
                 {/* <SleepContainer
                   sleepData = {this.props.MealsData ? this.props.MealsData['user_sleeps']: []}

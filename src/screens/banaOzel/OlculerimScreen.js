@@ -10,11 +10,13 @@ export default class OlculerimScreen extends React.Component {
         super(props);  
     }
   render()  
-  {    console.log('Hi')
+  {    
     return( 
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:-1}}>
 
-            <DefaultBackground/>  
+            <DefaultBackground
+              title={'Ölçümlerim'}
+            />  
 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>     
 

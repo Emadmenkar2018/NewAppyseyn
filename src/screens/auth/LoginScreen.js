@@ -29,41 +29,42 @@ const LoginScreen = ({ history, ...props }) => {
     }
 
     const handleRedirect = () => {
-      const {history, signinUser} = props; 
-      if ( !userdata.username_value  || !userdata.password_value)
-      { 
-        setAlertMessege('kullanıcının bilgilerini doldurun')
-        showAlert.current.open()
-      }
-      else 
-      {
-        if (chipSelected=='')
-        {  
-          setAlertMessege('Lütfen Seçim Yapın') 
-          showAlert.current.open()
-        } 
-        else 
-        {
-          if (!ValidateEmail(userdata.username_value))
-          {  
-            setAlertMessege('Geçerli E-posta Girin') 
-            showAlert.current.open()
-          }
-          else if (chipSelected==='Kullanıcı')
-          {
-            signinUser(userdata).then(() => 
-              { console.log('then'); }
-              ).catch(err => {
-                  setAlertMessege('Kullanıcı adı veya şifre hatalıdır.') 
-                  showAlert.current.open()
-                    return;
-              }); 
-          }
-          else{ 
-            console.log('admin');  
-          }
-        } 
-      }
+      history.push('/Main')
+      // const {history, signinUser} = props; 
+      // if ( !userdata.username_value  || !userdata.password_value)
+      // { 
+      //   setAlertMessege('kullanıcının bilgilerini doldurun')
+      //   showAlert.current.open()
+      // }
+      // else 
+      // {
+      //   if (chipSelected=='')
+      //   {  
+      //     setAlertMessege('Lütfen Seçim Yapın') 
+      //     showAlert.current.open()
+      //   } 
+      //   else 
+      //   {
+      //     if (!ValidateEmail(userdata.username_value))
+      //     {  
+      //       setAlertMessege('Geçerli E-posta Girin') 
+      //       showAlert.current.open()
+      //     }
+      //     else if (chipSelected==='Kullanıcı')
+      //     {
+      //       signinUser(userdata).then(() => 
+      //         { console.log('then'); }
+      //         ).catch(err => {
+      //             setAlertMessege('Kullanıcı adı veya şifre hatalıdır.') 
+      //             showAlert.current.open()
+      //               return;
+      //         }); 
+      //     }
+      //     else{ 
+      //       console.log('admin');  
+      //     }
+      //   } 
+      // }
   }
 
     const selectChip =(chips) =>{ 
@@ -105,10 +106,12 @@ const LoginScreen = ({ history, ...props }) => {
                 inputText={userdata.password_value?userdata.password_value : '' }  
             />   
   
+  {false &&
+
             <View style ={{height:20,alignSelf:'center'}}> 
               <SelectableChips ref={chipRef} valueStyleSelected={{backgroundColor:'#E92C81',color:'#fff'}} chipStyleSelected={{backgroundColor:'#E92C81'}} chipStyle ={{height:30 ,borderColor:'transparent', backgroundColor:'rgba(255,255,255,.8)',}} valueStyle={{color:'#1D253C',fontSize:12,fontFamily:'Muli'}} initialChips={["Diyetisyen", "Kullanıcı"]} onChangeChips={(chips) => selectChip(chips)} alertRequired={false}/>
             </View>
-
+  }
         
             <Button onPress={() => handleRedirect()} title={'Giriş'}  buttonStyle={styles.button}>
               Giriş

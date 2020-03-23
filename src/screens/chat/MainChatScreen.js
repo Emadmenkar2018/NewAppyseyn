@@ -1,21 +1,37 @@
 import React from 'react'
 import { GiftedChat ,Bubble } from 'react-native-gifted-chat'
 import { View ,StyleSheet ,Platform ,KeyboardAvoidingView ,Image, ImageBackground} from 'react-native'; 
-import {_sendNewMessage,_fetchLastConversations} from '../../../utils/requests'
+import {_sendNewMessage,_fetchLastConversations,fetchincomingCallsFromAdminApi} from '../../../utils/requests'
 import Header from '../../../components/Chat/Header'
 
 export default class MainChatScreen extends React.Component {
+  _isMounted = true;
 
+  constructor(props) {
+    super(props);    
+  }  
   state = {
     messages: [],
+    isLoading : true
   }
 
   componentDidMount() {
     this.fetchConversations() 
+    this.timer = setInterval(()=> {
+      if(this._isMounted  && this.state.isLoading){
+        this.fetchConversations()
+        this.fetchincomingCalls()
+      }
+    }, 5000) 
   }
 
+  componentWillUnmount() {
+    this._ismounted = false;
+ }
+ 
   fetchConversations = () => {
-    _fetchLastConversations().then(response =>{   
+    _fetchLastConversations().then(response =>{  
+      
         this.setState({
           messages:  response.data 
         })
@@ -24,6 +40,21 @@ export default class MainChatScreen extends React.Component {
         console.log('err',err)
     )
   }  
+
+  fetchincomingCalls = () =>{
+    fetchincomingCallsFromAdminApi().then(response =>{   
+      console.log('mes',response.data) 
+      if (response.data.length > 0){ 
+        this.setState({
+          incomingCall:  true
+        }) 
+        this.props.history.push({pathname : '/user/RecieveVideoCall',
+           state: { Calldetail: response.data[0] }})
+          } 
+    }).catch( err =>
+        console.log('err',err)
+    ) 
+  }
 
   onSend(messages = []) {
 

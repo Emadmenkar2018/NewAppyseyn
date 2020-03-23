@@ -3,7 +3,8 @@ import {
   View,
   StyleSheet,  
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Text
 } from 'react-native'; 
 import { Icon } from 'react-native-elements'  
 import LinearGradient from 'react-native-linear-gradient';
@@ -24,12 +25,9 @@ const DefaultBackground =  ({ children,firstColor,secondColor, ...props  }) =>  
           <TouchableOpacity onPress={()=>props.openControlPanel()}>
             <Icon name="menu" type ='material' size={35}  color={firstColor ? '#1D253C':'#999'}   />
           </TouchableOpacity>
-          <Image
-            style={styles.stretch}
-            source={require('../../assets/icon.png')}
-            tintColor={firstColor ? '#1D253C' :'#999'}
-            resizeMode={'contain'}
-          />
+          
+          <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold'}}>{props.title}</Text> 
+
           <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
             <Image
               resizeMode={'contain'}

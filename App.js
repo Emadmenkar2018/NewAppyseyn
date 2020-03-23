@@ -22,7 +22,7 @@ import StepsScreen from './src/screens/userBasicinfo/StepsScreen'
 import RandevuMainScreen from './src/screens/Randevu/RandevuMainScreen'
 import MainChatScreen from './src/screens/chat/MainChatScreen'
 import MainStoreScreen from './src/screens/store/MainStoreScreen'
-import VideoCallScreen from './src/screens/chat/VideoCallScreen'
+import RecieveVideoCall from './src/screens/chat/RecieveVideoCall'
 import SideBar from './components/SideMenu/MySideBar'
 import {initStore} from './redux/store';
 import {Provider} from 'react-redux';
@@ -39,6 +39,33 @@ export default class App extends Component {
           <Route 
               // path="/Main/Olculerim" 
               exact path="/" 
+              render={props => {
+                return <LoginScreen
+                  {...props}
+                />
+              }}
+            />  
+          <Route 
+              // path="/Main/Olculerim" 
+              exact path="/Register" 
+              render={props => {
+                return <RegisterScreen
+                  {...props}
+                />
+              }}
+            />  
+          <Route 
+              // path="/Main/Olculerim" 
+              exact path="/Register/Steps" 
+              render={props => {
+                return <StepsScreen
+                  {...props}
+                />
+              }}
+            />  
+          <Route 
+              // path="/Main/Olculerim" 
+              exact path="/Main" 
               render={props => {
                 return <MainScreen
                   {...props}
@@ -183,9 +210,9 @@ export default class App extends Component {
               }}
             />   
             <Route 
-              exact path="/chat/VideoCallScreen" 
+              exact path="/user/RecieveVideoCall" 
               render={props => {
-                return <VideoCallScreen
+                return <RecieveVideoCall
                   {...props}
                 />
               }}

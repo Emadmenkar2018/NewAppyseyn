@@ -3,6 +3,7 @@ import {
   View,
   StyleSheet,  
   Image,
+  Text,
   TouchableOpacity
 } from 'react-native'; 
 import { Icon } from 'react-native-elements'  
@@ -19,12 +20,9 @@ const DefaultBackground =  ({ children,firstColor,secondColor, ...props  }) =>  
           <TouchableOpacity onPress={()=>props.openControlPanel()}>
             <Icon name="menu" type ='material' size={35}  color={firstColor ? '#1D253C':'#999'}   />
           </TouchableOpacity>
-          <Image
-            style={styles.stretch}
-            source={require('../../assets/icon.png')}
-            tintColor={firstColor ? '#1D253C' :'#999'}
-            resizeMode={'contain'}
-          />
+
+          <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>{props.title}</Text> 
+
           <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
             <Image
               resizeMode={'contain'}

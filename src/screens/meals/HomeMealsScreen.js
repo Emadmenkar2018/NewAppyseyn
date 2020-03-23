@@ -19,9 +19,7 @@ const HomeMealsScreen = ({ history, ...props }) => {
 
     useEffect(() =>{
         myStackPager.current.setPage(6)
-        console.log('omar1 ',props.user_meals)
         if (Object.keys(props.user_meals).length===0){
-            console.log('omar2 ',props.user_meals)
             fetchMeals()
         }
         // renderMeals() 
@@ -76,6 +74,7 @@ const HomeMealsScreen = ({ history, ...props }) => {
                 <DefaultBackground
                     index={index}
                     openControlPanel={_openControlPanel}
+                    title={'Öğünler'}
                 />  
 
                 <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>    

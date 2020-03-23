@@ -62,7 +62,7 @@ const MyCalender = ({ history, ...props }) => {
     //Current Date 
        return ( 
            <View style={{width:'100%',height:'100%',alignItems:'center'}}>
-               <Text style={{fontSize:30,color:'#1D253C',marginTop:30,fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
+               <Text style={{fontSize:27,color:'#1D253C',marginTop:30,fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
                {showRandevu && passingData &&
                     <DateComponent
                         time={passingData}

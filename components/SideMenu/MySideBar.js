@@ -22,9 +22,9 @@ const MySideBar = React.forwardRef((props, ref) => {
                         drawer: {  backgroundColor: '#fff', shadowOpacity: 0.8, shadowRadius: 3,height:'100%'},
                         main: {backgroundColor: '#000',height:'100%'},
                       }}
-                    tweenHandler={(ratio) => ({
-                        main: { opacity:0.9 }
-                        })}
+                    // tweenHandler={(ratio) => ({
+                    //     main: { opacity:0.9 }
+                    //     })}
                 >
                     {props.children}
                 </Drawer>  

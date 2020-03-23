@@ -17,7 +17,6 @@ export default class BanaOzelScreen extends React.Component {
   };
   render()  
   {    
-    console.log('dasd',this.props.history)
     return( 
         <MySideBar 
             ref={this.myMenu}
@@ -27,8 +26,9 @@ export default class BanaOzelScreen extends React.Component {
             <MainBackground
               {...this.props}
               firstColor={'#26C8A8'}
-              secondColor={'#00BBCA'}
+              secondColor={'#26C8A8'}
               openControlPanel={this._openControlPanel}
+              title={'Bana Özel'}
             />  
 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100 }}>     

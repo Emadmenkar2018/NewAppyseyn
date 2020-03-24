@@ -73,6 +73,7 @@ const NutritionProgramScreen = ({ history, ...props }) => {
 
         <MySideBar
             ref={myMenu}
+            {...props}
         > 
                 
             <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>

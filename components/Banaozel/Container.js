@@ -4,18 +4,20 @@ import { Input, Item, Label  , Icon } from 'native-base';
 import {IMAGES} from '../../constants/arrays'
 import { useHistory } from 'react-router-native';
 
-const Container = ({imagePlaceholder,headtext,type,prefix, ...props }) => { 
+const Container = ({imagePlaceholder,type,prefix,headtext, ...props }) => {  
     let history = useHistory();
     getImage=(name)=> {  
       return IMAGES[name];
-    }  
-    console.log('=props',props)
+    }   
     _handleNavigating = (prefix) =>{ 
       props.setMainPAgeIndex(2)
       history.push({
         pathname: "/Main/BanaOzel/" + prefix ,
         state: {
-          prefix
+          props,
+          history : props.history,
+          prefix,
+          
         }
       }
         )   

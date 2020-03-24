@@ -19,10 +19,8 @@ const  RandevuMainScreen = ({ history, ...props }) => {
 
 
       const fetchmyRandevus=() =>{    
-        _fetchmyRandevuData().then(response =>{  
-            console.log('omar here' ,response.bookingTimes)
-            setmyRandevus(response.bookingTimes)   
-            console.log('-1',myradevus)
+        _fetchmyRandevuData().then(response =>{   
+            setmyRandevus(response.bookingTimes)    
         }
         ).catch( err =>
             console.log('err',err)
@@ -34,10 +32,10 @@ const  RandevuMainScreen = ({ history, ...props }) => {
        myMenu.current.open()
         // myMenu.current.open()
     };
-    return( 
-
+    return(  
     <MySideBar
         ref={myMenu}
+        {...props}
         > 
         <View style={{ flex:1}}> 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%'  ,alignContent:'center'}}>    

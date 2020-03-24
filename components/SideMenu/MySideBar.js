@@ -12,14 +12,16 @@ const MySideBar = React.forwardRef((props, ref) => {
 
                 <Drawer
                     type="overlay"
-                    content={ <SideBarContent />}
+                    content={ <SideBarContent 
+                        {...props}
+                    />}
                     ref = {ref}  
                     tapToClose={false}
                     openDrawerOffset={0.6} // 20% gap on the right side of drawer
                     panCloseMask={0.8}
                     closedDrawerOffset={0.00}
                     styles={ {
-                        drawer: {  backgroundColor: '#fff', shadowOpacity: 0.8, shadowRadius: 3,height:'100%'},
+                        drawer: {  backgroundColor: '#fff', shadowOpacity: 0.8, shadowRadius: 3,height:'100%',alignContent:'center',alignItems:'center'},
                         main: {backgroundColor: '#000',height:'100%'},
                       }}
                     // tweenHandler={(ratio) => ({

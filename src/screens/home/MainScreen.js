@@ -16,8 +16,7 @@ import {setMainPAgeIndex} from '../../../redux/actions/user.actions'
 
 export const MainScreen = ({  ...props }) => {  
     const myViewPager = useRef(null);
-    let history = useHistory();  
-    console.log('userstate', props.user.page_index)
+    let history = useHistory();   
 
     const [pageIndex, setPageIndex] = useState(props.user.page_index ? props.user.page_index : 3)
 

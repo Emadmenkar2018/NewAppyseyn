@@ -1,6 +1,6 @@
 import React from 'react'
-import { GiftedChat ,Bubble } from 'react-native-gifted-chat'
-import { View ,StyleSheet ,Platform ,KeyboardAvoidingView ,Image, ImageBackground} from 'react-native'; 
+import { GiftedChat ,Bubble,Send } from 'react-native-gifted-chat'
+import { View ,StyleSheet ,Platform ,KeyboardAvoidingView ,Image, ImageBackground,Text} from 'react-native'; 
 import {_sendNewMessage,_fetchLastConversations,fetchincomingCallsFromAdminApi} from '../../../utils/requests'
 import Header from '../../../components/Chat/Header'
 
@@ -19,10 +19,10 @@ export default class MainChatScreen extends React.Component {
     this.fetchConversations() 
     this.timer = setInterval(()=> {
       if(this._isMounted  && this.state.isLoading){
-        this.fetchConversations()
-        this.fetchincomingCalls()
+        // this.fetchConversations()
+        // this.fetchincomingCalls()
       }
-    }, 5000) 
+    }, 10000) 
   }
 
   componentWillUnmount() {
@@ -43,7 +43,7 @@ export default class MainChatScreen extends React.Component {
 
   fetchincomingCalls = () =>{
     fetchincomingCallsFromAdminApi().then(response =>{   
-      console.log('mes',response.data) 
+      // console.log('mes',response.data) 
       if (response.data.length > 0){ 
         this.setState({
           incomingCall:  true
@@ -78,6 +78,11 @@ export default class MainChatScreen extends React.Component {
     );
   }
 
+  renderSend = (props) => { 
+    <View>
+            <Image onPress={() => props.onSend({text: props.text})}  style={{height:20,width : 200}} source={require('../../../assets/logo.png')   } />
+    </View>
+}
   render() {
     
     return ( 
@@ -101,6 +106,14 @@ export default class MainChatScreen extends React.Component {
                   user={{
                   _id: 23,
                   }}
+                  renderSend={(props) => (  
+                    <View style = {{alignItems:'center',alignContent:'center'}}>
+                      <Send  {...props}> 
+                          {/* <Text title = "Send" buttonStyle={{width:90,height :70,borderTopRightRadius:20,borderBottomLeftRadius:20, marginTop:5 }} color="#000" /> */}
+                          <Text style={{alignItems:'center',alignSelf:'center'}} >Gönder</Text> 
+                      </Send> 
+                    </View>
+                )}
                 /> 
              </ImageBackground> 
         </KeyboardAvoidingView>

@@ -11,8 +11,7 @@ export default class StackScreen extends React.Component {
     }
     
   render()  
-  {   
-    
+  {     
     return( 
 
             <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%'}}>
@@ -31,6 +30,8 @@ export default class StackScreen extends React.Component {
                   imagePlaceholder='ruler'
                   type='go'
                   prefix = 'Olculerim'
+                  history = {this.props.history}
+                  {...this.props}
                 />
 
                 <Container
@@ -39,6 +40,8 @@ export default class StackScreen extends React.Component {
                   imagePlaceholder='hedef'
                   type='go'
                   prefix = 'Hedeflerim'
+                  history = {this.props.history}
+                  {...this.props}
                 />
 
                 <Container
@@ -47,6 +50,8 @@ export default class StackScreen extends React.Component {
                   imagePlaceholder='exercise'
                   type='go'
                   prefix = 'OncesiSonrasi'
+                  history = {this.props.history}
+                  {...this.props}
                 />
 
                 <Container
@@ -55,6 +60,8 @@ export default class StackScreen extends React.Component {
                   imagePlaceholder='heart'
                   type='go'
                   prefix = 'SaglikGecmisim'
+                  history = {this.props.history}
+                  {...this.props}
                 /> 
 
             </ScrollView>

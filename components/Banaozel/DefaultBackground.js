@@ -63,7 +63,7 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
           ],
         }}
         width={Dimensions.get('window').width - 16}
-        height={220}
+        height={100}
         chartConfig={{
           backgroundColor: 'transparent',
           backgroundGradientFrom: '#2C2C5E',

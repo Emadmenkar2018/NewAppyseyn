@@ -42,13 +42,13 @@ const Header =  ({ children,firstColor,secondColor ,...props  }) => {
                             resizeMode={'contain'}/>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={()=>history.push('/chat/VideoCallScreen')}>
+                    {/* <TouchableOpacity onPress={()=>history.push('/chat/VideoCallScreen')}> */}
                         <Image
                             resizeMode={'contain'}
                             style={styles.stretch}
-                            source={require('../../assets/video-call.png')}  
+                            source={null}  
                             /> 
-                    </TouchableOpacity>
+                    {/* </TouchableOpacity> */}
                 </View>
             </View>
     

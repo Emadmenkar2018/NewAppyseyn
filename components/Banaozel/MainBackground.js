@@ -49,7 +49,7 @@ const MainBackground =  ({ children,firstColor,secondColor ,...props  }) => {
   };
 
   return (
-    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#2C2C5E', secondColor? secondColor:'#3F3164']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
+    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#2C2C5E', secondColor? secondColor:'#3F3164']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible',justifyContent:'flex-start'}}  > 
       <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
           <TouchableOpacity onPress={()=>props.openControlPanel()}>
             <Icon name="menu" type ='material' size={35}  color={firstColor ? '#1D253C':'#999'}   />
@@ -86,7 +86,7 @@ const MainBackground =  ({ children,firstColor,secondColor ,...props  }) => {
           ],
         }}
         width={Dimensions.get('window').width - 16}
-        height={220}
+        height={100}
         chartConfig={{
           backgroundColor: 'transparent',
           backgroundGradientFrom: '#26C8A8',
@@ -100,7 +100,8 @@ const MainBackground =  ({ children,firstColor,secondColor ,...props  }) => {
         style={{ 
           borderRadius: 16, 
           paddingVertical:5,
-          backgroundColor:'transparent'
+          backgroundColor:'transparent',
+          alignSelf:'center'
         }}
       />
 

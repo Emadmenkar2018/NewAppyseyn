@@ -58,4 +58,8 @@ export const fetchincomingCallsFromAdminUrl="http://atikla.com/appisyan/api/user
 export const sendanswercomingCallsFromUserUrl="http://atikla.com/appisyan/api/user/answer_incoming_call_from_user";
 
 export const sendDeclinecomingCallsFromUSerUrl="http://atikla.com/appisyan/api/user/decline_incoming_call_from_user";
- 
+
+export const fetchMyProductUrl="http://atikla.com/appisyan/api/user/fetch_MyProducts";
+
+
+

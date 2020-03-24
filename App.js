@@ -22,8 +22,11 @@ import StepsScreen from './src/screens/userBasicinfo/StepsScreen'
 import RandevuMainScreen from './src/screens/Randevu/RandevuMainScreen'
 import MainChatScreen from './src/screens/chat/MainChatScreen'
 import MainStoreScreen from './src/screens/store/MainStoreScreen'
-import RecieveVideoCall from './src/screens/chat/RecieveVideoCall'
+import RecieveVideoCall from './src/screens/chat/RecieveVideoCall' 
 import SideBar from './components/SideMenu/MySideBar'
+import AboutUsScreen from './src/screens/sideMenu/AboutUsScreen'
+import SssScreen from './src/screens/sideMenu/SssScreen'
+import SettingsScreen from './src/screens/sideMenu/SettingsScreen'
 import {initStore} from './redux/store';
 import {Provider} from 'react-redux';
 
@@ -189,8 +192,48 @@ export default class App extends Component {
                 />
               }}
             />  
-                <Route 
-              exact path="/Main/SaglikGecmisim" 
+            <Route 
+              exact path="/SideBar" 
+              render={props => {
+                return <SideBar
+                  {...props}
+                />
+              }}
+            />  
+            <Route 
+              exact path="/SideBar/Settings" 
+              render={props => {
+                return <SettingsScreen
+                  {...props}
+                />
+              }}
+            />  
+            <Route 
+              exact path="/SideBar/Sss" 
+              render={props => {
+                return <SssScreen
+                  {...props}
+                />
+              }}
+            />  
+            <Route 
+              exact path="/SideBar/AboutUs" 
+              render={props => {
+                return <AboutUsScreen
+                  {...props}
+                />
+              }}
+            />    
+            <Route 
+              exact path="/SideBar/Settings" 
+              render={props => {
+                return <SettingsScreen
+                  {...props}
+                />
+              }}
+            />   
+              <Route 
+              exact path="/Main/BanaOzel/SaglikGecmisim" 
               render={props => {
                 return <HealthHistoryScreen
                   {...props}

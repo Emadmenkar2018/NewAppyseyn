@@ -29,7 +29,8 @@ const MyCalender = ({ history, ...props }) => {
 
     const _renderItem = ({item, index}) => {
     // get the list of the appointment days and make it down here   
-    let randevudays=_extractDays(myRandevus) 
+    
+    let randevudays=_extractDays(myRandevus)  
         return (
             <View style={styles.slide}>
                 <Text style={randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text>

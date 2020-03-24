@@ -352,6 +352,20 @@ export const _fetchMealsData =()=>{
     })
   } 
  
+  export const _fetchMyProductsFromApi = (id) =>{ 
+    return new Promise((resolve, reject) => {    
+      var axiosCrossDomain = axios;
+      axiosCrossDomain.defaults.headers.common['Authorization'] = `Bearer ${auth}`
+      axiosCrossDomain.post(fetchMyProductUrl )
+        .then(function (response) {    
+          return resolve(response.data);
+        })
+        .catch(function (error) {  
+           console.log('Myerr',error.response); 
+           return reject(error.response);
+        });  
+    }) 
+  } 
   
   
 

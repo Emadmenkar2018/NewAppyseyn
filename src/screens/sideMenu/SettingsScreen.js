@@ -11,12 +11,41 @@ import {DeviceEventEmitter} from 'react-native'
 import { Button,Icon } from 'react-native-elements';  
 import {StatusBar} from 'react-native'
 import { useHistory } from 'react-router-native'; 
+import Dialog from "react-native-dialog";
 
 const SettingsScreen =()=> {
     let history = useHistory();   
     const [email,setEmail] = useState('');
     const [newsletter,setNewsletter] = useState(''); 
+    const [dialogVisibile,setDialogVisibile] = useState(false);  
+    const [deletedialogVisibile,setDeleteDialogVisibile] = useState(false);  
 
+
+    const handleDeleteCancel = () =>{
+      setDeleteDialogVisibile(false)
+    }
+
+    const handleDelete =()=>{
+      // _deleteHandler()
+      history.push('/')
+    }
+
+
+    const handleCancel = () =>{
+      setDialogVisibile(false)
+    }
+
+    const handleLogout =()=>{
+      // _deleteHandler()
+      history.push('/')
+    }
+    
+    const _daleteAccount = () => {
+      setDeleteDialogVisibile(true)
+    }
+    const _logout = () => {
+      setDialogVisibile(true)
+    }
       return( 
         <View style ={{width:'100%',height:'100%',backgroundColor:'#2C2C5E' ,paddingHorizontal:20}}>
             <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0 }}>
@@ -26,7 +55,7 @@ const SettingsScreen =()=> {
                </TouchableOpacity>
                 
    
-                 <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>SSS</Text> 
+                 <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>Ayarlar</Text> 
    
                  {/* <TouchableOpacity onPress={()=>history.push('/Main/Store')}> */}
                    <Image
@@ -59,12 +88,12 @@ const SettingsScreen =()=> {
                     <NavigateRow
                         text='Change Email'
                         iconName='at'
-                        // onPressCallback={this._navigateToPasswordScreen} 
+                        onPressCallback={()=>history.push('/SideBar/ChangeEmail')} 
                         />
                     <NavigateRow
                         text='Change Password'
                         iconName='lock'
-                        // onPressCallback={this._navigateToPasswordScreen} 
+                        onPressCallback={()=>history.push('/SideBar/ChangePassword')} 
                         /> 
                     <NavigateRow 
                         text='Version 4.9.9' 
@@ -77,15 +106,43 @@ const SettingsScreen =()=> {
                     <NavigateRow
                         text='Delete Account'
                         iconName='trash'
-                        // onPressCallback={this._daleteAccount}
+                        onPressCallback={_daleteAccount}
                          />
                     <NavigateRow
                         text='Logout'
                         iconName='sign-out'
-                        // onPressCallback={this._logout} 
+                        onPressCallback={_logout} 
                         />
                 </SectionRow> 
         </ScrollView> 
+
+
+        <View style={{backgroundColor:'#000'}}>
+            <Dialog.Container  contentStyle= {styles.dialog} visible={deletedialogVisibile}> 
+                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Muli-Bold',alignSelf:'center',fontSize:20}}>Profilini Silme ..</Dialog.Title>
+                <Dialog.Description style={{color:'#fff',fontWeight:'600',fontFamily:'Muli'}}>
+                  Profilini Silmek Istediğinden Emin Misin ??
+                </Dialog.Description>
+                <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleDeleteCancel} color={'#fff'} label="Iptal" />
+                <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleDelete} color={'#fff'}   label="Evet" />
+                </View>
+            </Dialog.Container>
+        </View>
+
+
+        <View style={{backgroundColor:'#000'}}>
+            <Dialog.Container  contentStyle= {styles.dialog} visible={dialogVisibile}> 
+                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Muli-Bold',alignSelf:'center',fontSize:20}}>Çıkış Yapma ..</Dialog.Title>
+                <Dialog.Description style={{color:'#fff',fontWeight:'600',fontFamily:'Muli'}}>
+                 Çıkış Yapmak Istediğinden Emin Misin ??
+                </Dialog.Description>
+                <View style={{flexDirection:'row',justifyContent:'center'}}>
+                <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleCancel} color={'#fff'} label="Iptal" />
+                <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleLogout} color={'#fff'}   label="Evet" />
+                </View>
+            </Dialog.Container>
+        </View>
       </View >  
       )
    
@@ -98,4 +155,16 @@ const styles = StyleSheet.create({
     height:35,
     width:45, 
   } ,
+  dialog:{
+    backgroundColor:'rgba(233, 44, 129,0.9)',
+    borderRadius:20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84, 
+    elevation: 5,
+  }
 })

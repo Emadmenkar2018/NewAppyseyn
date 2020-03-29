@@ -62,4 +62,7 @@ export const sendDeclinecomingCallsFromUSerUrl="http://atikla.com/appisyan/api/u
 export const fetchMyProductUrl="http://atikla.com/appisyan/api/user/fetch_MyProducts";
 
 
+export const fetchMyNotificationUrl="http://atikla.com/appisyan/api/user/fetch_MyNotification";
+
+
 

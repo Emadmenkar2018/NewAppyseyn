@@ -26,23 +26,80 @@ import RecieveVideoCall from './src/screens/chat/RecieveVideoCall'
 import SideBar from './components/SideMenu/MySideBar'
 import AboutUsScreen from './src/screens/sideMenu/AboutUsScreen'
 import SssScreen from './src/screens/sideMenu/SssScreen'
-import SettingsScreen from './src/screens/sideMenu/SettingsScreen'
+import MyProducts from './src/screens/sideMenu/MyProductsScreen'
+import SettingsScreen from './src/screens/sideMenu/SettingsScreen' 
+import ChangePasswordScreen from './src/screens/sideMenu/ChangePasswordScreen'
+import ChangeEmailScreen from './src/screens/sideMenu/ChangeEmailScreen' 
+import Notification from './src/screens/sideMenu/Notification' 
 import {initStore} from './redux/store';
 import {Provider} from 'react-redux';
+import PushNotification from 'react-native-push-notification'
+import {_fetchLastNotification} from './utils/requests'
 
-  
 const store = initStore(); 
 
 export default class App extends Component {
-  render() {
+  _isMounted = true;
+
+  constructor(props) {
+    super(props);    
+  } 
+  state={
+    notification : '',
+    videocallcoming : false,
+    isLoading:true
+  }
+
+  componentDidMount () { 
+    this.timer = setInterval(()=> {
+      if(this._isMounted  && this.state.isLoading){
+        // this.fetchConversations()
+        this.fetchNotification()
+        this.setState({isLoading:false}) 
+      }
+    }, 5000) 
+     
+  }
+
+  componentWillUnmount() {
+    this._ismounted = false;
+    this.setState({isLoading:false})
+ }
+
+
+  fetchNotification = () => {
+    _fetchLastNotification().then(response =>{  
+      for (let i=0 ; i < response.data.length ; i++){
+        console.log('aaad',response.data[0].active)
+        if (response.data[i].active ==1 ){ 
+          this.setState({videocallcoming:true})
+          PushNotification.localNotificationSchedule({ 
+              message: "Admin Araniyor", // (required)
+              date: new Date(Date.now()  ) // in 60 secs
+          }); 
+        }
+        else{
+          this.setState({isLoading:true}) 
+        }
+      } 
+    }).catch( err =>
+        console.log('err',err)
+    )
+  } 
+
+  changeRoute(previousRoute, nextRoute)   {
+    //do your logic here 
+  }
+  render() {  
     return (
-      <Provider store={store}>
-        <NativeRouter>
+      <Provider  store={store}>
+        <NativeRouter  onChange={this.changeRoute}>
           <Switch>
             <Route  
                 exact path="/" 
                 render={props => {
                   return <LoginScreen
+                    videocallcoming={this.state.videocallcoming}
                     {...props}
                   />
                 }}
@@ -51,6 +108,7 @@ export default class App extends Component {
               exact path="/Register" 
               render={props => {
                 return <RegisterScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -59,6 +117,7 @@ export default class App extends Component {
               exact path="/Register/Steps" 
               render={props => {
                 return <StepsScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -67,6 +126,7 @@ export default class App extends Component {
               exact path="/Main" 
               render={props => {
                 return <MainScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -75,6 +135,7 @@ export default class App extends Component {
             exact path="/Main/BanaOzel/OncesiSonrasi" 
             render={props => {
               return <BeforeAfterScreen
+              videocallcoming={this.state.videocallcoming}
                 {...props}
               />
             }}
@@ -83,6 +144,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim" 
               render={props => {
                 return <OlculerimScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -91,6 +153,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Hedeflerim" 
               render={props => {
                 return <GoalsSreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -99,6 +162,7 @@ export default class App extends Component {
               exact path="/Main/Chat"
               render={props => {
                 return <MainChatScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -107,6 +171,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/BodyMesaurment" 
               render={props => {
                 return <BodyMeasurments
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -115,6 +180,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/BilekÇevresi" 
               render={props => {
                 return <WristMeasurment
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -124,6 +190,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/BelÇevresi" 
               render={props => {
                 return <BellyMeasurment
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -132,6 +199,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/BazalMetabolizma" 
               render={props => {
                 return <MetabolizimScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -140,6 +208,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/GünlükEnerji" 
               render={props => {
                 return <EnergyScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -148,6 +217,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/FizikselAktivite" 
               render={props => {
                 return <PhysicActivityScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -156,6 +226,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/EgzersizSüresi" 
               render={props => {
                 return <ExerciseTimeScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -164,6 +235,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/YağYakma" 
               render={props => {
                 return <FatBurningScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -172,6 +244,7 @@ export default class App extends Component {
               exact path="/Main/BanaOzel/Olculerim/UykuZaman" 
               render={props => {
                 return <SleepDurationScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -180,6 +253,7 @@ export default class App extends Component {
               exact path="/Main/Store" 
               render={props => {
                 return <MainStoreScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -188,14 +262,16 @@ export default class App extends Component {
               exact path="/SideBar" 
               render={props => {
                 return <SideBar
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
             />  
             <Route 
-              exact path="/SideBar" 
+              exact path="/SideBar/MyProducts" 
               render={props => {
-                return <SideBar
+                return <MyProducts
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -204,6 +280,7 @@ export default class App extends Component {
               exact path="/SideBar/Settings" 
               render={props => {
                 return <SettingsScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -212,6 +289,7 @@ export default class App extends Component {
               exact path="/SideBar/Sss" 
               render={props => {
                 return <SssScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -220,6 +298,7 @@ export default class App extends Component {
               exact path="/SideBar/AboutUs" 
               render={props => {
                 return <AboutUsScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -228,14 +307,26 @@ export default class App extends Component {
               exact path="/SideBar/Settings" 
               render={props => {
                 return <SettingsScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
             />   
+            <Route 
+              exact path="/SideBar/MyNotifications" 
+              render={props => {
+                return <Notification 
+                videocallcoming={this.state.videocallcoming}
+                  {...props}
+                />
+              }}
+            />   
+           
               <Route 
               exact path="/Main/BanaOzel/SaglikGecmisim" 
               render={props => {
                 return <HealthHistoryScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}
@@ -244,6 +335,25 @@ export default class App extends Component {
               exact path="/user/RecieveVideoCall" 
               render={props => {
                 return <RecieveVideoCall
+                videocallcoming={this.state.videocallcoming}
+                  {...props}
+                />
+              }}
+            /> 
+             <Route 
+              exact path="/SideBar/ChangeEmail" 
+              render={props => {
+                return <ChangeEmailScreen
+                videocallcoming={this.state.videocallcoming}
+                  {...props}
+                />
+              }}
+            /> 
+             <Route 
+              exact path="/SideBar/ChangePassword" 
+              render={props => {
+                return <ChangePasswordScreen
+                videocallcoming={this.state.videocallcoming}
                   {...props}
                 />
               }}

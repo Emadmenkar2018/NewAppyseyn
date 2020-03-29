@@ -150,9 +150,9 @@ android {
             keyPassword 'android'
         }
         release {
-            storeFile file('zafer.keystore')
+            storeFile file('mykeystore.keystore')
             storePassword '123321'
-            keyAlias 'zafer'
+            keyAlias 'mykeyalias'
             keyPassword '123321'
         }
     }

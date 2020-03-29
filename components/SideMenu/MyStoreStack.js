@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View , Dimensions} from 'react-native'; 
-import ContainerStore from './ContainerStore'   
+import MyContainerStore from './MyContainerStore'   
 import { ScrollView } from 'react-native-gesture-handler'
 import {_fetchMyProductsFromApi} from '../../utils/requests'
 
@@ -33,12 +33,13 @@ export default class MyStoreStack extends React.Component {
     let ProductsList=[] 
     if(this.state.ProfileData !== ''){
       ProductsList = this.state.productsData.map(product => (
-        <ContainerStore key={product.id}
+        <MyContainerStore key={product.id}
           headtext={product.title} 
           imagePlaceholder={product.type ==='packet'? 'ozelcalender': 'body'}
           type={product.type}
           price ={product.price}
           prefix='Olculerim/BilekÇevresi'
+          date= {product.created_at}
           firstcolor={product.type ==='packet'? '#3A91EC': '#12A5BF'}
           secondcolor={product.type ==='packet'? '#426ED9': '#12B8BF'}
         /> 
@@ -50,24 +51,7 @@ export default class MyStoreStack extends React.Component {
 
                 <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',marginVertical:20,paddingHorizontal:15 ,zIndex:1}}>     
 
-                    {ProductsList}
-                    {/* <ContainerStore
-                    headtext='Özel Medikal Ürün'
-                    imagePlaceholder='body'
-                    type='ürün'
-                    prefix='Olculerim/BodyMesaurment'
-                    firstcolor='#12A5BF'
-                    secondcolor='#12B8BF'
-                    />
-
-                    <ContainerStore
-                    headtext='4 Gün İçin Paketimiz' 
-                    imagePlaceholder='ozelcalender'
-                    type='packet'
-                    prefix='Olculerim/BilekÇevresi'
-                    firstcolor='#3A91EC'
-                    secondcolor='#426ED9'
-                    />  */}
+                    {ProductsList} 
 
                 </ScrollView>
             // </View>

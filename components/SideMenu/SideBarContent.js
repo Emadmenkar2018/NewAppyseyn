@@ -28,7 +28,7 @@ const SideBarContent = ({ children }) =>{
                             <Text style={styles.text}></Text>
                         </TouchableOpacity> */}
                         
-                        <TouchableOpacity onPress={()=>console.log(';ad')} style={{alignSelf:'center',flexDirection:'row',alignContent:'center',alignItems:'center',justifyContent:'flex-start',width:'100%'}}>
+                        <TouchableOpacity onPress={()=> history.push('/SideBar/MyProducts')}  style={{alignSelf:'center',flexDirection:'row',alignContent:'center',alignItems:'center',justifyContent:'flex-start',width:'100%'}}>
 
                             <Image source={require('../../assets/items.png')} resizeMode={'contain'} style={styles.icon }/>  
  
@@ -38,7 +38,7 @@ const SideBarContent = ({ children }) =>{
                         </TouchableOpacity>
 
                        
-                        <TouchableOpacity onPress={()=>console.log(';ad')} style={{alignSelf:'center',flexDirection:'row',alignContent:'center',alignItems:'center',justifyContent:'flex-start',width:'100%'}}>
+                        <TouchableOpacity onPress={()=> history.push('/SideBar/MyNotifications')}   style={{alignSelf:'center',flexDirection:'row',alignContent:'center',alignItems:'center',justifyContent:'flex-start',width:'100%'}}>
 
                             <Image source={require('../../assets/notification.png')} resizeMode={'contain'} style={styles.icon }/>  
 

@@ -5,7 +5,7 @@ import MyStoreStack from '../../../components/SideMenu/MyStoreStack'
 import {Icon } from 'react-native-elements' 
 import { useHistory } from 'react-router-native'; 
 
-const MyProducts = ({  ...props }) => {  
+const MyProductsScreen = ({  ...props }) => {  
 
     let history = useHistory(); 
 
@@ -17,7 +17,7 @@ const MyProducts = ({  ...props }) => {
                 </TouchableOpacity>
                 
 
-                <Text style={{alignSelf:'center',fontSize:30}}>Ürünlerimiz ve Paketlerimiz</Text>
+                <Text style={{alignSelf:'center',fontSize:30}}>Benim Ürünlerim</Text>
                 
                 <MyStoreStack/>
             
@@ -32,7 +32,7 @@ const mapStateToProps = (state) => {
     }
 } 
 
-export default MyProducts;
+export default MyProductsScreen;
 
 
 const styles = StyleSheet.create({ 

@@ -13,14 +13,18 @@ import MainChatScreen from '../chat/MainChatScreen'
 import RandevuMainScreen from '../Randevu/RandevuMainScreen'
 import { useHistory } from 'react-router-native'; 
 import {setMainPAgeIndex} from '../../../redux/actions/user.actions' 
+import PushController from '../../../components/Push/PushController'
 
-export const MainScreen = ({  ...props }) => {  
+
+export const MainScreen = ({videocallcoming,  ...props }) => {  
     const myViewPager = useRef(null);
     let history = useHistory();   
-
+console.log('sd',videocallcoming)
     const [pageIndex, setPageIndex] = useState(props.user.page_index ? props.user.page_index : 3)
 
-    useEffect(() =>myViewPager.current.setPage(pageIndex) , []);
+    useEffect(() =>{
+        myViewPager.current.setPage(pageIndex)  
+    }, []);
  
     const getCurrentpage=(index) =>{
         myViewPager.current.setPage(index) 
@@ -69,7 +73,10 @@ export const MainScreen = ({  ...props }) => {
             getCurrentpage={getCurrentpage}
             pageIndex={pageIndex}
         />
+
+        
       </View>
+      
     ) 
 } 
 

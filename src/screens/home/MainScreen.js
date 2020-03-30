@@ -20,14 +20,12 @@ export const MainScreen = ({videocallcoming,Calldetail,  ...props }) => {
     const myViewPager = useRef(null);
     let history = useHistory();   
 
-    if (videocallcoming  ){  
-        console.log('Calldetail',Calldetail)
+    if (videocallcoming  ){   
         history.push({pathname : '/user/RecieveVideoCall',
             state: {Calldetail}
         } ) 
         // props.setVideoCallComing({false})
-    } 
-    console.log('props.user.page_index',props.user.page_index)
+    }  
     const [pageIndex, setPageIndex] = useState(props.user.page_index && props.user.page_index !==0 ? props.user.page_index : 3) 
  
     useEffect(() =>{

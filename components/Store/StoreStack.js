@@ -3,13 +3,15 @@ import { StyleSheet, Text, View , Dimensions} from 'react-native';
 import ContainerStore from './ContainerStore'   
 import { ScrollView } from 'react-native-gesture-handler'
 import {_fetchProductsFromApi} from '../../utils/requests'
-
+import NetInfo from "@react-native-community/netinfo";
 const halfheight = Dimensions.get('window').height 
  
 export default class StoreStack extends React.Component {
     constructor(props){ 
         super(props);  
     }
+ 
+
 
     state={
       productsData:[]
@@ -20,18 +22,25 @@ export default class StoreStack extends React.Component {
      }
       
     fetchProducts = ()=>{
-      _fetchProductsFromApi().then(response =>{ 
-        this.setState({productsData:response.data})
-      }).catch(err => {
-        console.log('err',err)
-      })
-    }
-
+      NetInfo.fetch().then(state => {
+        if (state.isConnected) { 
+          _fetchProductsFromApi().then(response =>{ 
+            this.setState({productsData:response.data})
+          }).catch(err => {
+            console.log('err',err)
+          })
+        }
+        else {
+            this.props.setAlertMessege('Internet erisim yok') 
+           
+          } 
+        });   
+    } 
     
   render()  
   {    
     let ProductsList=[] 
-    if(this.state.ProfileData !== ''){
+    if(this.state.productsData !== ''){
       ProductsList = this.state.productsData.map(product => (
         <ContainerStore key={product.id}
           headtext={product.title} 
@@ -50,7 +59,7 @@ export default class StoreStack extends React.Component {
                 <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',marginVertical:20,paddingHorizontal:15 ,zIndex:1}}>     
 
                     {ProductsList} 
-
+ 
                 </ScrollView> 
  
     )

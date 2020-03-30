@@ -14,8 +14,8 @@ import { useHistory } from 'react-router-native';
 const MyCalender = ({   ...props }) => { 
  
 
-   const [showRandevu, setShowRandevu] =useState(false)
-   const [myRandevus, setmyRandevus] =useState(props.MyRandevus)
+   const [showRandevu, setShowRandevu] =useState(false) 
+   const [myRan, setmyRandevus] =useState('')
    const [index, setIndex] =useState(2)
    const [passingData,setPassingData]=useState('')
    const carrousel = useRef(null);
@@ -32,7 +32,7 @@ const MyCalender = ({   ...props }) => {
     const _renderItem = ({item, index}) => {
     // get the list of the appointment days and make it down here   
     
-    let randevudays=_extractDays(myRandevus)  
+    let randevudays=_extractDays(myRan)   
         return (
             <View style={styles.slide}>
                 <Text style={randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text>
@@ -46,15 +46,15 @@ const MyCalender = ({   ...props }) => {
         showRandevus(myindex)
       }
 
-      const showRandevus = (index) =>{
-        let randevudays=_extractDays2(myRandevus)  
+      const showRandevus = (index) =>{ 
+        let randevudays=_extractDays2(myRan)  
         let calender = _getDates2()   
         if (!randevudays.includes(calender[index])){ 
             setShowRandevu(false) 
         }
         if (randevudays.includes(calender[index])){ 
             setShowRandevu(true)  
-            let passedtime = myRandevus.filter( (el) => { 
+            let passedtime = myRan.filter( (el) => { 
                 return el.desired_date.includes(calender[index])  
               }); 
             setPassingData(passedtime)
@@ -85,15 +85,14 @@ const MyCalender = ({   ...props }) => {
                         />
                     </TouchableOpacity>
                </View>
-               {/* {showRandevu && passingData && */}
-               {showRandevu  &&
+                {showRandevu && passingData &&  
                     <DateComponent
-                        time={passingData}
+                        time={passingData ? passingData : {}}
                     />    
                } 
                {!showRandevu && 
                     <EmptyStateComponent
-                        time={passingData}
+                        time={passingData ? passingData : {}}
                     />    
                } 
                 <View style={{width:'100%',position:'absolute',bottom:15  ,alignItems:'center',alignContent:'center'}}>  

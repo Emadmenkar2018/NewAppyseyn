@@ -44,8 +44,7 @@ const NutritionProgramScreen = ({ history, ...props }) => {
                 setAlertMessege('Internet erisim yok') 
                 showAlert.current.open()
               } 
-            }); 
-           
+            });  
             
     } 
      

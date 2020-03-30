@@ -15,6 +15,8 @@ const  RandevuMainScreen = ({ history, ...props }) => {
   const [myradevus, setmyRandevus] =useState({})
   const myMenu = useRef(null); 
   
+  console.log('randevus',myradevus)
+
     useEffect(() =>{
       fetchmyRandevus() }, []);
 

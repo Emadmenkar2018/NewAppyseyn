@@ -19,8 +19,8 @@ export default class MainChatScreen extends React.Component {
     this.fetchConversations() 
     this.timer = setInterval(()=> {
       if(this._isMounted  && this.state.isLoading){
-        // this.fetchConversations()
-        // this.fetchincomingCalls()
+        this.fetchConversations()
+        this.fetchincomingCalls()
       }
     }, 10000) 
   }
@@ -107,10 +107,10 @@ export default class MainChatScreen extends React.Component {
                   _id: 23,
                   }}
                   renderSend={(props) => (  
-                    <View style = {{alignItems:'center',alignContent:'center'}}>
-                      <Send  {...props}> 
+                    <View style = {{alignItems:'center',alignContent:'center',paddingRight:2 }}>
+                      <Send style={{alignItems:'center',alignSelf:'center',justifyContent:'flex-end',flexDirection:'column'}} {...props}> 
                           {/* <Text title = "Send" buttonStyle={{width:90,height :70,borderTopRightRadius:20,borderBottomLeftRadius:20, marginTop:5 }} color="#000" /> */}
-                          <Text style={{alignItems:'center',alignSelf:'center'}} >Gönder</Text> 
+                          <Text style={{alignItems:'center',alignSelf:'center',marginBottom:12}} >Gönder</Text> 
                       </Send> 
                     </View>
                 )}

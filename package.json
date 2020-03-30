@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/blur": "^3.4.1",
+    "@react-native-community/netinfo": "^5.6.2",
     "@react-native-community/viewpager": "^3.3.0",
     "add": "^2.0.6",
     "add-subtract-date": "^1.0.14",

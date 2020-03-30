@@ -16,18 +16,27 @@ import {setMainPAgeIndex} from '../../../redux/actions/user.actions'
 import PushController from '../../../components/Push/PushController'
 
 
-export const MainScreen = ({videocallcoming,  ...props }) => {  
+export const MainScreen = ({videocallcoming,Calldetail,  ...props }) => {  
     const myViewPager = useRef(null);
     let history = useHistory();   
-console.log('sd',videocallcoming)
-    const [pageIndex, setPageIndex] = useState(props.user.page_index ? props.user.page_index : 3)
 
+    if (videocallcoming  ){  
+        console.log('Calldetail',Calldetail)
+        history.push({pathname : '/user/RecieveVideoCall',
+            state: {Calldetail}
+        } ) 
+        // props.setVideoCallComing({false})
+    } 
+    console.log('props.user.page_index',props.user.page_index)
+    const [pageIndex, setPageIndex] = useState(props.user.page_index && props.user.page_index !==0 ? props.user.page_index : 3) 
+ 
     useEffect(() =>{
         myViewPager.current.setPage(pageIndex)  
     }, []);
  
     const getCurrentpage=(index) =>{
         myViewPager.current.setPage(index) 
+        setPageIndex(index)
     } 
     return (
       <View style={{ flex: 1,backgroundColor:'#F6F7FB' ,zIndex:0 }}>  
@@ -42,29 +51,36 @@ console.log('sd',videocallcoming)
         <ViewPager ref={myViewPager} scrollEnabled={false} transitionStyle='curl' style={styles.viewPager} initialPage={0} >
                     
             <View style={styles.full} key="4">
-                <NutritionProgramScreen
-                    {...props} 
-                />
+                {pageIndex ===0 && 
+                    <NutritionProgramScreen
+                        {...props} 
+                    />
+                } 
             </View>
 
             <View style={styles.full} key="2">
-                
-                <RandevuMainScreen
-                    {...props} 
-                />
+                {pageIndex ===1 && 
+                    <RandevuMainScreen
+                        {...props} 
+                    />
+                }
             </View>
 
             <View style={styles.full} key="3">
-               
-                <BanaOzelScreen
-                    {...props} 
-                />
+                {pageIndex ===2 && 
+                    <BanaOzelScreen
+                        {...props} 
+                    />
+                }
             </View>
 
             <View style={styles.full} key="1">
-                <HomeMealsScreen
+                {pageIndex ===3 && 
+                    <HomeMealsScreen
                      {...props} 
-                />
+                 />
+                }
+                
             </View>
 
         </ViewPager> 

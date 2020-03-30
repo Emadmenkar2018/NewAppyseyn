@@ -16,7 +16,7 @@ const MySideBar = React.forwardRef((props, ref) => {
                         {...props}
                     />}
                     ref = {ref}  
-                    tapToClose={false}
+                    tapToClose={true}
                     openDrawerOffset={0.6} // 20% gap on the right side of drawer
                     panCloseMask={0.8}
                     closedDrawerOffset={0.00}

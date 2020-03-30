@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route,Scene,Router, Switch } from 'react-router-native';
+import { NativeRouter, Route,Scene,Router, Switch ,history} from 'react-router-native';
 import Stack from 'react-router-native-stack';
 import LoginScreen from './src/screens/auth/LoginScreen'
 import MainScreen from './src/screens/home/MainScreen' 
@@ -34,7 +34,7 @@ import Notification from './src/screens/sideMenu/Notification'
 import {initStore} from './redux/store';
 import {Provider} from 'react-redux';
 import PushNotification from 'react-native-push-notification'
-import {_fetchLastNotification} from './utils/requests'
+import {_fetchLastNotification,fetchincomingCallsFromAdminApi} from './utils/requests' 
 
 const store = initStore(); 
 
@@ -47,45 +47,62 @@ export default class App extends Component {
   state={
     notification : '',
     videocallcoming : false,
-    isLoading:true
+    isLoading:true,
+    notificationOnShow: false,
+    Calldetail:''
   }
 
   componentDidMount () { 
     this.timer = setInterval(()=> {
       if(this._isMounted  && this.state.isLoading){
         // this.fetchConversations()
-        this.fetchNotification()
-        this.setState({isLoading:false}) 
+        this.fetchincomingCalls()
       }
-    }, 5000) 
+    }, 15000) 
      
   }
 
   componentWillUnmount() {
-    this._ismounted = false;
-    this.setState({isLoading:false})
+    // this._ismounted = false;
+    // this.setState({isLoading:false})
  }
 
+ _handleVideocallComing=() =>{
+   if (!this.state.notificationOnShow){
+     PushNotification.localNotificationSchedule({ 
+         message: "Admin Ariyor",  
+         date: new Date(Date.now() )  
+     }); 
+    //  history.push('/user/RecieveVideoCall')
+   }
+    this.setState({notificationOnShow:true})
+    
 
-  fetchNotification = () => {
-    _fetchLastNotification().then(response =>{  
-      for (let i=0 ; i < response.data.length ; i++){
-        console.log('aaad',response.data[0].active)
-        if (response.data[i].active ==1 ){ 
-          this.setState({videocallcoming:true})
-          PushNotification.localNotificationSchedule({ 
-              message: "Admin Araniyor", // (required)
-              date: new Date(Date.now()  ) // in 60 secs
-          }); 
-        }
-        else{
-          this.setState({isLoading:true}) 
-        }
-      } 
-    }).catch( err =>
-        console.log('err',err)
-    )
-  } 
+ }
+
+ fetchincomingCalls = () =>{
+  fetchincomingCallsFromAdminApi().then(response =>{   
+    // console.log('mes',response.data) 
+    if (response.data.length > 0){ 
+      this.setState({videocallcoming:true})
+      this.setState({Calldetail:response.data[0]}) 
+      this._handleVideocallComing() 
+      this._ismounted = false;
+      setTimeout(function(){  
+
+        }, 40000);
+      
+    }
+    else{
+      this.setState({videocallcoming:false}) 
+      this.setState({isLoading:true}) 
+      this.setState({notificationOnShow:false})
+    }
+  }).catch( err =>
+      console.log('err',err)
+  ) 
+}
+ 
 
   changeRoute(previousRoute, nextRoute)   {
     //do your logic here 
@@ -127,6 +144,8 @@ export default class App extends Component {
               render={props => {
                 return <MainScreen
                 videocallcoming={this.state.videocallcoming}
+                // setVideoCallComing={this.setState({videocallcoming})}
+                Calldetail = {this.state.Calldetail}
                   {...props}
                 />
               }}

@@ -9,9 +9,9 @@ import {_getDates,_extractDays,_extractDays2,_getDates2} from '../../utils/metho
 import DateComponent from './DateComponent'
 import EmptyStateComponent from './EmptyStateComponent'
 import { Icon } from 'react-native-elements' 
- 
+import { useHistory } from 'react-router-native'; 
 
-const MyCalender = ({ history, ...props }) => { 
+const MyCalender = ({   ...props }) => { 
  
 
    const [showRandevu, setShowRandevu] =useState(false)
@@ -19,6 +19,8 @@ const MyCalender = ({ history, ...props }) => {
    const [index, setIndex] =useState(2)
    const [passingData,setPassingData]=useState('')
    const carrousel = useRef(null);
+   let history = useHistory();
+
 
    useEffect(() =>{
         setmyRandevus(props.MyRandevus)
@@ -69,7 +71,12 @@ const MyCalender = ({ history, ...props }) => {
                   
                    <Text style={{fontSize:27,color:'#1D253C',fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
 
-                   <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
+                   <TouchableOpacity onPress={()=>{
+                            if (props.setMainPAgeIndex){
+                                props.setMainPAgeIndex(1)
+                            }
+                            history.push('/Main/Store')}
+                       }>
                         <Image
                         resizeMode={'contain'}
                         style={styles.stretch}
@@ -78,7 +85,8 @@ const MyCalender = ({ history, ...props }) => {
                         />
                     </TouchableOpacity>
                </View>
-               {showRandevu && passingData &&
+               {/* {showRandevu && passingData && */}
+               {showRandevu  &&
                     <DateComponent
                         time={passingData}
                     />    
@@ -91,7 +99,7 @@ const MyCalender = ({ history, ...props }) => {
                 <View style={{width:'100%',position:'absolute',bottom:15  ,alignItems:'center',alignContent:'center'}}>  
                     {/* <Text style={{color:'#1D253C',alignSelf:'center',marginBottom:10,textAlign:'center'}}>Randevu Yapmak Için Günü Seçin</Text> */}
                     <View style={{alignContent:'center'}}>
-                        {props.MyRandevus.length > 0 &&
+                        {/* {props.MyRandevus.length > 0 && */}
                             <Carousel 
                             ref={carrousel} 
                             data={_getDates()}
@@ -108,7 +116,7 @@ const MyCalender = ({ history, ...props }) => {
                             onBeforeSnapToItem={()=>setShowRandevu(false) }
                             // contentContainerCustomStyle={{backgroundColor:'#000' }}
                             />
-                        }
+                        {/* } */}
                     </View>
                 </View>
            </View>

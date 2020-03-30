@@ -14,6 +14,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
 
   const [myradevus, setmyRandevus] =useState({})
   const myMenu = useRef(null); 
+  
     useEffect(() =>{
       fetchmyRandevus() }, []);
 
@@ -39,13 +40,12 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         > 
         <View style={{ flex:1}}> 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%'  ,alignContent:'center'}}>    
-                
-                { myradevus.length>=0 &&
+                 
                     <MyCalender
                         MyRandevus = {myradevus}
                         openControlPanel={_openControlPanel}
-                    />
-                }
+                        setMainPAgeIndex={ props.setMainPAgeIndex}
+                    /> 
 
             </View>
 

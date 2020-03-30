@@ -73,10 +73,12 @@ import {
     }
   
     _onEndButtonPress = () => { 
+          console.log('disconnected', this.state.recievedcall_id)
+          this.refs.twilioVideo.disconnect() 
+          this.setState({status: 'disconnected'})
+          this.props.history.goBack() 
           _sendDeclineVideoCallApiFromUser(this.state.recievedcall_id).then(response =>{
-              this.refs.twilioVideo.disconnect()  
-              this.setState({status: 'disconnected'})
-              this.props.history.goBack() 
+               
           }).catch(err =>{
               console.log('err',err)
           })
@@ -130,6 +132,7 @@ import {
     }
   
     render() { 
+      console.log('retrieved',this.props.location.state.Calldetail)
       return (
         <View style={styles.container}>
                     
@@ -235,7 +238,7 @@ import {
       container: {
           width:'100%',
           height:'100%',
-          backgroundColor: 'red' 
+          backgroundColor: 'black' 
         },
         callContainer: {
           flex: 1,

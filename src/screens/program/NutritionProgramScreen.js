@@ -11,13 +11,16 @@ import {setUserMeals} from '../../../redux/actions/meal.actions'
 import MySideBar from '../../../components/SideMenu/MySideBar'
 import SideBarContent from '../../../components/SideMenu/SideBarContent';
 import Drawer from 'react-native-drawer';
+import NetInfo from "@react-native-community/netinfo";
+import Alert from '../../../components/Login/Alert'
 
 const NutritionProgramScreen = ({ history, ...props }) => {  
     const myStackPager = useRef(null); 
     const myMenu = useRef(null); 
-
+    const showAlert = useRef(null); 
     const [index,setIndex] = useState('');
     const [program, setProgram] =useState({})
+    const [alertMessege, setAlertMessege] = useState(''); 
 
     useEffect(() =>{
         myStackPager.current.setPage(0)
@@ -27,13 +30,23 @@ const NutritionProgramScreen = ({ history, ...props }) => {
      }, []);
 
 
-     const fetchProgram=() =>{    
-            _fetchProgramData().then(response =>{  
-                setProgram(response.data)  
+     const fetchProgram=() =>{   
+        NetInfo.fetch().then(state => {
+            if (state.isConnected) { 
+                _fetchProgramData().then(response =>{  
+                    setProgram(response.data)  
+                }
+                ).catch( err =>
+                    console.log('err',err)
+                )
             }
-            ).catch( err =>
-                console.log('err',err)
-            )
+            else {
+                setAlertMessege('Internet erisim yok') 
+                showAlert.current.open()
+              } 
+            }); 
+           
+            
     } 
      
     const onPageSelected = (e) => { 
@@ -83,6 +96,7 @@ const NutritionProgramScreen = ({ history, ...props }) => {
                     secondColor={'#e82c6e'}
                     openControlPanel={_openControlPanel}
                     title={'Beslenme Programı'}
+                    setMainPAgeIndex={ props.setMainPAgeIndex}
                 />  
 
                 <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:0}}>    
@@ -96,6 +110,11 @@ const NutritionProgramScreen = ({ history, ...props }) => {
 
                 </View> 
 
+
+                <Alert
+                ref={showAlert}
+                text={alertMessege} 
+                 />
             </View> 
         </MySideBar>
 

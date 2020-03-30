@@ -1,6 +1,6 @@
 import React, { useRef , useState ,useEffect } from 'react';
-import {connect} from 'react-redux'
-import { Text, StyleSheet ,View,  TouchableOpacity, Dimensions,KeyboardAvoidingView} from 'react-native';  
+import {connect} from 'react-redux' 
+import { Text, StyleSheet ,View,  TouchableOpacity, Dimensions,KeyboardAvoidingView, } from 'react-native';  
 import MyIcon from '../../../components/Login/Icon'
 import Alert from '../../../components/Login/Alert'
 import Logo from '../../../components/Login/Logo'
@@ -10,6 +10,7 @@ import {Button} from 'react-native-elements'
 import {ValidateEmail} from '../../../utils/methods'
 import {signinUser,setUsernameValue ,setPasswordValue} from '../../../redux/actions/user.actions' 
 import SelectableChips from 'react-native-chip/SelectableChips'
+import NetInfo from "@react-native-community/netinfo";
 
 const halfheight = Dimensions.get('window').height /2 
 
@@ -28,8 +29,19 @@ const LoginScreen = ({ history, ...props }) => {
       history.push("/register")
     }
 
-    const handleRedirect = () => {
-      history.push('/Main')
+    const handleRedirect = () => { 
+        NetInfo.fetch().then(state => {
+          console.log("Connection type", state.isConnected);
+          if (state.isConnected) { 
+            history.push('/Main')
+          }
+          else {
+            console.log("You are offline!");
+            setAlertMessege('Internet erisim yok') 
+            showAlert.current.open()
+          } 
+        }); 
+     
       // const {history, signinUser} = props; 
       // if ( !userdata.username_value  || !userdata.password_value)
       // { 

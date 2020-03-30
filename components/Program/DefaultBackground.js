@@ -28,7 +28,12 @@ const DefaultBackground =  ({ children,firstColor,secondColor, ...props  }) =>  
           
           <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold'}}>{props.title}</Text> 
 
-          <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
+          <TouchableOpacity onPress={()=>{
+            if (props.setMainPAgeIndex){
+              props.setMainPAgeIndex(0)
+            }
+            history.push('/Main/Store')
+          }}>
             <Image
               resizeMode={'contain'}
               style={styles.stretch}

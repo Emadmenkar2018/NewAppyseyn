@@ -45,32 +45,13 @@ export default class StoreStack extends React.Component {
       ));
     }
 
-    return( 
-            // <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%'}}>
+    return(  
 
                 <ScrollView  showsVerticalScrollIndicator={false}  style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',marginVertical:20,paddingHorizontal:15 ,zIndex:1}}>     
 
-                    {ProductsList}
-                    {/* <ContainerStore
-                    headtext='Özel Medikal Ürün'
-                    imagePlaceholder='body'
-                    type='ürün'
-                    prefix='Olculerim/BodyMesaurment'
-                    firstcolor='#12A5BF'
-                    secondcolor='#12B8BF'
-                    />
+                    {ProductsList} 
 
-                    <ContainerStore
-                    headtext='4 Gün İçin Paketimiz' 
-                    imagePlaceholder='ozelcalender'
-                    type='packet'
-                    prefix='Olculerim/BilekÇevresi'
-                    firstcolor='#3A91EC'
-                    secondcolor='#426ED9'
-                    />  */}
-
-                </ScrollView>
-            // </View>
+                </ScrollView> 
  
     )
   }

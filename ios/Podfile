@@ -37,6 +37,8 @@ target 'sp' do
 
   pod 'RNSoundPlayer', :path => '../node_modules/react-native-sound-player'
 
+  pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
+
   target 'spTests' do
     inherit! :search_paths
     # Pods for testing

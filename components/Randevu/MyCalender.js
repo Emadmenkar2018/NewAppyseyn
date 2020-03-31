@@ -46,14 +46,14 @@ const MyCalender = ({   ...props }) => {
 
     const _renderItem = ({item, index}) => { 
             return (
-                <View style={styles.slide}> 
+                <View   style={styles.slide}> 
                     <Text style={props.randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text> 
                 </View>
 
             );
     }
 
-
+ 
     const handleSnapToItem =(myindex) =>{  
         setIndex(myindex)
         showRandevus(myindex) 
@@ -72,7 +72,7 @@ const MyCalender = ({   ...props }) => {
             setPassingData(passedtime)
         }
     }  
-     
+ 
     //Current Date 
        return ( 
            <View style={{width:'100%',height:'100%',alignItems:'center',paddingHorizontal:10}}>
@@ -124,7 +124,7 @@ const MyCalender = ({   ...props }) => {
                             enableMomentum={false}
                             renderItem={_renderItem}
                             sliderWidth={ 4*halfwidth }
-                            itemWidth={2*halfwidth/5}
+                            itemWidth={2*halfwidth/5} 
                             firstItem={2}
                             slideStyle={{ flex: 1,marginHorizontal:0  }}
                             onSnapToItem={(index)=>handleSnapToItem(index)} 
@@ -134,7 +134,7 @@ const MyCalender = ({   ...props }) => {
                             onBeforeSnapToItem={()=>setShowRandevu(false) }
                             inactiveSlideOpacity={0.2}
                             // contentContainerCustomStyle={{backgroundColor:'#000' }}
-                            />
+                            /> 
                         {/* } */}
                     </View>
                 </View>

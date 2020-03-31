@@ -45,6 +45,7 @@ const DefaultBackground =  ({ children,firstColor,secondColor, ...props  }) =>  
 
       <Calender
        currentIndex={props.index}
+       _pressOnday={props._pressOnday}
        /> 
       
       

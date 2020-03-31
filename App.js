@@ -53,12 +53,12 @@ export default class App extends Component {
   }
 
   componentDidMount () { 
-    this.timer = setInterval(()=> {
-      if(this._isMounted  && this.state.isLoading){
-        // this.fetchConversations()
-        this.fetchincomingCalls()
-      }
-    }, 15000) 
+    // this.timer = setInterval(()=> {
+    //   if(this._isMounted  && this.state.isLoading){
+    //     // this.fetchConversations()
+    //     this.fetchincomingCalls()
+    //   }
+    // }, 15000) 
      
   }
 

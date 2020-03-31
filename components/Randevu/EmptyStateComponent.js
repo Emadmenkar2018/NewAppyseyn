@@ -17,9 +17,7 @@ const EmptyStateComponent = ({ time, ...props }) => {
           /> 
           <Text style={{color:'#1D253C',fontSize:16,textAlign:'center',alignSelf:'center',fontFamily:'Muli' }}>Randevu Bulunmamaktadır</Text>
           {/* <TouchableOpacity onPress={()=>history.push('/Main/Store')}> */}
-          <TouchableOpacity style={{width:'100%',height:70}} onPress={()=>console.log('/Main/Store')}>
-            <Text style={{color:'#E92C81',fontSize:12,textAlign:'center',alignSelf:'center',fontFamily:'Muli' ,zIndex:1}}>Ürünleri keşfetmek için buraya tıklayın</Text>
-          </TouchableOpacity>
+          
     </View>
     
     )

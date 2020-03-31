@@ -4,7 +4,7 @@ import Background from '../../../components/Randevu/RandevuBackground'
 import MyCalender from '../../../components/Randevu/MyCalender'    
 import CreateRandevuModal from '../../../components/Randevu/CreateRandevuModal' 
 import {_fetchmyRandevuData} from '../../../utils/requests'
-
+import {_getDates,_extractDays,_extractDays2,_getDates2} from '../../../utils/methods'
 import MySideBar from '../../../components/SideMenu/MySideBar'
 
 const width = Dimensions.get('window').width /2 
@@ -13,12 +13,18 @@ const width = Dimensions.get('window').width /2
 const  RandevuMainScreen = ({ history, ...props }) => { 
 
   const [myradevus, setmyRandevus] =useState({})
-  const myMenu = useRef(null); 
-  
-  console.log('randevus',myradevus)
+  const [render, setRender] =useState(false) 
+  const [pressed, setPressed] =useState(false) //here
+  const [myitem,setMyitem] = useState('')
+  let randevudays=_extractDays(myradevus) 
+  let showrandevudays=_extractDays2(myradevus)   
+  const myMenu = useRef(null);  
+   
 
-    useEffect(() =>{
-      fetchmyRandevus() }, []);
+    useEffect(() => {
+      fetchmyRandevus()   
+    }
+      , []);//why ?! hmmmm
 
 
       const fetchmyRandevus=() =>{    
@@ -30,11 +36,16 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         )
     }  
 
-    const _openControlPanel = () => {
-        // _drawer.open()
-       myMenu.current.open()
-        // myMenu.current.open()
+    const _openControlPanel = () => { 
+       myMenu.current.open() 
     };
+
+    const _snaptoNearest = () => {
+        console.log('sadad')
+        return true;
+    }
+
+    
     return(  
     <MySideBar
         ref={myMenu}
@@ -43,16 +54,22 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         <View style={{ flex:1}}> 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%'  ,alignContent:'center'}}>    
                  
-                    <MyCalender
+                    <MyCalender 
                         MyRandevus = {myradevus}
                         openControlPanel={_openControlPanel}
-                        setMainPAgeIndex={ props.setMainPAgeIndex}
+                        setMainPAgeIndex={ props.setMainPAgeIndex} 
+                        setRender={setRender}
+                        randevudays={randevudays}
+                        showrandevudays={showrandevudays}
                     /> 
 
             </View>
 
-            <Background/>
-
+            {myradevus.length > 0 &&
+                <Background
+                    MyRandevus = {myradevus} //yes which contains the button yes functional the problem is that im lost :( first of all it doesent rerender and call 
+                />
+            }
             <CreateRandevuModal/>
 
         </View>

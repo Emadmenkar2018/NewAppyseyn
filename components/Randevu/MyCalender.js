@@ -17,49 +17,62 @@ const MyCalender = ({   ...props }) => {
    const [showRandevu, setShowRandevu] =useState(false) 
    const [myRan, setmyRandevus] =useState('')
    const [index, setIndex] =useState(2)
+   const [firstIndex, setFirstindex] =useState('')
+   const [myitem, setMyitem] =useState('')
    const [passingData,setPassingData]=useState('')
    const carrousel = useRef(null);
-   let history = useHistory();
+   let history = useHistory();  
 
 
-   useEffect(() =>{
-        setmyRandevus(props.MyRandevus)
-        showRandevus(2)
+   useEffect(() =>{ 
+        showRandevus(2) 
+        setmyRandevus(props.MyRandevus) 
+        props.setRender(true) 
     }, []);
-
- 
-
-    const _renderItem = ({item, index}) => {
-    // get the list of the appointment days and make it down here   
+   
     
-    let randevudays=_extractDays(myRan)   
-        return (
-            <View style={styles.slide}>
-                <Text style={randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text>
-            </View>
-        );
+    const _snaptoNearest  = () =>{   
+        let calender = _getDates() 
+        let index =  calender.findIndex(item  => {
+            if(item ===props.randevudays[0]) {   
+                return item
+            }
+        })  
+        if (index > 0 ){ 
+            carrousel.current.snapToItem(index); 
+        }  
+    }
+     
+
+    const _renderItem = ({item, index}) => { 
+            return (
+                <View style={styles.slide}> 
+                    <Text style={props.randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text> 
+                </View>
+
+            );
     }
 
 
-    const handleSnapToItem =(myindex) =>{ 
+    const handleSnapToItem =(myindex) =>{  
         setIndex(myindex)
-        showRandevus(myindex)
-      }
-
-      const showRandevus = (index) =>{ 
-        let randevudays=_extractDays2(myRan)  
+        showRandevus(myindex) 
+    }
+ 
+    const showRandevus = (index) =>{  
         let calender = _getDates2()   
-        if (!randevudays.includes(calender[index])){ 
+        if (!props.showrandevudays.includes(calender[index])){ 
             setShowRandevu(false) 
         }
-        if (randevudays.includes(calender[index])){ 
+        if (props.showrandevudays.includes(calender[index])){ 
             setShowRandevu(true)  
-            let passedtime = myRan.filter( (el) => { 
+            let passedtime = props.MyRandevus.filter( (el) => { 
                 return el.desired_date.includes(calender[index])  
               }); 
             setPassingData(passedtime)
         }
-      } 
+    }  
+     
     //Current Date 
        return ( 
            <View style={{width:'100%',height:'100%',alignItems:'center',paddingHorizontal:10}}>
@@ -85,22 +98,28 @@ const MyCalender = ({   ...props }) => {
                         />
                     </TouchableOpacity>
                </View>
+ 
                 {showRandevu && passingData &&  
                     <DateComponent
                         time={passingData ? passingData : {}}
                     />    
                } 
                {!showRandevu && 
-                    <EmptyStateComponent
-                        time={passingData ? passingData : {}}
-                    />    
+                    <View>
+                        <EmptyStateComponent/>    
+                        <TouchableOpacity style={{width:'100%',height:70,alignSelf:'center',flexDirection:'row',alignItems:'center'}} onPress={_snaptoNearest}>
+                            <Text style={{color:'#E92C81',fontSize:12,textAlign:'center',alignSelf:'center',fontFamily:'Muli' ,zIndex:1,marginRight:2}}>En Yakın Randevuya Geç</Text>
+                            <Icon type='material' name='forward' color='#E92C81'/>
+                        </TouchableOpacity>  
+                    </View>
                } 
-                <View style={{width:'100%',position:'absolute',bottom:15  ,alignItems:'center',alignContent:'center'}}>  
-                    {/* <Text style={{color:'#1D253C',alignSelf:'center',marginBottom:10,textAlign:'center'}}>Randevu Yapmak Için Günü Seçin</Text> */}
-                    <View style={{alignContent:'center'}}>
-                        {/* {props.MyRandevus.length > 0 && */}
+                <View style={{width:'100%',position:'absolute',bottom:15  ,alignItems:'center',alignContent:'center'}}>   
+                    <View style={{alignContent:'center'}}> 
                             <Carousel 
-                            ref={carrousel} 
+                            //  
+                            ref={carrousel} //this one
+                            activeSlideOffset={2}
+                            swipeThreshold={2}
                             data={_getDates()}
                             enableMomentum={false}
                             renderItem={_renderItem}
@@ -113,6 +132,7 @@ const MyCalender = ({   ...props }) => {
                             activeSlideAlignment={'center'} 
                             sliderHeight={100} 
                             onBeforeSnapToItem={()=>setShowRandevu(false) }
+                            inactiveSlideOpacity={0.2}
                             // contentContainerCustomStyle={{backgroundColor:'#000' }}
                             />
                         {/* } */}
@@ -135,7 +155,7 @@ const styles = StyleSheet.create({
     },
     title:{
         fontSize:25,
-        color:'rgba(29, 37, 60,.5)',textAlign:'center'
+        color:'rgba(29, 37, 60,.9)',textAlign:'center'
     },
     stretch:{ 
         height:35,

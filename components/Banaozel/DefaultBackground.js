@@ -26,26 +26,32 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
   let history = useHistory();
 
   return (
-    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#2C2C5E', secondColor? secondColor:'#2C2C5E']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
+    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#26C8A8', secondColor? secondColor:'#26C8A8']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
       <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
           <TouchableOpacity onPress={()=>history.goBack()}>
-            <Icon name="arrow-back" type ='material' size={35}  color='#999'   />
+            <Icon name="arrow-back" type ='material' size={35}  color='#1D253C'   />
           </TouchableOpacity>
 
 
-          <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>{props.title}</Text> 
+          <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#1D253C'}}>{props.title}</Text> 
 
           <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
             <Image
               resizeMode={'contain'}
               style={styles.stretch}
               source={require('../../assets/addBtn.png')} 
-              tintColor={'#999'}
+              tintColor={'#1D253C'}
             />
           </TouchableOpacity>
       </View>
  
       <LineChart
+      withOuterLines={true}
+      withInnerLines={false} 
+      withShadow={true}  
+      withDots={true}   
+      withVerticalLabels={true} 
+      withHorizontalLabels={true}
         data={{
           labels: [
             'January',
@@ -66,8 +72,8 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
         height={100}
         chartConfig={{
           backgroundColor: 'transparent',
-          backgroundGradientFrom: '#2C2C5E',
-          backgroundGradientTo: '#3F3164',
+          backgroundGradientFrom: '#26C8A8',
+          backgroundGradientTo: '#00BBCA',
           decimalPlaces: 2,
           color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`, 
           style: {

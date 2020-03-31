@@ -69,6 +69,12 @@ const MainBackground =  ({ children,firstColor,secondColor ,...props  }) => {
  
 
       <LineChart
+      withOuterLines={true}
+      withInnerLines={false} 
+      withShadow={true}  
+      withDots={true}   
+      withVerticalLabels={true} 
+      withHorizontalLabels={true}
         data={{
           labels: [
             'January',

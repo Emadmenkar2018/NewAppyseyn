@@ -1,6 +1,6 @@
 import React from 'react'
-import { GiftedChat ,Bubble,Send } from 'react-native-gifted-chat'
-import { View ,StyleSheet ,Platform ,KeyboardAvoidingView ,Image, ImageBackground,Text} from 'react-native'; 
+import { GiftedChat ,Bubble,Send} from 'react-native-gifted-chat'
+import { View ,StyleSheet ,Platform ,KeyboardAvoidingView ,Image, ImageBackground,Text ,BackHandler } from 'react-native'; 
 import {_sendNewMessage,_fetchLastConversations,fetchincomingCallsFromAdminApi} from '../../../utils/requests'
 import Header from '../../../components/Chat/Header'
 
@@ -16,6 +16,7 @@ export default class MainChatScreen extends React.Component {
   }
 
   componentDidMount() {
+    BackHandler.addEventListener("hardwareBackPress", this.backButtonHandler);
     this.fetchConversations() 
     this.timer = setInterval(()=> {
       if(this._isMounted  && this.state.isLoading){
@@ -25,10 +26,16 @@ export default class MainChatScreen extends React.Component {
     }, 10000) 
   }
 
-  componentWillUnmount() {
-    this._ismounted = false;
- }
- 
+    componentWillUnmount() {
+      this._ismounted = false;
+        BackHandler.removeEventListener("hardwareBackPress", this.backButtonHandler);
+    }
+    
+    backButtonHandler = () => {
+      this.props.history.goBack();
+      return true;
+    } 
+
   fetchConversations = () => {
     _fetchLastConversations().then(response =>{  
       

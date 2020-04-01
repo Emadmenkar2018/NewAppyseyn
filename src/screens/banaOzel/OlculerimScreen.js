@@ -1,31 +1,27 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import { StyleSheet,   View ,BackHandler } from 'react-native';
 import StackScreen from '../../../components/Banaozel/StackScreen' 
 import DefaultBackground from '../../../components/Banaozel/DefaultBackground'    
 import OlculerStack from '../../../components/Banaozel/OlculerStack'    
-import LinearGradient from 'react-native-linear-gradient';
+import LinearGradient from 'react-native-linear-gradient'; 
+import { useHistory } from 'react-router-native'; 
+
+const  OlculerimScreen = (...props ) =>{  
+  let history = useHistory();   
+
+  useEffect(() => {
+    BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+    return () => {
+      BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+    };
+  }, [backButtonHandler]);
  
-export default class OlculerimScreen extends React.Component {
-    constructor(props){ 
-        super(props);  
-    }
 
-    componentWillMount() {
-      BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
-  }
-  
-  componentWillUnmount() {
-      BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-  }
-
-  handleBackButtonClick() {
-    // this.props.history.goBack()
-    // console.log('historyxxx2',this.props.history)
+  const backButtonHandler = () => {
+    history.goBack()
     return true;
-}
-
-  render()  
-  {     
+  } 
     return( 
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:-1}}>
 
@@ -42,8 +38,8 @@ export default class OlculerimScreen extends React.Component {
         </View>
  
     )
-  }
-}
+}   
+export default OlculerimScreen
 const styles = StyleSheet.create({ 
 
   });

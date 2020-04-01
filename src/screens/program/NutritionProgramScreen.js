@@ -61,8 +61,7 @@ const NutritionProgramScreen = ({ history, ...props }) => {
         myStackPager.current.setPage(index)
     }
  
-    
-    console.log('myStackPager',myStackPager.current)
+     
     const arrange = () =>{
         return sortKeys(props.user_meals) 
     }

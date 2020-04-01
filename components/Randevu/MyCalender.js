@@ -14,18 +14,17 @@ import { useHistory } from 'react-router-native';
 const MyCalender = ({   ...props }) => { 
  
 
-   const [showRandevu, setShowRandevu] =useState(false) 
+//    const [showRandevu, setShowRandevu] =useState(false) 
    const [myRan, setmyRandevus] =useState('')
    const [index, setIndex] =useState(2)
    const [firstIndex, setFirstindex] =useState('')
    const [myitem, setMyitem] =useState('')
    const [passingData,setPassingData]=useState('')
    const carrousel = useRef(null);
-   let history = useHistory();  
-
+   let history = useHistory(); 
 
    useEffect(() =>{ 
-        showRandevus(2) 
+        showRandevusComponent(2) 
         setmyRandevus(props.MyRandevus) 
         props.setRender(true) 
     }, []);
@@ -44,7 +43,7 @@ const MyCalender = ({   ...props }) => {
     }
      
 
-    const _renderItem = ({item, index}) => { 
+    const _renderItem = ({item, index}) => {  
             return (
                 <View   style={styles.slide}> 
                     <Text style={props.randevudays.includes(item)? styles.titleHighlighted : styles.title}>{ item }</Text> 
@@ -54,18 +53,18 @@ const MyCalender = ({   ...props }) => {
     }
 
  
-    const handleSnapToItem =(myindex) =>{  
+    const handleSnapToItem =(myindex) =>{   
         setIndex(myindex)
-        showRandevus(myindex) 
+        showRandevusComponent(myindex) 
     }
  
-    const showRandevus = (index) =>{  
+    const showRandevusComponent = (index) =>{  
         let calender = _getDates2()   
         if (!props.showrandevudays.includes(calender[index])){ 
-            setShowRandevu(false) 
+            props.setShowRandevu(false) 
         }
         if (props.showrandevudays.includes(calender[index])){ 
-            setShowRandevu(true)  
+            props.setShowRandevu(true)  
             let passedtime = props.MyRandevus.filter( (el) => { 
                 return el.desired_date.includes(calender[index])  
               }); 
@@ -99,12 +98,14 @@ const MyCalender = ({   ...props }) => {
                     </TouchableOpacity>
                </View>
  
-                {showRandevu && passingData &&  
-                    <DateComponent
-                        time={passingData ? passingData : {}}
-                    />    
+                {props.showRandevu && passingData &&  
+                    <View>
+                        <DateComponent
+                            time={passingData ? passingData : {}}
+                        />    
+                    </View>
                } 
-               {!showRandevu && 
+               {!props.showRandevu && 
                     <View>
                         <EmptyStateComponent/>    
                         <TouchableOpacity style={{width:'100%',height:70,alignSelf:'center',flexDirection:'row',alignItems:'center'}} onPress={_snaptoNearest}>
@@ -131,7 +132,7 @@ const MyCalender = ({   ...props }) => {
                             initialNumToRender={34}
                             activeSlideAlignment={'center'} 
                             sliderHeight={100} 
-                            onBeforeSnapToItem={()=>setShowRandevu(false) }
+                            onBeforeSnapToItem={()=>props.setShowRandevu(false) }
                             inactiveSlideOpacity={0.2}
                             // contentContainerCustomStyle={{backgroundColor:'#000' }}
                             /> 

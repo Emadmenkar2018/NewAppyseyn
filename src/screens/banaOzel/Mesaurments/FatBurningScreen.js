@@ -1,6 +1,6 @@
 
 import React,{memo,useEffect,useState} from 'react';
-import { StyleSheet,   View, FlatList } from 'react-native'; 
+import { StyleSheet,   View, FlatList  ,BackHandler } from 'react-native'; 
 import DefaultHeader from '../../../../components/Banaozel/DefaultHeader'     
 import SwipeableContainer from '../../../../components/Banaozel/SwipeableContainer'    
 import AddMesurmentModal from '../../../../components/Banaozel/AddMesurmentModal'    
@@ -10,6 +10,7 @@ import {sortList} from '../../../../utils/methods'
 import moment from 'moment'; 
 import ActionButton from 'react-native-action-button';
 import { ScrollView, TouchableWithoutFeedback  } from 'react-native-gesture-handler'
+import { useHistory } from 'react-router-native';
 
 const FatBurningScreen = ({exercisesData,DaysData, ...props }) => { 
 
@@ -19,10 +20,23 @@ const FatBurningScreen = ({exercisesData,DaysData, ...props }) => {
     const [index, setIndex] = useState('')
     const [visibilty, setVisibility] = useState(false)
     const [showPicker, setShowPicker] = useState(false)
+    let history = useHistory();  
 
-    useEffect(() =>{ fetchBodyMasses() }, []);
+    useEffect(() =>{ 
+        fetchBodyMasses()  
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
 
 
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+      }  
+      
     const fetchBodyMasses=() =>{    
         _fetchData('FatBurning').then(response =>{  
             setList(sortList(response.data)) 

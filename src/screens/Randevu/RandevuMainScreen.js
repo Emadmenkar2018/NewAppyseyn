@@ -19,12 +19,20 @@ const  RandevuMainScreen = ({ history, ...props }) => {
   let randevudays=_extractDays(myradevus) 
   let showrandevudays=_extractDays2(myradevus)   
   const myMenu = useRef(null);  
-   
+  const [showRandevu, setShowRandevu] =useState(false) 
+  let calender = _getDates2()  
+
 
     useEffect(() => {
-      fetchmyRandevus()   
-    }
-      , []);//why ?! hmmmm
+      fetchmyRandevus()
+      console.log('1',showRandevu)
+      if (!showrandevudays.includes(calender[2])){ 
+        setShowRandevu(false)  
+        }
+        else if (showrandevudays.includes(calender[2])){ 
+            setShowRandevu(true)  
+        }
+    }, []);//why ?! hmmmm
 
 
       const fetchmyRandevus=() =>{    
@@ -45,7 +53,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         return true;
     }
 
-    
+    console.log('2',showRandevu)
     return(  
     <MySideBar
         ref={myMenu}
@@ -54,6 +62,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         <View style={{ flex:1}}> 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%'  ,alignContent:'center'}}>    
                  
+                    
                     <MyCalender 
                         MyRandevus = {myradevus}
                         openControlPanel={_openControlPanel}
@@ -61,6 +70,8 @@ const  RandevuMainScreen = ({ history, ...props }) => {
                         setRender={setRender}
                         randevudays={randevudays}
                         showrandevudays={showrandevudays}
+                        showRandevu={showRandevu}
+                        setShowRandevu={setShowRandevu}
                     /> 
 
             </View>

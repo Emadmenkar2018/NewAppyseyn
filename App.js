@@ -58,13 +58,13 @@ export default class App extends Component {
     //     // this.fetchConversations()
     //     this.fetchincomingCalls()
     //   }
-    // }, 15000) 
+    // }, 10000) 
      
   }
 
   componentWillUnmount() {
-    // this._ismounted = false;
-    // this.setState({isLoading:false})
+    this._ismounted = false;
+    this.setState({isLoading:false})
  }
 
  _handleVideocallComing=() =>{
@@ -75,9 +75,7 @@ export default class App extends Component {
      }); 
     //  history.push('/user/RecieveVideoCall')
    }
-    this.setState({notificationOnShow:true})
-    
-
+    this.setState({notificationOnShow:true}) 
  }
 
  fetchincomingCalls = () =>{
@@ -87,11 +85,7 @@ export default class App extends Component {
       this.setState({videocallcoming:true})
       this.setState({Calldetail:response.data[0]}) 
       this._handleVideocallComing() 
-      this._ismounted = false;
-      setTimeout(function(){  
-
-        }, 40000);
-      
+      this._ismounted = false; 
     }
     else{
       this.setState({videocallcoming:false}) 

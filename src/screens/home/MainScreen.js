@@ -1,7 +1,7 @@
 import BottomNavigation, { FullTab } from 'react-native-material-bottom-navigation'
 import React, { memo, useEffect ,useRef,useState} from 'react';
 import {connect} from 'react-redux'
-import { View ,StyleSheet ,Text,TouchableOpacity } from 'react-native'; 
+import { View ,StyleSheet ,Text,TouchableOpacity ,BackHandler,ToastAndroid,} from 'react-native'; 
 import { Button } from 'native-base'; 
 import LinearGradient from 'react-native-linear-gradient';
 import BotttomTab from '../../../components/mainScreen/BotttomTab'
@@ -18,7 +18,10 @@ import PushController from '../../../components/Push/PushController'
 
 export const MainScreen = ({videocallcoming,Calldetail,  ...props }) => {  
     const myViewPager = useRef(null);
+    // const [backPressed,setBackPressed] = useState(0)
     let history = useHistory();   
+    let increase = 0  
+
 
     if (videocallcoming  ){   
         history.push({pathname : '/user/RecieveVideoCall',
@@ -27,10 +30,32 @@ export const MainScreen = ({videocallcoming,Calldetail,  ...props }) => {
         // props.setVideoCallComing({false})
     }  
     const [pageIndex, setPageIndex] = useState(props.user.page_index && props.user.page_index !==0 ? props.user.page_index : 3) 
- 
+    
     useEffect(() =>{
-        myViewPager.current.setPage(pageIndex)  
-    }, []);
+        myViewPager.current.setPage(pageIndex)
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);   
+
+    const backButtonHandler = () => {
+        increase ++
+        console.log('backPressed',increase)
+       
+        if(increase === 2){
+            console.log('hi')
+            BackHandler.exitApp();
+            increase = 0
+        }else if(increase === 1) { 
+            console.log('hello')
+            ToastAndroid.show("Press Again To Exit", ToastAndroid.SHORT);
+            setTimeout( () => { increase = 0}, 2000);
+            return true; 
+        }
+        return true; 
+    } 
  
     const getCurrentpage=(index) =>{
         myViewPager.current.setPage(index) 

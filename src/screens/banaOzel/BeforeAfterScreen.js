@@ -1,5 +1,5 @@
 import React , {useRef,useState,useEffect} from 'react';
-import { StyleSheet,   View,Text ,Dimensions} from 'react-native';
+import { StyleSheet,   View,Text ,Dimensions,BackHandler} from 'react-native';
 import StackScreen from '../../../components/Banaozel/StackScreen' 
 import DefaultBackgroundWithChart from '../../../components/Banaozel/DefaultBackgroundWithChart'    
 import ViewPager from '@react-native-community/viewpager';
@@ -21,9 +21,18 @@ const  BeforeAfterScreen = ({ history, ...props }) => {
    
     useEffect(() =>{
         myViewPager.current.setPage(0)
-        getUserBeforeAfter() 
-    } , []);
+        getUserBeforeAfter()
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
 
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
+
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
 
     const getUserBeforeAfter=() =>{
         _getUserBeforeAfterApi().then(response =>{  

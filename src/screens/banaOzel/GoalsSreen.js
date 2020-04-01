@@ -1,5 +1,5 @@
 import React , {useRef,useState,useEffect} from 'react';
-import { StyleSheet,   View,Text ,Dimensions} from 'react-native';
+import { StyleSheet,   View,Text ,Dimensions,BackHandler} from 'react-native';
 import StackScreen from '../../../components/Banaozel/StackScreen' 
 import DefaultBackgroundWithChart from '../../../components/Banaozel/DefaultBackgroundWithChart'    
 import ViewPager from '@react-native-community/viewpager';
@@ -9,6 +9,7 @@ import KiloGoalScreen from './Goals/KiloGoalScreen'
 import MuscleGoalScreen from './Goals/MuscleGoalScreen' 
 import WaterGoalScreen from './Goals/WaterGoalScreen' 
 import {_getUserGoalsApi,_getUserCurrentApi} from '../../../utils/requests'
+import { useHistory } from 'react-router-native'; 
 
 const  GoalsSreen = ({ history, ...props }) => {
 
@@ -18,14 +19,25 @@ const  GoalsSreen = ({ history, ...props }) => {
     const [index,setIndex] = useState('');
     const [page,setPage] = useState('');
     const [goals,setGoals] = useState('');
-    const [currents,setCurrents] = useState('');
-    
+    const [currents,setCurrents] = useState('');  
+
    
     useEffect(() =>{
         myViewPager.current.setPage(0)
         getUserGoals()
         getUserCurrentState()
-    } , []);
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
+
+    
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
 
 
     const getUserGoals=() =>{

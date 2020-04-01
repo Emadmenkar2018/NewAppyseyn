@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet,   View  } from 'react-native';
+import { StyleSheet,   View  ,BackHandler} from 'react-native';
 import HealthForm from '../../../components/Banaozel/HealthHistory/HealthForm' 
 import DefaultBackground from '../../../components/Banaozel/HealthHistory/DefaultBackground'    
 import {_uploadFileApi, _addMedicalApi} from '../../../utils/requests'
@@ -9,6 +9,18 @@ export default class HealthHistoryScreen extends React.Component {
     constructor(props){ 
         super(props);  
     }
+
+    componentDidMount() {
+      BackHandler.addEventListener("hardwareBackPress", this.backButtonHandler);
+    }
+    componentWillUnmount() {
+      BackHandler.removeEventListener("hardwareBackPress", this.backButtonHandler);
+    }
+
+      backButtonHandler = () => {
+      this.props.history.goBack();
+      return true;
+    } 
 
     state={
         firstinput:'',
@@ -30,8 +42,7 @@ export default class HealthHistoryScreen extends React.Component {
             }); 
             bodyFormData.append('type','blood'); 
             bodyFormData.append('content_type',this.state.firstinput.type); 
-            _uploadFileApi(bodyFormData).then(response=>{ 
-              console.log('sent successfully',response)
+            _uploadFileApi(bodyFormData).then(response=>{  
              
             }).catch(err => {
               console.log('err',err)
@@ -46,8 +57,7 @@ export default class HealthHistoryScreen extends React.Component {
             }); 
             bodyFormData.append('type','blood');  
             bodyFormData.append('content_type',this.state.secondinput.type);
-            _uploadFileApi(bodyFormData).then(response=>{ 
-              console.log('sent successfully',response)
+            _uploadFileApi(bodyFormData).then(response=>{  
              
             }).catch(err => {
               console.log('err',err)
@@ -62,8 +72,7 @@ export default class HealthHistoryScreen extends React.Component {
             });
             bodyFormData.append('type','blood'); 
             bodyFormData.append('content_type',this.state.thirdinput.type);
-            _uploadFileApi(bodyFormData).then(response=>{ 
-              console.log('sent successfully',response)
+            _uploadFileApi(bodyFormData).then(response=>{  
              
             }).catch(err => {
               console.log('err',err)
@@ -73,8 +82,7 @@ export default class HealthHistoryScreen extends React.Component {
             let bodyFormData = new FormData();    
             bodyFormData.append('content',this.state.surgery); 
             bodyFormData.append('type','surgery'); 
-            _addMedicalApi(bodyFormData).then(response=>{ 
-              console.log('sent successfully',response)
+            _addMedicalApi(bodyFormData).then(response=>{  
              
             }).catch(err => {
               console.log('err',err)
@@ -85,8 +93,7 @@ export default class HealthHistoryScreen extends React.Component {
             let bodyFormData = new FormData();    
             bodyFormData.append('content',this.state.medical); 
             bodyFormData.append('type','medical'); 
-            _addMedicalApi(bodyFormData).then(response=>{ 
-              console.log('sent successfully',response)
+            _addMedicalApi(bodyFormData).then(response=>{  
              
             }).catch(err => {
               console.log('err',err)
@@ -119,8 +126,7 @@ export default class HealthHistoryScreen extends React.Component {
     }
 
   render()  
-  {    
-    console.log('dasd',this.props)
+  {     
     return( 
      
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>

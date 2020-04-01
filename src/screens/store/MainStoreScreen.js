@@ -1,5 +1,5 @@
 import React , {useEffect,useRef,useState} from 'react'; 
-import { StyleSheet,   View ,Text,TouchableOpacity} from 'react-native';   
+import { StyleSheet,   View ,Text,TouchableOpacity,BackHandler} from 'react-native';   
 import {_fetchMealsData} from '../../../utils/requests' 
 import StoreStack from '../../../components/Store/StoreStack'
 import {Icon } from 'react-native-elements' 
@@ -11,6 +11,20 @@ const MainStoreScreen = ({  ...props }) => {
     const [alertMessege, setAlertMessege] = useState(''); 
     const showAlert = useRef(null); 
 
+    useEffect(() =>{ 
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
+
+
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
+    
     if (alertMessege.length > 0){
         showAlert.current.open()
     }

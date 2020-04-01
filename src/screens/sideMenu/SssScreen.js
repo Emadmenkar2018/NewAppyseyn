@@ -1,11 +1,26 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View,TouchableOpacity ,Image} from 'react-native';
+import React, { Component ,useEffect} from 'react';
+import { StyleSheet, Text, View,TouchableOpacity ,Image,BackHandler} from 'react-native';
 import { WebView } from 'react-native-webview';
 import { useHistory } from 'react-router-native'; 
 import { Icon } from 'react-native-elements'  
 const SssScreen= ({  ...props })=> {
  
   let history = useHistory();   
+
+    useEffect(() =>{ 
+      BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+      return () => {
+      BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+      };
+    }, [backButtonHandler]);
+
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
+
+
     return(
       <View style ={{width:'100%',height:'100%'}}>
           <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>

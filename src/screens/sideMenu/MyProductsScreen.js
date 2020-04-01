@@ -1,5 +1,5 @@
 import React , {useEffect,useRef,useState} from 'react'; 
-import { StyleSheet,   View ,Text,TouchableOpacity} from 'react-native';   
+import { StyleSheet,   View ,Text,TouchableOpacity,BackHandler} from 'react-native';   
 import {_fetchMealsData} from '../../../utils/requests' 
 import MyStoreStack from '../../../components/SideMenu/MyStoreStack'
 import {Icon } from 'react-native-elements' 
@@ -8,6 +8,21 @@ import { useHistory } from 'react-router-native';
 const MyProductsScreen = ({  ...props }) => {  
 
     let history = useHistory(); 
+
+    useEffect(() =>{ 
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
+
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
+    
+
 
     return(  
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:0,marginVertical:15,paddingHorizontal:15}}>

@@ -1,6 +1,6 @@
 // import {SettingsDividerShort,  SettingsEditText, SettingsCategoryHeader, SettingsSwitch, SettingsPicker} from 'react-native-settings-components';
-import React, { useRef , useState  } from 'react';
-import {  StyleSheet ,ScrollView, View ,Text, Image, Platform,TouchableOpacity} from 'react-native' 
+import React, { useRef , useState,useEffect  } from 'react';
+import {  StyleSheet ,ScrollView, View ,Text, Image, Platform,TouchableOpacity,BackHandler} from 'react-native' 
 import ReactNativeSettingsPage, { 
 	SectionRow, 
     NavigateRow,
@@ -19,6 +19,19 @@ const SettingsScreen =()=> {
     const [newsletter,setNewsletter] = useState(''); 
     const [dialogVisibile,setDialogVisibile] = useState(false);  
     const [deletedialogVisibile,setDeleteDialogVisibile] = useState(false);  
+
+    useEffect(() =>{ 
+      BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+      return () => {
+      BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+      };
+  }, [backButtonHandler]);
+
+  const backButtonHandler = () => {
+      history.goBack()
+      return true;
+  } 
 
 
     const handleDeleteCancel = () =>{

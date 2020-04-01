@@ -14,8 +14,7 @@ export function setUserMeals(user_meals){
     }
 }
 
-export function setBreakfast(date,content,addedObj){
-  //  console.log('1',date,content)
+export function setBreakfast(date,content,addedObj){ 
   return {
       type: SET_BREAKFAST,
       date,

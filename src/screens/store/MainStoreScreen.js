@@ -26,7 +26,7 @@ const MainStoreScreen = ({  ...props }) => {
                 <Text style={{alignSelf:'center',fontSize:30}}>Ürünlerimiz ve Paketlerimiz</Text>
                 
                 <StoreStack
-                setAlertMessege={setAlertMessege}
+                    setAlertMessege={setAlertMessege}
                 />
 
                 

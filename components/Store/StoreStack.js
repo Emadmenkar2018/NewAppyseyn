@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{Component,useEffect,useState} from 'react';
 import { StyleSheet, Text, View , Dimensions} from 'react-native'; 
 import ContainerStore from './ContainerStore'   
 import { ScrollView } from 'react-native-gesture-handler'
@@ -6,42 +6,33 @@ import {_fetchProductsFromApi} from '../../utils/requests'
 import NetInfo from "@react-native-community/netinfo";
 const halfheight = Dimensions.get('window').height 
  
-export default class StoreStack extends React.Component {
-    constructor(props){ 
-        super(props);  
-    }
- 
+  const  StoreStack = () =>{ 
 
+  const [ productsData, setProductsData] = useState('') 
 
-    state={
-      productsData:[]
-    }
-
-    componentDidMount() {
-      this.fetchProducts()
-     }
+  useEffect(() => {
+    fetchProducts()
+  }, []) 
       
-    fetchProducts = ()=>{
+    const fetchProducts = ()=>{
       NetInfo.fetch().then(state => {
         if (state.isConnected) { 
           _fetchProductsFromApi().then(response =>{ 
-            this.setState({productsData:response.data})
+            setProductsData( response.data ) 
           }).catch(err => {
             console.log('err',err)
           })
         }
         else {
-            this.props.setAlertMessege('Internet erisim yok') 
+             props.setAlertMessege('Internet erisim yok') 
            
           } 
         });   
     } 
-    
-  render()  
-  {    
+       
     let ProductsList=[] 
-    if(this.state.productsData !== ''){
-      ProductsList = this.state.productsData.map(product => (
+    if(productsData !== ''){
+      ProductsList = productsData.map(product => (
         <ContainerStore key={product.id}
           headtext={product.title} 
           imagePlaceholder={product.type ==='packet'? 'ozelcalender': 'body'}
@@ -63,5 +54,6 @@ export default class StoreStack extends React.Component {
                 </ScrollView> 
  
     )
-  }
-}
+} 
+
+export default StoreStack

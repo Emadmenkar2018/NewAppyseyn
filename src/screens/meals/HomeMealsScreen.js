@@ -29,9 +29,7 @@ const HomeMealsScreen = ({ history, ...props }) => {
 
      const fetchMeals=() =>{    
             _fetchMealsData().then(response =>{  
-                props.setUserMeals(response.data)  
-                
-                
+                props.setUserMeals(response.data)   
             }
             ).catch( err =>
                 console.log('err',err)
@@ -48,6 +46,11 @@ const HomeMealsScreen = ({ history, ...props }) => {
         // myMenu.current.open()
     };
 
+
+    const _pressOnday = (index) => { 
+        myStackPager.current.setPage(index)
+    }
+
     const arrange = () =>{
         return sortKeys(props.user_meals) 
     }
@@ -62,13 +65,12 @@ const HomeMealsScreen = ({ history, ...props }) => {
                 /> 
             </View>
             )
-    }); 
-
+    });  
     return(  
 
         <MySideBar
-        ref={myMenu}
-        {...props}
+            ref={myMenu}
+            {...props}
         > 
             <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>
 
@@ -76,6 +78,7 @@ const HomeMealsScreen = ({ history, ...props }) => {
                     index={index}
                     openControlPanel={_openControlPanel}
                     title={'Öğünler'}
+                    _pressOnday={_pressOnday}
                 />  
 
                 <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>    

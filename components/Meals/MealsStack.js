@@ -25,7 +25,7 @@ export default class MealsStack extends React.Component {
       // this.setState({visibilty:true})
     }
   render()  
-  {    
+  {     
     return( 
 
             <View style={{ flex:1, backgroundColor: 'transparent' ,height:'100%' ,width:'100%',zIndex:1}}>

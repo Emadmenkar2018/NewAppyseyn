@@ -32,7 +32,10 @@ const styles = StyleSheet.create({
     },
     container:{  
         zIndex:1,
-        margin:halfwidth/3,
+        marginLeft:halfwidth/3,
+        marginRight:halfwidth/3,
+        marginTop:halfwidth/3,
+        marginBottom:5,
         width: '70%',
         height: 3*halfwidth/4,
         backgroundColor:'transparent',

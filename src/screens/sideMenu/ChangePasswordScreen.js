@@ -1,5 +1,5 @@
 import React , {useEffect,useRef,useState} from 'react'; 
-import { StyleSheet,   View ,TouchableOpacity,TextInput} from 'react-native';   
+import { StyleSheet,   View ,TouchableOpacity,TextInput,BackHandler} from 'react-native';   
 import {_fetchMealsData} from '../../../utils/requests' 
 import MyStoreStack from '../../../components/SideMenu/MyStoreStack'
 import {Icon } from 'react-native-elements' 
@@ -17,6 +17,21 @@ const ChangePasswordScreen = ({  ...props }) => {
     const showAlert = useRef(null); 
 
     let history = useHistory(); 
+
+
+    
+    useEffect(() =>{ 
+        BackHandler.addEventListener("hardwareBackPress", backButtonHandler);
+
+        return () => {
+        BackHandler.removeEventListener("hardwareBackPress", backButtonHandler);
+        };
+    }, [backButtonHandler]);
+
+    const backButtonHandler = () => {
+        history.goBack()
+        return true;
+    } 
 
     const openAlert=()=>{
         if ( email.length ===0 ||   password.length ===0 ||    rePassword.length ===0){

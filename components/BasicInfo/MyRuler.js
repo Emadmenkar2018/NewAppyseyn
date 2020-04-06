@@ -25,8 +25,8 @@ export default class MyRuler extends Component {
        return (
         <View  > 
             <View style={{position:'absolute',top:-halfheight+20,left:130,alignContent:'center',alignItems:'center',height:'100%'}}>
-              <Text style={{fontSize:25,fontWeight:'bold',marginBottom:2,fontFamily:'Muli-Light'}}>{this.state.height }</Text>
-              <Text style={{fontSize:20,fontWeight:'600',marginTop:0,fontFamily:'Muli-Light'}}>cm</Text> 
+              <Text style={{fontSize:25,  marginBottom:2,fontFamily:'Merienda-Regular'}}>{this.state.height }</Text>
+              <Text style={{fontSize:20,  marginTop:0,fontFamily:'Merienda-Regular'}}>cm</Text> 
             </View>
             <LineGauge ref={this.refRuler}  min={130} max={210} value={this.state.height} onChange={(value) =>this._handleChange(value)}/> 
         </View> 

@@ -17,7 +17,7 @@ const AddBreakfast = ({ breakfastData,DaysData, ...props }) => {
 
 
         <View style={styles.Textcontainer}>
-          <Text style={{color:breakfastData[0]? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold'}}> 
+          <Text style={{color:breakfastData[0]? '#E92C81':'#1D253C' ,fontSize:16  , fontFamily:'Merienda-Bold'}}> 
             {breakfastData[0]?  'Eklenen Kahvaltı' : 'Kahvaltı Ekle'}
           </Text>
           <Text style={styles.text}>
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   text:{
     fontSize:12, 
     color:'#999',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   }
 });
 

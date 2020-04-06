@@ -19,7 +19,7 @@ const AddExercises = ({exercisesData,DaysData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:exercisesData[0]? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}> 
+          <Text style={{color:exercisesData[0]? '#E92C81':'#1D253C' ,fontSize:16 , fontFamily:'Merienda-Bold' }}> 
             {exercisesData[0]?  'Eklenen Egzersiz' : 'Egzersiz Ekle'} 
           </Text>
 
@@ -82,10 +82,9 @@ const styles = StyleSheet.create({
     width:'70%'
   },
   head:{
-    fontSize:16,
-    fontWeight:'bold',
+    fontSize:16, 
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 

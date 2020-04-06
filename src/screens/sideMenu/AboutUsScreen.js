@@ -29,7 +29,7 @@ const AboutUsScreen =({  ...props })=> {
             </TouchableOpacity>
             
 
-            <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>Hakkımızda</Text> 
+            <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Merienda-Regular',color:'#999'}}>Hakkımızda</Text> 
  
               <Image
                 resizeMode={'contain'}

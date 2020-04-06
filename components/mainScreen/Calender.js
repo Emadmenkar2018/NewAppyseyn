@@ -18,7 +18,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'50%',width:'40%' ,borderRadius:10,backgroundColor: '#3CCFA4'}}>
                         </View> 
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[6]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[6]}</Text>
                     </View>
                     
                 </TouchableOpacity>
@@ -30,7 +30,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'80%',width:'40%',backgroundColor:'#3CCFA4',borderRadius:10}}>
                         </View> 
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[5]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[5]}</Text>
                     </View>
 
                 </TouchableOpacity>
@@ -41,7 +41,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'40%',width:'40%',backgroundColor:'#fff',borderRadius:10}}> 
                         </View>
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[4]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[4]}</Text>
                     </View>
 
                 </TouchableOpacity> 
@@ -52,7 +52,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'60%',width:'40%',backgroundColor:'#fff',borderRadius:10}}> 
                         </View>
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[3]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[3]}</Text>
                     </View>
 
                 </TouchableOpacity> 
@@ -64,7 +64,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'40%',width:'40%',backgroundColor:'#fff',borderRadius:10}}> 
                         </View>
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[2]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[2]}</Text>
                     </View>
 
                 </TouchableOpacity> 
@@ -75,7 +75,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'60%',width:'40%',backgroundColor:'#fff',borderRadius:10}}> 
                         </View>
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[1]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[1]}</Text>
                     </View>
 
                 </TouchableOpacity> 
@@ -86,7 +86,7 @@ const Calender = ({ index, ...props }) => {
                         <View style={{height:'50%',width:'40%',backgroundColor:'#fff',borderRadius:10}}> 
                         </View>
 
-                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Muli-Light'}}>{getToday()[0]}</Text>
+                        <Text style={{color:'#fff',marginTop:2,fontWeight:'Merienda-Regular'}}>{getToday()[0]}</Text>
                     </View>
 
                 </TouchableOpacity> 

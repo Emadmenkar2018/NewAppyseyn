@@ -5,7 +5,7 @@ import MyCalender from '../../../components/Randevu/MyCalender'
 import CreateRandevuModal from '../../../components/Randevu/CreateRandevuModal' 
 import {_fetchmyRandevuData} from '../../../utils/requests'
 import {_getDates,_extractDays,_extractDays2,_getDates2} from '../../../utils/methods'
-import MySideBar from '../../../components/SideMenu/MySideBar'
+import MySideBar from '../../../components/SideMenu/MySideBar' 
 
 const width = Dimensions.get('window').width /2 
 
@@ -21,11 +21,10 @@ const  RandevuMainScreen = ({ history, ...props }) => {
   const myMenu = useRef(null);  
   const [showRandevu, setShowRandevu] =useState(false) 
   let calender = _getDates2()  
-
+  const [visible, setVisibility] = useState(false)
 
     useEffect(() => {
       fetchmyRandevus()
-      console.log('1',showRandevu)
       if (!showrandevudays.includes(calender[2])){ 
         setShowRandevu(false)  
         }
@@ -35,7 +34,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
     }, []);//why ?! hmmmm
 
 
-      const fetchmyRandevus=() =>{    
+    const fetchmyRandevus=() =>{    
         _fetchmyRandevuData().then(response =>{   
             setmyRandevus(response.bookingTimes)    
         }
@@ -43,6 +42,17 @@ const  RandevuMainScreen = ({ history, ...props }) => {
             console.log('err',err)
         )
     }  
+
+    const closeDialoug = () => { 
+        console.log('sadsd')
+        setVisibility(false)
+    } 
+
+    const openDialoug = () => { 
+        console.log('sadsd')
+        setVisibility(true)
+    } 
+
 
     const _openControlPanel = () => { 
        myMenu.current.open() 
@@ -53,7 +63,6 @@ const  RandevuMainScreen = ({ history, ...props }) => {
         return true;
     }
 
-    console.log('2',showRandevu)
     return(  
     <MySideBar
         ref={myMenu}
@@ -72,6 +81,7 @@ const  RandevuMainScreen = ({ history, ...props }) => {
                         showrandevudays={showrandevudays}
                         showRandevu={showRandevu}
                         setShowRandevu={setShowRandevu}
+                        openDialoug={openDialoug}
                     /> 
 
             </View>
@@ -80,8 +90,14 @@ const  RandevuMainScreen = ({ history, ...props }) => {
                 <Background
                     MyRandevus = {myradevus} //yes which contains the button yes functional the problem is that im lost :( first of all it doesent rerender and call 
                 />
-            }
-            <CreateRandevuModal/>
+            } 
+              
+            <CreateRandevuModal  
+                closeDialoug={closeDialoug}
+                visiblity={visible}
+                setClosingModal={setVisibility}
+                openDialoug={openDialoug}
+            />
 
         </View>
      </MySideBar>

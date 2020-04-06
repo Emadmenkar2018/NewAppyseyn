@@ -43,8 +43,8 @@ const MyPieChart = ({ history,data,title,currentData, ...props }) =>  {
               
               <View style={{flexDirection:'row',alignItems:'center',alignContent:'center',justifyContent:'center',marginBottom:40}}>
                   <View style={{alignItems:'center'}}>
-                    <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>{title} Hedefi</Text>
-                    <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>{data}%</Text>
+                    <Text style={{marginRight:20,fontFamily:'Merienda-Regular' ,fontSize:18}}>{title} Hedefi</Text>
+                    <Text style={{marginRight:20,fontFamily:'Merienda-Regular' ,fontSize:18}}>{data}%</Text>
                   </View>
 
                   <View style={{backgroundColor:'transparent',width:screenWidth/3,height:screenWidth/3}}>
@@ -57,8 +57,8 @@ const MyPieChart = ({ history,data,title,currentData, ...props }) =>  {
  
                     <View style={{flexDirection:'row',alignItems:'center',alignContent:'center',justifyContent:'center'}}> 
                         <View style={{alignItems:'center'}}>
-                            <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>{title ==='Yağ'? 'Yağ Oranınız' : title ==='Su' ? 'Su Oranınız' : title ==='Kas' ? 'Kas Oranınız' : 'Kilonuz' }</Text>
-                            <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>{currentData}%</Text>
+                            <Text style={{marginRight:20,fontFamily:'Merienda-Regular' ,fontSize:18}}>{title ==='Yağ'? 'Yağ Oranınız' : title ==='Su' ? 'Su Oranınız' : title ==='Kas' ? 'Kas Oranınız' : 'Kilonuz' }</Text>
+                            <Text style={{marginRight:20,fontFamily:'Merienda-Regular' ,fontSize:18}}>{currentData}%</Text>
                         </View>
 
                         <View style={{backgroundColor:'transparent',width:screenWidth/3,height:screenWidth/3}}>

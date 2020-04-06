@@ -39,6 +39,8 @@ target 'sp' do
 
   pod 'react-native-netinfo', :path => '../node_modules/@react-native-community/netinfo'
 
+  pod 'react-native-splash-screen', :path => '../node_modules/react-native-splash-screen'
+
   target 'spTests' do
     inherit! :search_paths
     # Pods for testing

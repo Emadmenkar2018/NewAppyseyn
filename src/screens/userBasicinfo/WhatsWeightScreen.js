@@ -37,7 +37,7 @@ export default class WhatsWeightScreen extends React.Component {
 
                 <DefaultBackground 
                     currentPosition={this.props.currentPosition}> 
-                    <Text style ={{fontSize:60,color:'#fff',fontWeight:'900',fontFamily:'Muli-Bold'}}>Ölçümler ?</Text> 
+                    <Text style ={{fontSize:60,color:'#fff',fontWeight:'900',fontFamily:'Merienda-Regular'}}>Ölçümler ?</Text> 
                 </DefaultBackground>  
                 
                 <View style={{height:'100%',width:'100%', flexDirection:'column',alignContent:'center',alignItems:'center'}}>

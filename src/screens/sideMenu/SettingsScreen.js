@@ -68,7 +68,7 @@ const SettingsScreen =()=> {
                </TouchableOpacity>
                 
    
-                 <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>Ayarlar</Text> 
+                 <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Merienda-Regular',color:'#999'}}>Ayarlar</Text> 
    
                  {/* <TouchableOpacity onPress={()=>history.push('/Main/Store')}> */}
                    <Image
@@ -132,7 +132,7 @@ const SettingsScreen =()=> {
 
         <View style={{backgroundColor:'#000'}}>
             <Dialog.Container  contentStyle= {styles.dialog} visible={deletedialogVisibile}> 
-                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Muli-Bold',alignSelf:'center',fontSize:20}}>Profilini Silme ..</Dialog.Title>
+                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Merienda-Regular',alignSelf:'center',fontSize:20}}>Profilini Silme ..</Dialog.Title>
                 <Dialog.Description style={{color:'#fff',fontWeight:'600',fontFamily:'Muli'}}>
                   Profilini Silmek Istediğinden Emin Misin ??
                 </Dialog.Description>
@@ -146,7 +146,7 @@ const SettingsScreen =()=> {
 
         <View style={{backgroundColor:'#000'}}>
             <Dialog.Container  contentStyle= {styles.dialog} visible={dialogVisibile}> 
-                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Muli-Bold',alignSelf:'center',fontSize:20}}>Çıkış Yapma ..</Dialog.Title>
+                <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Merienda-Regular',alignSelf:'center',fontSize:20}}>Çıkış Yapma ..</Dialog.Title>
                 <Dialog.Description style={{color:'#fff',fontWeight:'600',fontFamily:'Muli'}}>
                  Çıkış Yapmak Istediğinden Emin Misin ??
                 </Dialog.Description>

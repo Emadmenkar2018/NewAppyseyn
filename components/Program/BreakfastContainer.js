@@ -15,8 +15,8 @@ const BreakfastContainer = ({ breakfastData, ...props }) => {
 
 
         <View style={styles.Textcontainer}>
-          <Text style={{color:breakfastData.length > 0? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold'}}> 
-            {breakfastData.length > 0 ?  'Kahvaltı' : 'Kahvaltı Bulunmamaktadır'}
+          <Text style={{color:breakfastData.length > 0? '#E92C81':'#1D253C' ,fontSize:16 , fontFamily:'Merienda-Regular'}}> 
+            {breakfastData.length > 0 ?  'Kahvaltı' : 'Kahvaltı Girilmemiştir'}
           </Text>
           <Text style={styles.text}>
            {breakfastData.length > 0 ? breakfastData : 'Protein, Yağ, Karbonhidrat, Asit bazı'} 
@@ -62,13 +62,12 @@ const styles = StyleSheet.create({
   },
   head:{ 
     fontSize:16,
-    fontWeight:'bold',
-    
+    fontWeight:'bold', 
   },
   text:{
     fontSize:12, 
     color:'#999',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   }
 });
 

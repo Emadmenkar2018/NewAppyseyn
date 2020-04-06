@@ -19,7 +19,7 @@ const DefaultHeader =  ({ children,headText, ...props  }) => {
           <TouchableOpacity onPress={()=>history.goBack()}>
             <Icon name="arrow-back" type ='material' size={35}  color='#999'   />
           </TouchableOpacity>
-          <Text style={{fontSize:28,fontFamily:'Muli-Bold',color:'#fff'}}>{headText}</Text>
+          <Text style={{fontSize:28,fontFamily:'Merienda-Regular',color:'#fff'}}>{headText}</Text>
           <Image
             resizeMode={'contain'}
             style={styles.stretch}

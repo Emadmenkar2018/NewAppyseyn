@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     fontSize:15,
     fontWeight:'800',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   }, 
   date:{
     fontSize:13,

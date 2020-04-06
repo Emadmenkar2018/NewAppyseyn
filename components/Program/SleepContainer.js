@@ -16,8 +16,8 @@ const SleepContainer = ({ sleepData,DaysData, ...props }) => {
 
 
         <View style={styles.Textcontainer}>
-          <Text  style={{color:sleepData? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}>
-            {sleepData?  'Eklenen Uyku' : 'Uyku Bulunmamaktadır'}
+          <Text  style={{color:sleepData? '#E92C81':'#1D253C' ,fontSize:16 ,fontFamily:'Merienda-Regular' }}>
+            {sleepData?  'Eklenen Uyku' : 'Uyku Girilmemiştir'}
             
           </Text>
           <Text style={styles.text}> 
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
     fontSize:16,
     fontWeight:'bold',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 
     color:'#999'
-    ,fontFamily:'Muli-Bold'
+    ,fontFamily:'Merienda-Regular'
   }
 });
 

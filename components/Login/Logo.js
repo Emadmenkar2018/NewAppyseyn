@@ -1,15 +1,13 @@
 import React, { memo } from 'react';
-import { StyleSheet, View, Image  , Dimensions} from 'react-native'; 
+import { StyleSheet, View, Image  , Dimensions,Text} from 'react-native'; 
 
 const halfheight = Dimensions.get('window').height /2 
 
 const Logo = ({ label, errorText,inputText,type, ...props }) => (
     <>
+    {/* //IndieFlower-Regular */}
     <View style={styles.container}>
-        <Image
-            style={styles.stretch}
-            source={require('../../assets/logo.png')}
-            />
+         <Text style={{fontSize:30,fontFamily:'Merienda-Bold',color:'#E92C81',alignSelf:'center',letterSpacing:5}}>Appisyen</Text>
     </View>
     </>
     )

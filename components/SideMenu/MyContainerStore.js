@@ -17,7 +17,7 @@ const MyContainerStore = ({imagePlaceholder,headtext,type,prefix,firstcolor,seco
           <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstcolor,secondcolor]} style={styles.container} onPress={()=>_handleNavigating(prefix)}> 
             
             <View style={{flexDirection:'row',justifyContent:'flex-start'}}>
-              <Text style={{color:'#1D253C',backgroundColor:'#fff',width:'20%',textAlign:'center',borderRadius:20,fontFamily:'Muli',marginVertical:10,marginEnd:5}}>{type}</Text> 
+              <Text style={{color:'#1D253C',backgroundColor:'#fff',width:'20%',textAlign:'center',borderRadius:20,fontFamily:'Merienda-Regular',marginVertical:10,marginEnd:5}}>{type}</Text> 
               {/* <Text style={{color:'#1D253C',backgroundColor:'rgba(233, 44, 129,.8)',width:'20%',textAlign:'center',borderRadius:20,fontFamily:'Muli',marginVertical:10,marginEnd:5}}>{price} tl</Text>  */}
             </View>
 
@@ -100,13 +100,13 @@ const styles = StyleSheet.create({
     fontSize:24,
     fontWeight:'600',
     color:'#fff',
-    fontFamily:'Muli'
+    fontFamily:'Merienda-Regular'
   },
   specification:{ 
     fontSize:14,
     fontWeight:'200',
     color:'#fff',
-    fontFamily:'Muli'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 

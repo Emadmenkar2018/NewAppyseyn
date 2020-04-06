@@ -151,15 +151,14 @@ const styles = StyleSheet.create({
     width:'70%'
   },
   head:{
-    fontSize:16,
-    fontWeight:'bold',
+    fontSize:16, 
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 
     color:'#999',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   cups:{
     width:'100%',

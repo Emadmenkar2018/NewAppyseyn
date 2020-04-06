@@ -16,19 +16,19 @@ const GoalsStack =  ({ children,index, ...props  }) => (
     <View style ={{width:'75%',height : '15%',backgroundColor:'transparent',alignSelf:'center',flexDirection:'row',alignItems:'center',alignContent:'center',paddingRight:29,marginTop:10,justifyContent:'space-between'}}>
 
         <TouchableOpacity style={{width:'30%',height:'100%' ,flexDirection:'row',alignItems:'flex-end' }} onPress={() => props.getCurrentpage(0)} >
-            <Text style={{fontFamily:'Muli-SemiBold' ,alignSelf:'center',color:index==0? '#fff': '#1D253C',backgroundColor:index==0 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Kilo</Text>
+            <Text style={{fontFamily:'Merienda-Regular' ,alignSelf:'center',color:index==0? '#fff': '#1D253C',backgroundColor:index==0 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Kilo</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={{flexDirection:'row',width:'30%',height:'100%',alignItems:'center'}} onPress={() => props.getCurrentpage(1)} >
-            <Text style={{fontFamily:'Muli-SemiBold' ,alignSelf:'center',color:index==1? '#fff': '#1D253C',backgroundColor:index==1 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Yağ</Text>
+            <Text style={{fontFamily:'Merienda-Regular' ,alignSelf:'center',color:index==1? '#fff': '#1D253C',backgroundColor:index==1 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Yağ</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={{flexDirection:'row',width:'30%',height:'100%',alignItems:'center'}} onPress={() => props.getCurrentpage(2)} >
-            <Text style={{fontFamily:'Muli-SemiBold' ,alignSelf:'center',color:index==2? '#fff': '#1D253C',backgroundColor:index==2 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Kas</Text>
+            <Text style={{fontFamily:'Merienda-Regular' ,alignSelf:'center',color:index==2? '#fff': '#1D253C',backgroundColor:index==2 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Kas</Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={{flexDirection:'row',width:'30%',height:'100%',alignItems:'center'}} onPress={() => props.getCurrentpage(3)} >
-            <Text style={{fontFamily:'Muli-SemiBold' ,alignSelf:'center',color:index==3? '#fff': '#1D253C',backgroundColor:index==3 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Su</Text>
+            <Text style={{fontFamily:'Merienda-Regular' ,alignSelf:'center',color:index==3? '#fff': '#1D253C',backgroundColor:index==3 ?'#1D253C':'#fff',width:'70%',textAlign:'center',fontSize:18,borderRadius:30}}>Su</Text>
         </TouchableOpacity>
  
     </View>  

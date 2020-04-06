@@ -28,7 +28,7 @@ export default class Goal extends Component {
                 <Card style={{borderRadius:10,height:60 ,backgroundColor:this.state.first? '#F0F5F9' : '#fff'}}> 
                     <View style={{flexDirection:'row',flex:1,paddingLeft:15,paddingRight:15}}>
                         <Left>
-                            <Text style={{fontFamily:'Muli'}}>
+                            <Text style={{fontFamily:'Merienda-Regular'}}>
                                 Yağ Yakma
                             </Text>
                         </Left>
@@ -53,7 +53,7 @@ export default class Goal extends Component {
                 <Card style={{borderRadius:10,height:60 ,backgroundColor:this.state.second? '#F0F5F9' : '#fff'}}> 
                     <View style={{flexDirection:'row',flex:1,paddingLeft:15,paddingRight:15}}>
                         <Left>
-                            <Text style={{fontFamily:'Muli'}}>
+                            <Text style={{fontFamily:'Merienda-Regular'}}>
                                 Dayanıklılığı Arttırma
                             </Text>
                         </Left>
@@ -80,7 +80,7 @@ export default class Goal extends Component {
                 <Card style={{borderRadius:10,height:60 ,backgroundColor:this.state.third? '#F0F5F9' : '#fff'}}> 
                     <View style={{flexDirection:'row',flex:1,paddingLeft:15,paddingRight:15}}>
                         <Left>
-                            <Text style={{fontFamily:'Muli'}}>
+                            <Text style={{fontFamily:'Merienda-Regular'}}>
                                 Kilo Alma
                             </Text>
                         </Left>
@@ -106,7 +106,7 @@ export default class Goal extends Component {
                 <Card style={{borderRadius:10,height:60 ,backgroundColor:this.state.forth? '#F0F5F9' : '#fff'}}> 
                     <View style={{flexDirection:'row',flex:1,paddingLeft:15,paddingRight:15}}>
                         <Left>
-                            <Text style={{fontFamily:'Muli'}}>
+                            <Text style={{fontFamily:'Merienda-Regular'}}>
                                 Fitnessi Geliştirme
                             </Text>
                         </Left>
@@ -132,7 +132,7 @@ export default class Goal extends Component {
                 <Card style={{borderRadius:10,height:60 ,backgroundColor:this.state.fifth? '#F0F5F9' : '#fff'}}> 
                     <View style={{flexDirection:'row',flex:1,paddingLeft:15,paddingRight:15}}>
                         <Left>
-                            <Text style={{fontFamily:'Muli'}}>
+                            <Text style={{fontFamily:'Merienda-Regular'}}>
                                 Kas Yapma
                             </Text>
                         </Left>

@@ -48,7 +48,7 @@ const ChangeEmailScreen = ({  ...props }) => {
                     <Icon name="arrow-back" type ='material' size={35} containerStyle={{alignSelf:'flex-start'}}  color='#1D253C'/>
                 </TouchableOpacity> */}
                 
-                <Text style={{alignSelf:'center',fontSize:30,marginBottom:20}}>Email Değişter</Text>
+                <Text style={{alignSelf:'center',fontSize:30,marginBottom:20,fontFamily:'Merienda-Regular'}}>Email Değişter</Text>
 
                 <View style ={{marginVertical:5  }}> 
                     <Item>

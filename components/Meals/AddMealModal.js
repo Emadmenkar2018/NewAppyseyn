@@ -48,7 +48,7 @@ const [content,setContent] = useState(props.content);
                 <LinearGradient  colors={['rgba(44, 44, 94,.3)', 'rgba(63, 49, 100,.3)']} style={{alignSelf:'center',alignContent:'center',width:'100%',height:'100%',alignItems:'center' }}>
                     <View style={{width:'100%',height:3/2*halfWidth,backgroundColor:'transparent',marginTop:1/2*halfheight-30}}>
                         <LinearGradient  colors={['#26C8A8', '#00BBCA']} style={{zIndex:1,alignSelf:'center',alignItems:'center',alignContent:'center',width:'110%',height:'35%' ,borderBottomRightRadius:250,borderBottomLeftRadius:250,}}>
-                            <Text style={{color:'rgba(255,255,255,1)',alignSelf:'center',fontSize:24,marginTop:1/5*halfWidth,fontWeight:'bold',fontFamily:'Muli'}}>{title} Ekle</Text>
+                            <Text style={{color:'rgba(255,255,255,1)',alignSelf:'center',fontSize:24,marginTop:1/5*halfWidth ,fontFamily:'Merienda-Regular'}}>{title} Ekle</Text>
                         </LinearGradient>
                         <View style={{height:'100%',width:'85%',backgroundColor:'#fff',position:'absolute',top:10,zIndex:-1,alignSelf:'center',borderBottomRightRadius:20,borderBottomLeftRadius:20,alignItems:'center',alignContent:'center'}}>
                             <View style={{ top:'30%' ,alignSelf:'center' ,alignItems:'center',alignContent:'center'}}>
@@ -64,11 +64,11 @@ const [content,setContent] = useState(props.content);
                                 <View style={{width:'100%',paddingBottom:10,flexDirection:'row',justifyContent:'space-evenly'}}> 
 
                                     <Button bordered style={{width:'35%',borderRadius:20,alignItems:'center',alignContent:'center'}}  onPress={()=>props.setClosingModal(false)}  >
-                                        <Text style={{textAlign:'center',width:'100%',fontFamily:'Muli'}}>Iptal</Text>
+                                        <Text style={{textAlign:'center',width:'100%',fontFamily:'Merienda-Regular'}}>Iptal</Text>
                                     </Button>
 
                                     <Button bordered style={{width:'35%',borderRadius:20}}onPress={()=>submittingContent()}   >
-                                        <Text style={{textAlign:'center',width:'100%',fontFamily:'Muli'}}>Tamam</Text>
+                                        <Text style={{textAlign:'center',width:'100%',fontFamily:'Merienda-Regular'}}>Tamam</Text>
                                     </Button>
 
                                 </View>

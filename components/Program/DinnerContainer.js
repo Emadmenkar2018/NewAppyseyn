@@ -17,8 +17,8 @@ const DinnerContainer = ({ dinnerData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text  style={{color:dinnerData.length > 0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}>
-            {dinnerData.length > 0 ?  'Akşam Yemegi' : 'Akşam Yemegi Bulunmamaktadır'}
+          <Text  style={{color:dinnerData.length > 0 ? '#E92C81':'#1D253C' ,fontSize:16 , fontFamily:'Merienda-Regular' }}>
+            {dinnerData.length > 0 ?  'Akşam Yemegi' : 'Akşam Yemegi Girilmemiştir'}
           </Text>
 
           <Text style={styles.text}> 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     fontSize:16,
     fontWeight:'bold',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 

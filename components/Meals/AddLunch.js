@@ -19,7 +19,7 @@ const AddLunch = ({ lunchData,DaysData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:lunchData[0]? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
+          <Text style={{color:lunchData[0]? '#E92C81':'#1D253C' ,fontSize:16 ,fontFamily:'Merienda-Bold' }}> 
             {lunchData[0]?  'Eklenen Öğle Yemeği' : 'Öğle Yemeği Ekle'}
           </Text>
 
@@ -83,13 +83,14 @@ const styles = StyleSheet.create({
   },
   head:{
     fontSize:16,
-    fontWeight:'bold',
+    // fontWeight:'bold',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 
-    color:'#999'
+    color:'#999',
+    fontFamily:'Merienda-Regular'
   }
 });
 

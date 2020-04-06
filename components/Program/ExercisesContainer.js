@@ -18,8 +18,8 @@ const ExercisesContainer = ({exercisesData,DaysData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:exercisesData[0].lemgth > 0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold', fontFamily:'Muli-Bold' }}> 
-            {exercisesData[0].lemgth > 0 ?  'Eklenen Egzersiz' : 'Egzersiz Bulunmamaktadır'} 
+          <Text style={{color:exercisesData[0].lemgth > 0 ? '#E92C81':'#1D253C' ,fontSize:16 , fontFamily:'Merienda-Regular' }}> 
+            {exercisesData[0].lemgth > 0 ?  'Eklenen Egzersiz' : 'Egzersiz Girilmemiştir'} 
           </Text>
 
           <Text style={styles.text}> 
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
     fontSize:16,
     fontWeight:'bold',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 

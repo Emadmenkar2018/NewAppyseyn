@@ -175,13 +175,13 @@ const SingleMesaurment = ({history,imagePlaceholder,data,day,title, ...props }) 
         <View style={{backgroundColor:'#000'}}>
           <Dialog.Container  contentStyle= {{backgroundColor:'rgba(229, 74, 61,0.8)'}} visible={dialogVisibile}>
          
-            <Dialog.Title  style={{color:'#1D253C',fontWeight:'bold',fontFamily:'Muli-Bold',alignSelf:'center',fontSize:20}}>Kaydı Silmek ..</Dialog.Title>
-            <Dialog.Description style={{color:'#fff',fontWeight:'600',fontFamily:'Muli'}}>
+            <Dialog.Title  style={{color:'#1D253C', fontFamily:'Merienda-Regular',alignSelf:'center',fontSize:20}}>Kaydı Silmek ..</Dialog.Title>
+            <Dialog.Description style={{color:'#fff', fontFamily:'Merienda-Regular'}}>
               Kaydı Silmek Istediğinden Emin Misin ??
             </Dialog.Description>
             <View style={{flexDirection:'row',justifyContent:'center'}}>
-              <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleCancel} color={'#fff'} label="Iptal" />
-              <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Muli'}} onPress={handleDelete} color={'#fff'}   label="Evet" />
+              <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Merienda-Regular'}} onPress={handleCancel} color={'#fff'} label="Iptal" />
+              <Dialog.Button style={{backgroundColor:'#1D253C',borderRadius:20,marginHorizontal:10,width:100,fontFamily:'Merienda-Regular'}} onPress={handleDelete} color={'#fff'}   label="Evet" />
             </View>
           </Dialog.Container>
         </View>

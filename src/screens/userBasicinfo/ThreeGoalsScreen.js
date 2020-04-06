@@ -23,7 +23,7 @@ export default class ThreeGoalsScreen extends React.Component {
                 <DefaultBackground 
                     currentPosition={this.props.currentPosition}>
                         
-                    <Text style ={{fontSize:60,color:'#fff',fontWeight:'900',fontFamily:'Muli-Bold'}}>Amaçlar ?</Text>
+                    <Text style ={{fontSize:60,color:'#fff',fontWeight:'900',fontFamily:'Merienda-Regular'}}>Amaçlar ?</Text>
  
                     
                 </DefaultBackground>   

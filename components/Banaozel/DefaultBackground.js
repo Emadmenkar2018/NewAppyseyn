@@ -4,7 +4,8 @@ import {
   StyleSheet,  
   Image,
   Text,
-  Dimensions
+  Dimensions,
+  ImageBackground
 } from 'react-native'; 
 import { Icon } from 'react-native-elements'  
 import LinearGradient from 'react-native-linear-gradient';
@@ -26,26 +27,28 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
   let history = useHistory();
 
   return (
-    <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#26C8A8', secondColor? secondColor:'#26C8A8']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  > 
+    <ImageBackground   source={require('../../assets/banaozel.jpg')} resizeMode={'cover'}   style={{width: '100%' ,zIndex:-1 ,flex:0.4}} >
+    {/* <LinearGradient start={{x: 0, y: 0}} end={{x: 1, y: 0}}  colors={[firstColor?firstColor :'#26C8A8', secondColor? secondColor:'#26C8A8']}  style={{width: '100%',  height: (firstColor ==='#fff' &&secondColor ==='#fff')?  '15%':'35%',backgroundColor:'#fff',borderLeftColor:'#fff',paddingLeft:15,paddingRight:15,borderBottomLeftRadius:40,borderBottomRightRadius:40,zIndex:-1,overflow:'visible'}}  >  */}
+    <View style={{backgroundColor:'rgba(0,0,0,.3)' ,flex:1,paddingHorizontal:15}}>
       <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
           <TouchableOpacity onPress={()=>history.goBack()}>
-            <Icon name="arrow-back" type ='material' size={35}  color='#1D253C'   />
+            <Icon name="arrow-back" type ='material' size={35}  color='rgba(255,255,255,.8)'   />
           </TouchableOpacity>
 
 
-          <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#1D253C'}}>{props.title}</Text> 
+          <Text style ={{alignSelf:'center',fontSize:27 ,fontFamily:'Merienda-Regular',color:'rgba(255,255,255,.8)'}}>{props.title}</Text> 
 
           <TouchableOpacity onPress={()=>history.push('/Main/Store')}>
             <Image
               resizeMode={'contain'}
               style={styles.stretch}
               source={require('../../assets/addBtn.png')} 
-              tintColor={'#1D253C'}
+              tintColor={'rgba(255,255,255,.8)'}
             />
           </TouchableOpacity>
       </View>
  
-      <LineChart
+      {/* <LineChart
       withOuterLines={true}
       withInnerLines={false} 
       withShadow={true}  
@@ -86,8 +89,9 @@ const DefaultBackground =  ({ children,firstColor,secondColor ,...props  }) => {
           backgroundColor:'transparent', 
           borderWidth:0
         }}
-      />
-    </LinearGradient>
+      />      */}
+      </View>
+      </ImageBackground>
   )  
 }
 

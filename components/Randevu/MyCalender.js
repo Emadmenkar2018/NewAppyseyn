@@ -10,6 +10,12 @@ import DateComponent from './DateComponent'
 import EmptyStateComponent from './EmptyStateComponent'
 import { Icon } from 'react-native-elements' 
 import { useHistory } from 'react-router-native'; 
+import {
+    responsiveHeight,
+    responsiveWidth,
+    responsiveScreenFontSize
+  } from "react-native-responsive-dimensions";
+  import CreateRandevuModal from './CreateRandevuModal'
 
 const MyCalender = ({   ...props }) => { 
  
@@ -22,6 +28,11 @@ const MyCalender = ({   ...props }) => {
    const [passingData,setPassingData]=useState('')
    const carrousel = useRef(null);
    let history = useHistory(); 
+    
+ 
+    const closeDialoug = () => { 
+        console.log('sadsd')
+    } 
 
    useEffect(() =>{ 
         showRandevusComponent(2) 
@@ -30,6 +41,7 @@ const MyCalender = ({   ...props }) => {
     }, []);
    
     
+
     const _snaptoNearest  = () =>{   
         let calender = _getDates() 
         let index =  calender.findIndex(item  => {
@@ -74,14 +86,14 @@ const MyCalender = ({   ...props }) => {
  
     //Current Date 
        return ( 
-           <View style={{width:'100%',height:'100%',alignItems:'center',paddingHorizontal:10}}>
+           <View style={{width:'100%',height:'100%',alignItems:'center',paddingHorizontal:10,zIndex:0}}>
                <View style={{flexDirection:'row',justifyContent:'space-between' ,backgroundColor:'transparent',width:'100%',marginTop:40,zIndex:0}}>
                     <TouchableOpacity onPress={()=>props.openControlPanel()}>
                         <Icon name="menu" type ='material' size={35}  color={'#1D253C'}   />
                     </TouchableOpacity>                  
                   
                   
-                   <Text style={{fontSize:27,color:'#1D253C',fontWeight:'bold',alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
+                   <Text style={{ fontSize:responsiveScreenFontSize(2.5),color:'#1D253C', fontFamily:'Merienda-Regular' ,alignSelf:'flex-start',marginStart:20}}>Randevu Sistemi</Text>
 
                    <TouchableOpacity onPress={()=>{
                             if (props.setMainPAgeIndex){
@@ -107,11 +119,13 @@ const MyCalender = ({   ...props }) => {
                } 
                {!props.showRandevu && 
                     <View>
-                        <EmptyStateComponent/>    
-                        <TouchableOpacity style={{width:'100%',height:70,alignSelf:'center',flexDirection:'row',alignItems:'center'}} onPress={_snaptoNearest}>
-                            <Text style={{color:'#E92C81',fontSize:12,textAlign:'center',alignSelf:'center',fontFamily:'Muli' ,zIndex:1,marginRight:2}}>En Yakın Randevuya Geç</Text>
-                            <Icon type='material' name='forward' color='#E92C81'/>
-                        </TouchableOpacity>  
+                        <EmptyStateComponent 
+                        openDialoug={props.openDialoug}
+                        />    
+                        <TouchableOpacity style={{width:'100%',height:70,alignSelf:'center',flexDirection:'row',alignItems:'center',alignContent:'center'}} onPress={_snaptoNearest}>
+                            <Text style={{color:'#E92C81',   fontSize:responsiveScreenFontSize(2.5),textAlign:'center',alignSelf:'center',fontFamily:'Merienda-Regular' ,zIndex:1,marginRight:2 }}>En Yakın Randevuya Geç</Text>
+                            <Icon type='material' name='forward' size={responsiveScreenFontSize(2.5)} containerStyle={{alignSelf:'center',marginTop:4}} color='#E92C81'/>
+                        </TouchableOpacity>
                     </View>
                } 
                 <View style={{width:'100%',position:'absolute',bottom:15  ,alignItems:'center',alignContent:'center'}}>   
@@ -151,12 +165,14 @@ const styles = StyleSheet.create({
         
     },
     titleHighlighted:{
-        fontSize:25,
-        color:'#26C8A8',textAlign:'center'
+        fontSize:responsiveScreenFontSize(2.2),
+        color:'#26C8A8',textAlign:'center',
+        fontFamily:'Merienda-Regular'
     },
     title:{
-        fontSize:25,
-        color:'rgba(29, 37, 60,.9)',textAlign:'center'
+        fontSize:responsiveScreenFontSize(2.2),
+        color:'rgba(29, 37, 60,.9)',textAlign:'center',
+        fontFamily:'Merienda-Regular'
     },
     stretch:{ 
         height:35,

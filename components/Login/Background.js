@@ -9,8 +9,8 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 
 const Background = ({ children }) => ( 
   <ImageBackground
-    source={require('../../assets/LoginBackground.png')}
-    style={{width: '100%', height: '100%'}} 
+    source={require('../../assets/LoginBackground.jpg')}
+    style={{width: '100%', height: '100%'}}  
     >
         <KeyboardAwareScrollView style={{paddingLeft:20,paddingRight:20,alignContent: 'center',}}>
             {children} 

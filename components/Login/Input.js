@@ -24,7 +24,7 @@ const LoginInput = ({ label, errorText,inputText,type, ...props }) => {
             style={styles.input}
             secureTextEntry={type=='password' ?true : false}
             placeholder={label}
-            placeholderStyle={{ fontFamily:'Muli',}}
+            placeholderStyle={{ fontFamily:'Merienda-Regular',}}
             {...props}
             onChangeText={type=='password' ? (e)=>_handlePassword(e) : (e)=>_handleUsername(e)}
           />  
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     fontSize:10, 
-    fontFamily:'Muli',
+    fontFamily:'Merienda-Regular',
     color:'transparent',
     alignSelf:'center',
     alignItems:'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     color: '#efefef',
     paddingLeft: 4,
     opacity: 0.8,
-    fontFamily:'Muli',
+    fontFamily:'Merienda-Regular',
   },
   error: {
     width: '100%',

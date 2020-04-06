@@ -4,7 +4,12 @@ import {_fetchMealsData} from '../../../utils/requests'
 import NotificationStack from '../../../components/SideMenu/NotificationStack'
 import {Icon } from 'react-native-elements' 
 import { useHistory } from 'react-router-native'; 
-
+import {
+    responsiveHeight,
+    responsiveWidth,
+    responsiveScreenFontSize
+  } from "react-native-responsive-dimensions";
+  
 const Notification = ({  ...props }) => {  
 
     let history = useHistory(); 
@@ -30,7 +35,7 @@ const Notification = ({  ...props }) => {
                 </TouchableOpacity>
                 
 
-                <Text style={{alignSelf:'center',fontSize:30}}>Benim Bildirimlerim</Text>
+                <Text style={{alignSelf:'center',fontFamily:'Merienda-Regular' ,fontSize:responsiveScreenFontSize(2.5)}}>Benim Bildirimlerim</Text>
                 
                 <NotificationStack/>
             

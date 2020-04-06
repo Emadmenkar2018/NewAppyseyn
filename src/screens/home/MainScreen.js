@@ -41,15 +41,11 @@ export const MainScreen = ({videocallcoming,Calldetail,  ...props }) => {
     }, [backButtonHandler]);   
 
     const backButtonHandler = () => {
-        increase ++
-        console.log('backPressed',increase)
-       
-        if(increase === 2){
-            console.log('hi')
+        increase ++  
+        if(increase === 2){ 
             BackHandler.exitApp();
             increase = 0
-        }else if(increase === 1) { 
-            console.log('hello')
+        }else if(increase === 1) {  
             ToastAndroid.show("Press Again To Exit", ToastAndroid.SHORT);
             setTimeout( () => { increase = 0}, 2000);
             return true; 

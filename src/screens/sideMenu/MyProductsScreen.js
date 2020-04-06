@@ -4,6 +4,11 @@ import {_fetchMealsData} from '../../../utils/requests'
 import MyStoreStack from '../../../components/SideMenu/MyStoreStack'
 import {Icon } from 'react-native-elements' 
 import { useHistory } from 'react-router-native'; 
+import {
+    responsiveHeight,
+    responsiveWidth,
+    responsiveScreenFontSize
+  } from "react-native-responsive-dimensions";
 
 const MyProductsScreen = ({  ...props }) => {  
 
@@ -32,7 +37,7 @@ const MyProductsScreen = ({  ...props }) => {
                 </TouchableOpacity>
                 
 
-                <Text style={{alignSelf:'center',fontSize:30}}>Benim Ürünlerim</Text>
+                <Text style={{alignSelf:'center',fontSize:responsiveScreenFontSize(2.5),fontFamily:'Merienda-Regular'}}>Benim Ürünlerim</Text>
                 
                 <MyStoreStack/>
             

@@ -18,7 +18,7 @@ const AddSnack = ({ apperativeData,DaysData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:apperativeData[0]? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
+          <Text style={{color:apperativeData[0]? '#E92C81':'#1D253C' ,fontSize:16 ,fontFamily:'Merienda-Bold' }}> 
            
             {apperativeData[0]?  'Eklenen Aperatif' : ' Aperatif Ekle'}
           </Text>
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
     width:'70%'
   },
   head:{
-    fontSize:16,
-    fontWeight:'bold',
+    fontSize:16, 
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 
-    color:'#999'
+    color:'#999',
+    fontFamily:'Merienda-Regular'
   }
 });
 

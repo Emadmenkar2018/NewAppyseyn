@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
   },
   head:{
     fontSize:16,
-    fontWeight:'bold',
+    fontFamily:'Merienda-Bold',
     color:'#1D253C'
   },
   text:{

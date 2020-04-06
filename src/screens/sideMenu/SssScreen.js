@@ -30,7 +30,7 @@ const SssScreen= ({  ...props })=> {
             </TouchableOpacity>
              
 
-              <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Muli-Bold',color:'#999'}}>SSS</Text> 
+              <Text style ={{alignSelf:'center',fontSize:27,fontWeight:'bold',fontFamily:'Merienda-Regular',color:'#999'}}>SSS</Text> 
 
               {/* <TouchableOpacity onPress={()=>history.push('/Main/Store')}> */}
                 <Image

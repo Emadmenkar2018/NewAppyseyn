@@ -11,6 +11,7 @@ import {ValidateEmail} from '../../../utils/methods'
 import {signinUser,setUsernameValue ,setPasswordValue} from '../../../redux/actions/user.actions' 
 import SelectableChips from 'react-native-chip/SelectableChips'
 import NetInfo from "@react-native-community/netinfo";
+import SplashScreen from 'react-native-splash-screen'
 
 const halfheight = Dimensions.get('window').height /2 
 
@@ -18,6 +19,10 @@ const LoginScreen = ({ history, ...props }) => {
     const [chipSelected, setChipSelected] = useState(''); 
     const [alertMessege, setAlertMessege] = useState(''); 
  
+    useEffect(() =>{
+        SplashScreen.hide();
+      }, []);
+
 
     const chipRef = useRef(null);
     const showAlert = useRef(null); 
@@ -187,14 +192,14 @@ const styles = StyleSheet.create({
     marginTop:10 
   },
   label: {
-    color:'rgba(255,255,255,.5)',
-    fontFamily:'Muli-Bold',
+    color:'#E92C81',
+    fontFamily:'Merienda-Regular',
   },
   link: {
     fontWeight: 'bold',
     fontSize:15,
-    color: 'rgba(255,255,255,.5)',
-    fontFamily:'Muli-Bold',
+    color: '#E92C81',
+    fontFamily:'Merienda-Regular',
   },
 });
   

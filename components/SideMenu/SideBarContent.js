@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
       name:{
         color:'#E92C81',
         marginVertical:2,
-        fontFamily:'Muli',
+        fontFamily:'Merienda-Regular',
         alignSelf:'center'
       },
       text:{
         color:'#1D253C',
         marginVertical:10,
-        fontFamily:'Muli',
+        fontFamily:'Merienda-Regular',
         alignSelf:'center',
         fontSize:15
       }

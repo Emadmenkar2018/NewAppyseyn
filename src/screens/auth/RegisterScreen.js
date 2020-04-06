@@ -179,13 +179,13 @@ const styles = StyleSheet.create({
   },
   label: {
     color:'rgba(255,255,255,.5)',
-    fontFamily:'Muli-Bold',
+    fontFamily:'Merienda-Regular',
   },
   link: {
     fontWeight: 'bold',
     fontSize:15,
     color: 'rgba(255,255,255,.5)',
-    fontFamily:'Muli-Bold',
+    fontFamily:'Merienda-Regular',
   },
   registerbtn:{
     alignContent:'center',

@@ -15,7 +15,7 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
                 <View style={{alignSelf:'center',backgroundColor:'transparent',alignItems:'center',alignContent:'center' }}>
                 
                   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%'}}>
-                    <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>Kilo Hedefi</Text>
+                    <Text style={{marginRight:20,fontFamily:'Merienda-Regular',fontWeight:'600',fontSize:18}}>Kilo Hedefi</Text>
                     <TouchableHighlight
                       style = {styles.circle1}
                       underlayColor = '#ccc'   >
@@ -25,7 +25,7 @@ import  MyPieChart  from '../../../../components/Banaozel/Goals/MyPieChart'
 
 
                   <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',width:'100%'}}>
-                    <Text style={{marginRight:20,fontFamily:'Muli-Bold',fontWeight:'600',fontSize:18}}>Kilonuz</Text>
+                    <Text style={{marginRight:20,fontFamily:'Merienda-Regular',fontWeight:'600',fontSize:18}}>Kilonuz</Text>
                     <TouchableHighlight
                       style = { styles.circle2}
                       underlayColor = '#ccc'   >

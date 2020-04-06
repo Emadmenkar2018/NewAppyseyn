@@ -18,8 +18,8 @@ const LunchContainer = ({ lunchData, ...props }) => {
 
         <View style={styles.Textcontainer}>
 
-          <Text style={{color:lunchData.length >0 ? '#E92C81':'#1D253C' ,fontSize:16, fontWeight:'bold',fontFamily:'Muli-Bold' }}> 
-            {lunchData.length >0 ?  'Öğle Yemeği' : 'Öğle Yemeği Bulunmamaktadır'}
+          <Text style={{color:lunchData.length >0 ? '#E92C81':'#1D253C' ,fontSize:16 ,fontFamily:'Merienda-Regular' }}> 
+            {lunchData.length >0 ?  'Öğle Yemeği' : 'Öğle Yemeği Girilmemiştir'}
           </Text>
 
           <Text style={styles.text}> 
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     fontSize:16,
     fontWeight:'bold',
     color:'#1D253C',
-    fontFamily:'Muli-Bold'
+    fontFamily:'Merienda-Regular'
   },
   text:{
     fontSize:12, 

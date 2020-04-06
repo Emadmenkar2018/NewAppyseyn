@@ -9,13 +9,13 @@ const Calender = ({ currentIndex, ...props })=> {
 
     let DaysIndicator = TodayIndicatorList().reverse().map(day => { 
         return(
-            <TouchableOpacity style={{width:'11%'}} onPress={()=>props._pressOnday(day.index)}  key={day.day}>
+            <TouchableOpacity style={{width:'11%',zIndex:1}} onPress={()=>props._pressOnday(day.index)}  key={day.day}>
 
                 <View style={{width:'100%',height:'100%',alignItems:'center'}}>
                     <View   style={{height:`${day.height}%` ,width:'40%',backgroundColor:day.index === currentIndex? '#3CCFA4':'#fff',borderRadius:10}}>
                     </View> 
 
-                    <Text style={{color:'#fff',marginTop:2,fontSize:10,fontFamily:'Muli-Light',color:day.index === currentIndex? '#3CCFA4':'#fff'}}>{day.day}</Text>
+                    <Text style={{color:'#fff',marginTop:2,fontSize:10,fontFamily:'Merienda-Regular',color:day.index === currentIndex? '#3CCFA4':'#fff'}}>{day.day}</Text>
                 </View>
             
             </TouchableOpacity>

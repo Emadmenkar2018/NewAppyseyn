@@ -59,7 +59,7 @@ const  BeforeAfterScreen = ({ history, ...props }) => {
         <View style={{ flex:1,backgroundColor:'#fff',zIndex:0}}>
 
             <DefaultBackgroundWithChart
-                title={'Önce Sonra'}
+                title={'Önce - Sonra'}
             />  
 
             <View style={{ flex:1, backgroundColor: '#fff' , height:'100%',width:'100%' ,paddingLeft:10,paddingRight:10,zIndex:100}}>   

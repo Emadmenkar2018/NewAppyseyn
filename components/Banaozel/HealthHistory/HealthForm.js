@@ -85,7 +85,7 @@ const HealthForm = ({ children , ...props}) => {
   return( 
       <LinearGradient colors={['#fff', '#fff']} style={{width: '100%', height: '100%',paddingHorizontal:20}}  > 
 
-        <Text style={{fontSize:18,fontFamily:'Muli-Bold',fontWeight:'bold',color:'#1D253C'}}>Kan Tahlilleri :</Text>
+        <Text style={{fontSize:18,fontFamily:'Merienda-Regular' ,color:'#1D253C'}}>Kan Tahlilleri :</Text>
 
         <View style={{width:'100%',paddingRight:20}}>
 
@@ -112,13 +112,13 @@ const HealthForm = ({ children , ...props}) => {
 
         </View> 
 
-        <Text style={{fontSize:18,fontFamily:'Muli-Bold',fontWeight:'bold',color:'#1D253C'}}>Ameliyetler :</Text>
+        <Text style={{fontSize:18,fontFamily:'Merienda-Regular' ,color:'#1D253C'}}>Ameliyetler :</Text>
   
-        <TextInput onChangeText={(e)=>props.setsurgery(e)} multiline style={{marginVertical:8, height: 100,width:'100%',  borderColor:'#E92C81',borderWidth:1 ,fontSize:16,fontFamily:'Muli'}} />
+        <TextInput onChangeText={(e)=>props.setsurgery(e)} multiline style={{marginVertical:8, height: 100,width:'100%',  borderColor:'#E92C81',borderWidth:1 ,fontSize:16,fontFamily:'Merienda-Regular'}} />
 
-        <Text style={{fontSize:18,fontFamily:'Muli-Bold',fontWeight:'bold',color:'#1D253C'}}>İlaçlar :</Text>
+        <Text style={{fontSize:18,fontFamily:'Merienda-Regular' ,color:'#1D253C'}}>İlaçlar :</Text>
   
-        <TextInput onChangeText={(e)=>props.setmedical(e)} multiline style={{marginVertical:8, height: 100,width:'100%',  borderColor:'#E92C81',borderWidth:1 ,fontSize:16,fontFamily:'Muli'}} />
+        <TextInput onChangeText={(e)=>props.setmedical(e)} multiline style={{marginVertical:8, height: 100,width:'100%',  borderColor:'#E92C81',borderWidth:1 ,fontSize:16,fontFamily:'Merienda-Regular'}} />
         
       </LinearGradient>  
   )

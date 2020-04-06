@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { NativeRouter, Route,Scene,Router, Switch ,history} from 'react-router-native';
+import { AppState, Button, StyleSheet, Text, View } from 'react-native';
+import { NativeRouter, Route,Scene,Router, Switch ,Redirect,history} from 'react-router-native';
 import Stack from 'react-router-native-stack';
 import LoginScreen from './src/screens/auth/LoginScreen'
 import MainScreen from './src/screens/home/MainScreen' 
@@ -49,48 +49,64 @@ export default class App extends Component {
     videocallcoming : false,
     isLoading:true,
     notificationOnShow: false,
-    Calldetail:''
-  }
+    Calldetail:'',
+    redirect : true,
+    appState :  AppState.currentState
+  } 
+  
 
   componentDidMount () { 
-    // this.timer = setInterval(()=> {
-    //   if(this._isMounted  && this.state.isLoading){
-    //     // this.fetchConversations()
-    //     this.fetchincomingCalls()
-    //   }
-    // }, 10000) 
+  
+    AppState.addEventListener("change", this._handleAppStateChange);
+    this.timer = setInterval(()=> {
+      if(this._isMounted  && this.state.isLoading){
+        // this.fetchConversations()
+        this.fetchincomingCalls()
+      }
+    }, 10000) 
      
   }
 
   componentWillUnmount() {
+    console.log('end')
+    AppState.removeEventListener("change", this._handleAppStateChange);
     this._ismounted = false;
     this.setState({isLoading:false})
  }
 
- _handleVideocallComing=() =>{
-   if (!this.state.notificationOnShow){
+  _handleAppStateChange = nextAppState => {
+    if (this.state.appState.match(/inactive|background/) && nextAppState === "active") {
+      console.log("App has come to the foreground!");
+    }
+    else{
+      console.log("App has come to the background!",nextAppState);
+    }
+    this.setState({appState : nextAppState});
+  };
+
+ _handleVideocallComing=() =>{ 
      PushNotification.localNotificationSchedule({ 
-         message: "Admin Ariyor",  
+         message: "Diyetseyen Ariyor",  
          date: new Date(Date.now() )  
-     }); 
-    //  history.push('/user/RecieveVideoCall')
-   }
-    this.setState({notificationOnShow:true}) 
+     });  
  }
 
  fetchincomingCalls = () =>{
   fetchincomingCallsFromAdminApi().then(response =>{   
-    // console.log('mes',response.data) 
+    console.log(';asa',response) 
     if (response.data.length > 0){ 
-      this.setState({videocallcoming:true})
-      this.setState({Calldetail:response.data[0]}) 
-      this._handleVideocallComing() 
-      this._ismounted = false; 
+      if (!this.state.notificationOnShow){ 
+        this.setState({
+          notificationOnShow:true ,
+          Calldetail:response.data[0]
+        })  
+        this._handleVideocallComing()
+      } 
     }
     else{
-      this.setState({videocallcoming:false}) 
-      this.setState({isLoading:true}) 
-      this.setState({notificationOnShow:false})
+      this.setState({
+        notificationOnShow:false , 
+      })   
     }
   }).catch( err =>
       console.log('err',err)
@@ -102,9 +118,10 @@ export default class App extends Component {
     //do your logic here 
   }
   render() {  
+    
     return (
       <Provider  store={store}>
-        <NativeRouter  onChange={this.changeRoute}>
+        <NativeRouter  onChange={this.changeRoute}> 
           <Switch>
             <Route  
                 exact path="/" 
